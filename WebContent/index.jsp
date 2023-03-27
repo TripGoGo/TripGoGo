@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <c:set var="root" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!doctype html>
 <html lang="en">
 
@@ -116,7 +117,7 @@ https://templatemo.com/tm-583-festava-live
 
             <div class="video-wrap">
                 <video autoplay="" loop="" muted="" class="custom-video" poster="">
-                    <source src="video/pexels-olya-kobruseva-5236593.mp4" type="video/mp4">
+                    <source src="${root}/assets/video/pexels-olya-kobruseva-5236593.mp4" type="video/mp4">
 
                     Your browser does not support the video tag.
                 </video>
@@ -160,7 +161,7 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-12">
                         <div class="about-text-wrap">
-                            <img src="images/pexels-alexander-suhorucov-6457579.jpg" class="about-image img-fluid">
+                            <img src="${root}/assets/images/pexels-alexander-suhorucov-6457579.jpg" class="about-image img-fluid">
                             <div class="about-text-info d-flex">
                                 <div class="d-flex">
                                     <i class="about-text-icon bi-person"></i>
@@ -200,7 +201,7 @@ https://templatemo.com/tm-583-festava-live
                             role="button">Get started</button><a class="btn btn-sm my-2 btn-default" href="#"
                             role="button">Questions? Talk to our team<i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
-                    <div class="col-md-6 mb-4"><img class="w-100" src="images/main/4.png" alt="..." /></div>
+                    <div class="col-md-6 mb-4"><img class="w-100" src="${root}/assets/images/main/4.png" alt="..." /></div>
                 </div>
             </div><!-- end of .container-->
         </section><!-- <section> close ============================-->
@@ -211,7 +212,7 @@ https://templatemo.com/tm-583-festava-live
         <section class="hero-section d-flex align-items-center" id="section_3">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 mb-4"><img class="w-100" src="images/main/5.png" alt="..." /></div>
+                    <div class="col-md-6 mb-4"><img class="w-100" src="${root}/assets/images/main/5.png" alt="..." /></div>
                     <div class="col-md-6 text-center text-md-start">
                         <h4 class="fs-3 fw-normal" data-zanim-xs='{"delay":0.3}' data-zanim-trigger="scroll">Move the
                             way you want, <br />Roads are open</h4>
