@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Festava Live - Bootstrap 5 CSS Template</title>
+    <title>TripGoGo</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
