@@ -185,6 +185,6 @@ https://templatemo.com/tm-583-festava-live
     type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"
   ></script>
-  <script type="text/javascript" src="/js/mytrip-view.js"></script>
+  <script type="text/javascript" src="${root}/assets/js/mytrip-view.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </html>
