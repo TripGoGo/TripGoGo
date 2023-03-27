@@ -547,11 +547,11 @@ T e m p l a t e M o
 -->
 
     <!-- JAVASCRIPT FILES -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/click-scroll.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="${root}/assets/js/jquery.min.js"></script>
+    <script src="${root}/assets/js/bootstrap.min.js"></script>
+    <script src="${root}/assets/js/jquery.sticky.js"></script>
+    <script src="${root}/assets/js/click-scroll.js"></script>
+    <script src="${root}/assets/js/custom.js"></script>
 
 </body>
 
