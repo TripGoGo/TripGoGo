@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `tripgogo`.`board` (
   `user_id` VARCHAR(16) NOT NULL,
   `subject` VARCHAR(100) NULL DEFAULT NULL,
   `content` VARCHAR(2000) NULL,
-  `hit` INT NOT NULL,
+  `hit` INT NOT NULL default 0,
   `register_time` TIMESTAMP NOT NULL default current_timestamp,
   PRIMARY KEY (`article_no`),
   INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
