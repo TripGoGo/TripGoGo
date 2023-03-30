@@ -69,6 +69,13 @@ span {
   visibility: visible;
 }
 
+.write-button {
+  padding-left: 8px;
+  padding-top: 8px;
+  line-height: 0px;
+  display: inline-block;
+}
+
 .close {
   background: #ff5c5c;
   font-size: 9pt;

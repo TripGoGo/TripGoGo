@@ -78,25 +78,25 @@ https://templatemo.com/tm-583-festava-live
                 <div class="write-container wrap">
                   <form
                     class="custom-form contact-form mb-5 mb-lg-0"
-                    action="#"
+                    id="form-write"
                     method="post"
-                    role="form"
                   >
+                  <input type="hidden" name="action" value="write">
                     <div class="contact-form-body">
                       <input
                         type="text"
-                        name="contact-company"
-                        id="contact-company"
+                        id="subject"
+                        name="subject"
                         class="form-control"
                         placeholder="제목"
                         style="font-weight: 300"
                         required
                       />
                       <textarea
-                        name="contact-message"
                         rows="20"
                         class="form-control"
-                        id="contact-message"
+                        id="content"
+                        name="content"
                         placeholder="내용"
                         style="font-weight: 300"
                       ></textarea>
@@ -113,5 +113,20 @@ https://templatemo.com/tm-583-festava-live
       </div>
     </main>
     <%@ include file="/include/footer.jsp" %>
+    <script>
+      document.querySelector("#btn-submit").addEventListener("click", function () {
+        if (!document.querySelector("#subject").value) {
+          alert("제목 입력!!");
+          return;
+        } else if (!document.querySelector("#content").value) {
+          alert("내용 입력!!");
+          return;
+        } else {
+          let form = document.querySelector("#form-write");
+          form.setAttribute("action", "${root}/board");
+          form.submit();
+        }
+      });
+    </script>
   </body>
 </html>

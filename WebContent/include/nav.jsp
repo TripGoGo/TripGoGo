@@ -33,7 +33,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link click-scroll" href="index.html#section_5">Trip</a>
+                <a class="nav-link click-scroll" href="${root}/board?action=list">Board</a>
               </li>
             </ul>
             <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Login</a>
