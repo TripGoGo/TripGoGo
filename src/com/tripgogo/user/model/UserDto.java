@@ -31,6 +31,7 @@ public class UserDto {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
 	
 	public String getJoinDate() {
 		return joinDate;
