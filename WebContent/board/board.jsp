@@ -51,7 +51,7 @@ https://templatemo.com/tm-583-festava-live
             <div class="titlebar">
               <div class="buttons">
                 <div class="close">
-                  <a class="closebutton" href="#"
+                  <a class="closebutton" href="${root}/index.jsp"
                     ><span><strong>x</strong></span></a
                   >
                   <!-- close button link -->
@@ -63,7 +63,7 @@ https://templatemo.com/tm-583-festava-live
                   <!-- minimize button link -->
                 </div>
                 <div class="zoom">
-                  <a class="zoombutton" href="#"
+                  <a class="zoombutton" href="${root}/board?action=mvwrite"
                     ><span><strong>+</strong></span></a
                   >
                   <!-- zoom button link -->
@@ -76,7 +76,7 @@ https://templatemo.com/tm-583-festava-live
             <c:forEach var="article" items="${articles}">
               <div class="board-item">
                 <div class="board-content">
-                  <a href="/9" class="link-article">
+                  <a href="#" class="link-article" data-no="${article.articleNo}">
                     <strong class="title">${article.subject}</strong>
                   </a>
                   <div class="board-info">
@@ -103,5 +103,14 @@ https://templatemo.com/tm-583-festava-live
       </div>
     </main>
      <%@ include file="/include/footer.jsp" %>
+     <script>
+     let titles = document.querySelectorAll(".link-article");
+     titles.forEach(function (title) {
+       title.addEventListener("click", function () {
+         console.log(this.getAttribute("data-no"));
+         location.href = "${root}/board?action=view&articleno=" + this.getAttribute("data-no");
+       });
+     });
+     </script>
   </body>
 </html>

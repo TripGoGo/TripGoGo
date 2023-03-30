@@ -112,7 +112,7 @@ public class BoardController extends HttpServlet {
 	private String write(HttpServletRequest request, HttpServletResponse response) {
 		BoardDto boardDto = new BoardDto();
 //		boardDto.setUserId(memberDto.getUserId());
-		boardDto.setUserId("test");
+		boardDto.setUserId("ssafy");
 		boardDto.setSubject(request.getParameter("subject"));
 		boardDto.setContent(request.getParameter("content"));
 		try {
