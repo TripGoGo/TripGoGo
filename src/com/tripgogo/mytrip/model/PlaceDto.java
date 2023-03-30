@@ -34,6 +34,21 @@ public class PlaceDto {
 	public void setY(String y) {
 		this.y = y;
 	}
-	
+
+	public long getMyTripId() {
+		return myTripId;
+	}
+
+	public void setMyTripId(long myTripId) {
+		this.myTripId = myTripId;
+	}
+
+	public long getDateIdx() {
+		return dateIdx;
+	}
+
+	public void setDateIdx(long dateIdx) {
+		this.dateIdx = dateIdx;
+	}
 	
 }
