@@ -1,9 +1,17 @@
 package com.tripgogo.board.model.service;
 
-public interface BoardService {
+import java.util.List;
+import java.util.Map;
 
-//	글쓰기
-//	글수정
-//	리스트 보기
-//	글삭제
+import com.tripgogo.board.model.BoardDto;
+
+public interface BoardService {
+	
+	void writeArticle(BoardDto boardDto) throws Exception;
+	List<BoardDto> listArticle(Map<String, String> map) throws Exception;
+	BoardDto getArticle(int articleNo) throws Exception;
+	void updateHit(int articleNo) throws Exception;
+	void modifyArticle(BoardDto boardDto) throws Exception;
+	void deleteArticle(int articleNo) throws Exception;
+	
 }
