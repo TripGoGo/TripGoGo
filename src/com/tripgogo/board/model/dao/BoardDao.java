@@ -8,7 +8,7 @@ import com.tripgogo.board.model.BoardDto;
 
 public interface BoardDao {
 	void writeArticle(BoardDto boardDto) throws SQLException;
-	List<BoardDto> listArticle(Map<String, String> map) throws  SQLException;
+	List<BoardDto> listArticle() throws  SQLException;
 	BoardDto getArticle(int articleNo) throws  SQLException;
 	void updateHit(int articleNo) throws  SQLException;
 	void modifyArticle(BoardDto boardDto) throws  SQLException;
