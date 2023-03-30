@@ -73,6 +73,7 @@ https://templatemo.com/tm-583-festava-live
               <!-- window title -->
             </div>
             <div class="content">
+            <c:if test="${not empty articles}">
             <c:forEach var="article" items="${articles}">
               <div class="board-item">
                 <div class="board-content">
@@ -95,6 +96,10 @@ https://templatemo.com/tm-583-festava-live
                 </div>
               </div>
               </c:forEach>   
+              </c:if>
+              <c:if test="${empty articles}">
+              <div style="height:300px; font-weight:200; text-align:center; line-height:300px">게시글이 존재하지 않습니다.</div>
+              </c:if>
               <!-- window content -->
             </div>
           </div>
