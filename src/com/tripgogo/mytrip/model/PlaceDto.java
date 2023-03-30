@@ -2,6 +2,8 @@ package com.tripgogo.mytrip.model;
 
 public class PlaceDto {
 	
+	private long myTripId;
+	private long dateIdx;
 	private String placeName;
 	private String category;
 	private String x;
