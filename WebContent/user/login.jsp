@@ -58,7 +58,7 @@ https://templatemo.com/tm-583-festava-live
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="${root}index.html">
                     TripGoGo
                 </a>
 
@@ -72,23 +72,23 @@ https://templatemo.com/tm-583-festava-live
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="${root}index.html#section_1">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
+                            <a class="nav-link click-scroll" href="${root}index.html#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_3">Info</a>
+                            <a class="nav-link click-scroll" href="${root}index.html#section_3">Info</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_4">Route</a>
+                            <a class="nav-link click-scroll" href="${root}index.html#section_4">Route</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_5">Trip</a>
+                            <a class="nav-link click-scroll" href="${root}index.html#section_5">Trip</a>
                         </li>
                     </ul>
 
@@ -115,15 +115,15 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 login form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="${root}/user" method="post" role="form">
                             <h2 class="text-center mb-4">Login</h2>
 
                             <div class="ticket-form-body">
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
+                                <input type="text" name="id" id="ticket-form-number"
                                     class="form-control" placeholder="Id" required>
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
+                                <input type="text" name="pw" id="ticket-form-number"
                                     class="form-control" placeholder="PASSWORD" required>
 
 
