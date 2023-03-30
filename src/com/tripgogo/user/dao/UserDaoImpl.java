@@ -3,8 +3,13 @@ package com.tripgogo.user.dao;
 import java.sql.SQLException;
 
 import com.tripgogo.user.model.UserDto;
+import com.tripgogo.util.DBUtil;
 
 public class UserDaoImpl implements UserDao {
+	private static UserDao memberDao = new UserDaoImpl();
+	private DBUtil dbUtil;
+	
+
 
 	@Override
 	public int idCheck(String userId) throws SQLException {

@@ -6,10 +6,7 @@ import com.tripgogo.user.model.UserDto;
 public class UserServiceImpl implements UserService {
 	public static UserService userService = new UserServiceImpl();
 	private UserDao userDao;
-	
-	private UserServiceImpl() {
-		userDao =UserDao UserDaoImpl.getUserDao;
-	}
+
 	
 	public static UserService getUserService() {
 		return userService;
@@ -17,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int idCheck(String userId) throws Exception {
-		return userDao.;
+		return 0;
 	}
 
 	@Override

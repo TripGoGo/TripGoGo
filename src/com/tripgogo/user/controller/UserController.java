@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ssafy.model.MemberDto;
-import com.ssafy.service.MemberService;
-import com.ssafy.service.MemberServiceImpl;
+import com.tripgogo.user.model.UserDto;
+import com.tripgogo.user.model.service.UserService;
 
 /**
  * Servlet implementation class UserController
@@ -21,10 +20,10 @@ import com.ssafy.service.MemberServiceImpl;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private MemberService memberService;
+	private UserService userService;
 	
 	public void init() {
-		memberService = MemberServiceImpl.getMemberService();
+//		userService = UserServiceImpl.getMemberService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,22 +54,7 @@ public class UserController extends HttpServlet {
 	}
 	
 	private String login(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		try {
-			MemberDto memberDto = memberService.login(id, pw);
-			if(memberDto != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("userInfo", memberDto);
-				return "";
-			} else {
-				request.setAttribute("msg", "아이디 또는 비번 확인!!!!");
-				return "/user/login.jsp";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "/error/error.jsp";
-		}
+		return "";
 	}
 
 }
