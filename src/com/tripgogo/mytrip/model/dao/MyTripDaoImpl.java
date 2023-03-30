@@ -82,20 +82,48 @@ public class MyTripDaoImpl implements MyTripDao {
 
 	@Override
 	public MyTripDto getMyTrip(int myTripId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void modifyMyTrip(MyTripDto myTripDto) throws SQLException {
-		// TODO Auto-generated method stub
-
+		MyTripDto myTripDto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("select city, start_date, end_date, period, companion, trip_style \n");
+			sql.append("from mytrip \n");
+			sql.append("where mytrip_id = ? \n");
+			pstmt = conn.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				myTripDto = new MyTripDto();
+				myTripDto.setCity(rs.getString("city"));
+				myTripDto.setStartDate(rs.getDate("start_date"));
+				myTripDto.setEndDate(rs.getDate("end_date"));
+				myTripDto.setPeriod(rs.getInt("period"));
+				myTripDto.setCompanion(rs.getString("companion"));
+				myTripDto.setTripStyle(rs.getString("trip_style"));
+			}
+		} finally {
+			dbUtil.close(rs, pstmt, conn);
+		}
+		return myTripDto;
 	}
 
 	@Override
 	public void deleteMyTrip(int myTripId) throws SQLException {
-		// TODO Auto-generated method stub
-
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("delete from mytrip \n");
+			sql.append("where mytrip_id = ?");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, myTripId);
+			pstmt.executeUpdate();
+		} finally {
+			dbUtil.close(pstmt, conn);
+		}
 	}
 
 }

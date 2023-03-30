@@ -9,6 +9,5 @@ public interface MyTripDao {
 	void writetMyTrip(MyTripDto myTripDto) throws SQLException;
 	List<MyTripDto> listMytrips(String userId) throws  SQLException;
 	MyTripDto getMyTrip(int myTripId) throws  SQLException;
-	void modifyMyTrip(MyTripDto myTripDto) throws  SQLException;
 	void deleteMyTrip(int myTripId) throws  SQLException;
 }
