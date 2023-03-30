@@ -56,21 +56,6 @@ public class BoardController extends HttpServlet {
 			redirect(request, response, path);
 		}
 	}
-	
-	private String delete(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private String modify(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private String mvModify(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -118,6 +103,45 @@ public class BoardController extends HttpServlet {
 		try {
 			boardService.writeArticle(boardDto);
 			return "/board?action=list";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
+	private String delete(HttpServletRequest request, HttpServletResponse response) {
+		int articleNo = Integer.parseInt(request.getParameter("articleno"));
+		try {
+			boardService.deleteArticle(articleNo);
+			return "/board?action=list";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
+	private String modify(HttpServletRequest request, HttpServletResponse response) {
+		BoardDto boardDto = new BoardDto();
+//		boardDto.setUserId(memberDto.getUserId());
+		boardDto.setUserId("ssafy");
+		boardDto.setArticleNo(Integer.parseInt(request.getParameter("articleno")));
+		boardDto.setSubject(request.getParameter("subject"));
+		boardDto.setContent(request.getParameter("content"));
+		try {
+			boardService.modifyArticle(boardDto);
+			return "/board?action=list";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+
+	private String mvModify(HttpServletRequest request, HttpServletResponse response) {
+		int articleNo = Integer.parseInt(request.getParameter("articleno"));
+		try {
+			BoardDto boardDto = boardService.getArticle(articleNo);
+			request.setAttribute("article", boardDto);
+			return "/board/modify.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "";

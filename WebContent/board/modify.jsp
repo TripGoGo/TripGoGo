@@ -45,14 +45,14 @@ https://templatemo.com/tm-583-festava-live
   </head>
   <body>
     <main>
-       <%@ include file="/include/nav.jsp" %>
+      <%@ include file="/include/nav.jsp" %>
       <div class="board_background">
         <div class="board">
           <div class="window">
             <div class="titlebar">
               <div class="buttons">
                 <div class="close">
-                  <a class="closebutton" href="#"
+                  <a class="closebutton" href="board.html"
                     ><span><strong>x</strong></span></a
                   >
                   <!-- close button link -->
@@ -70,28 +70,40 @@ https://templatemo.com/tm-583-festava-live
                   <!-- zoom button link -->
                 </div>
               </div>
-              글 읽기
+              글 쓰기
               <!-- window title -->
             </div>
             <div class="content">
-              <div class="view-container">
-                <div class="view-item">
-                  <a href="#" class="link-article" data-no="${article.articleNo}">
-                    <strong class="title">${article.subject}</strong>
-                  </a>
-                  <div class="board-info">
-                    <span class="writer">${article.userId}</span>
-                    <span class="date">${article.registerTime}</span>
-                  </div>
-                  <hr width="100%" />
-                  <div class="view-content">
-                   ${article.content}
-                  </div>
+              <div class="write">
+                <div class="write-container wrap">
+                  <form
+                    class="custom-form contact-form mb-5 mb-lg-0"
+                    id="form-write"
+                    method="post"
+                  >
+                  <input type="hidden" name="action" value="modify">
+                  <input type="hidden" name="articleno" value=${article.articleNo}>
+                    <div class="contact-form-body">
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        class="form-control"
+                        value=${article.subject}
+                        style="font-weight: 300"
+                        required
+                      />
+                      <textarea
+                        rows="20"
+                        class="form-control"
+                        id="content"
+                        name="content"
+                        style="font-weight: 300"
+                      >${article.content}</textarea>
+                      <button type="submit" id="btn-submit" class="form-control">완료</button>
+                    </div>
+                  </form>
                 </div>
-              </div>
-              <div class="board-manage">
-                <span class="writer"><a href="#" id="btn-edit" data-no="${article.articleNo}">수정</a></span>
-                <span class="date"><a href="#" id="btn-delete" data-no="${article.articleNo}">삭제</a></span>
               </div>
               <!-- window content -->
             </div>
@@ -100,23 +112,21 @@ https://templatemo.com/tm-583-festava-live
         <!-- ©2015 Johannes JakobMade with <3 in Germany -->
       </div>
     </main>
-     <%@ include file="/include/footer.jsp" %>
-     <script>
-     let titles = document.querySelectorAll(".link-article");
-     titles.forEach(function (title) {
-       title.addEventListener("click", function () {
-         console.log(this.getAttribute("data-no"));
-         location.href = "${root}/board?action=view&articleno=" + this.getAttribute("data-no");
-       });
-     });
-     
-     document.querySelector("#btn-edit").addEventListener("click", function () {
-    	 location.href = "${root}/board?action=mvmodify&articleno=" + this.getAttribute("data-no");
-       });
-     
-     document.querySelector("#btn-delete").addEventListener("click", function () {
-    	 location.href = "${root}/board?action=delete&articleno=" + this.getAttribute("data-no");
-       });
-     </script>
+    <%@ include file="/include/footer.jsp" %>
+    <script>
+      document.querySelector("#btn-submit").addEventListener("click", function () {
+        if (!document.querySelector("#subject").value) {
+          alert("제목 입력!!");
+          return;
+        } else if (!document.querySelector("#content").value) {
+          alert("내용 입력!!");
+          return;
+        } else {
+          let form = document.querySelector("#form-write");
+          form.setAttribute("action", "${root}/board");
+          form.submit();
+        }
+      });
+    </script>
   </body>
 </html>
