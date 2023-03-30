@@ -8,7 +8,7 @@ import com.tripgogo.mytrip.model.MyTripDto;
 public interface MyTripDao {
 	void writetMyTrip(MyTripDto myTripDto) throws SQLException;
 	List<MyTripDto> listMytrips() throws  SQLException;
-	MyTripDto getMyTrip(int mytripId) throws  SQLException;
+	MyTripDto getMyTrip(int myTripId) throws  SQLException;
 	void modifyMyTrip(MyTripDto myTripDto) throws  SQLException;
-	void deleteMyTrip(int mytripId) throws  SQLException;
+	void deleteMyTrip(int myTripId) throws  SQLException;
 }
