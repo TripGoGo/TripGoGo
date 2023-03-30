@@ -88,7 +88,7 @@ https://templatemo.com/tm-583-festava-live
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="board.html">Board</a>
+                            <a class="nav-link" href="${root}/board?action=list">Board</a>
                         </li>
 
                     </ul>

@@ -73,90 +73,28 @@ https://templatemo.com/tm-583-festava-live
               <!-- window title -->
             </div>
             <div class="content">
+            <c:forEach var="article" items="${articles}">
               <div class="board-item">
                 <div class="board-content">
                   <a href="/9" class="link-article">
-                    <strong class="title">서울 놀러왔어요</strong>
+                    <strong class="title">${article.subject}</strong>
                   </a>
                   <div class="board-info">
-                    <span class="writer">지은이에용</span>
-                    <span class="date">2022.02.05</span>
+                    <span class="writer">${article.userId}</span>
+                    <span class="date">${article.registerTime}</span>
                   </div>
                   <div class="board-preview">
-                    <span class="board-summary">더현대 서울갔다왔어용~~!!</span>
+                    <span class="board-summary">${article.content}</span>
                   </div>
                 </div>
                 <div class="board-thumbnail">
                   <img
-                    src="https://th.bing.com/th/id/R.5a63a601cde9955324c051fd48db3f2c?rik=dZZ5dKYldeyP%2bQ&riu=http%3a%2f%2fres.heraldm.com%2fcontent%2fimage%2f2021%2f02%2f23%2f20210223000363_0.jpg&ehk=NsShmYSAiDcPgJtvDTVRd2z5ondahffJer0U52hr6OA%3d&risl=&pid=ImgRaw&r=0"
+                    src="${root}/assets/images/noimg.png"
                     alt=""
                   />
                 </div>
               </div>
-              <div class="board-item">
-                <div class="board-content">
-                  <a href="/9" class="link-article">
-                    <strong class="title">부산 여행갔다왔어용~</strong>
-                  </a>
-                  <div class="board-info">
-                    <span class="writer">룰루</span>
-                    <span class="date">2022.02.05</span>
-                  </div>
-                  <div class="board-preview">
-                    <span class="board-summary">안녕하세요 부산갔다와서 여행 후기올립니다ㅎㅎ</span>
-                  </div>
-                </div>
-                <div class="board-thumbnail">
-                  <img
-                    src="https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/STq/image/jJyWsFXdXnEBELLKkvpwkPYMlpw.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div class="board-item">
-                <div class="board-content">
-                  <a href="/9" class="link-article">
-                    <strong class="title">여수 여행</strong>
-                  </a>
-                  <div class="board-info">
-                    <span class="writer">바다김밥맛있엉</span>
-                    <span class="date">2022.02.05</span>
-                  </div>
-                  <div class="board-preview">
-                    <span class="board-summary">여수가서 갓김치김밥먹었는데 맛있네요</span>
-                  </div>
-                </div>
-                <div class="board-thumbnail">
-                  <img
-                    src="https://mp-seoul-image-production-s3.mangoplate.com/431525/1089220_1609411562414_27463?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div class="board-item">
-                <div class="board-content">
-                  <a href="view.html" class="link-article">
-                    <strong class="title">Rising</strong>
-                  </a>
-                  <div class="board-info">
-                    <span class="writer">triple S</span>
-                    <span class="date">2023.02.13</span>
-                  </div>
-                  <div class="board-preview">
-                    <span class="board-summary"
-                      >알아 너의 마음<br />
-                      나를 보고 웃는<br />
-                      앞에서는 오직 박수 세례<br />
-                      그 뒤엔 위선 뿐<br />
-                      I See You Lying Me<br />
-                      질투 섞인 걱정 따윈 Stop It Now<br
-                    /></span>
-                  </div>
-                </div>
-                <div class="board-thumbnail">
-                  <img src="./images/pexels-alexander-suhorucov-6457579.jpg" alt="" />
-                </div>
-              </div>
+              </c:forEach>   
               <!-- window content -->
             </div>
           </div>
