@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MytripDto {
+	private long userId;
 	private String city;
 	private Date startDate;
 	private Date endDate;
