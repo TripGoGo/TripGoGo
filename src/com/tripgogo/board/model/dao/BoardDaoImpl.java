@@ -54,6 +54,7 @@ public class BoardDaoImpl implements BoardDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("select article_no, user_id, subject, content, hit, register_time \n");
 			sql.append("from board \n");
+			sql.append("order by register_time desc");
 			pstmt = conn.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
