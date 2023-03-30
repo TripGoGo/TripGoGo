@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyTripDto {
-	private long userId;
+	private long myTripId;
+	private String userId;
 	private String city;
 	private Date startDate;
 	private Date endDate;
@@ -13,10 +14,16 @@ public class MyTripDto {
 	private String companion;
 	private String tripStyle;
 	
-	public long getUserId() {
+	public long getMyTripId() {
+		return myTripId;
+	}
+	public void setMyTripId(long myTripId) {
+		this.myTripId = myTripId;
+	}
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getCity() {
