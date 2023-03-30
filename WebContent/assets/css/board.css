@@ -61,8 +61,7 @@
   color: orange;
 }
 
-.date,
-.writer {
+.date,.writer,.edit,.delete {
   font-size: 12px;
   border: 1px solid lightgrey;
   border-radius: 10px;
@@ -178,4 +177,8 @@
   margin-top: auto;
   margin-bottom: 10px;
   box-sizing: border-box;
+}
+
+.board-manage {
+  text-align: end;
 }
