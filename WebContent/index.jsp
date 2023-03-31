@@ -62,7 +62,7 @@ https://templatemo.com/tm-583-festava-live
                     TripGoGo
                 </a>
 
-                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
+                <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@ https://templatemo.com/tm-583-festava-live
 
                     </ul>
 
-                    <a href="${root}/userController?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
+                    <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
                 </div>
             </div>
         </nav>

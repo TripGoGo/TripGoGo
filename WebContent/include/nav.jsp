@@ -40,7 +40,7 @@
                 <a class="nav-link click-scroll" href="${root}/board?action=list">Board</a>
               </li>
             </ul>
-            <a href="${root}/user/login.jsp" class="btn custom-btn d-lg-block d-none">Login</a>
+            <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
           </div>
         </div>
       </nav>

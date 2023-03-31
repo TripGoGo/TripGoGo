@@ -19,7 +19,7 @@ import com.tripgogo.user.model.service.UserServiceImpl;
 /**
  * Servlet implementation class UserController
  */
-@WebServlet("/userController")
+@WebServlet("/user")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,8 +41,11 @@ public class UserController extends HttpServlet {
 			response.setContentType("text/plain");
 			PrintWriter out = response.getWriter();
 			out.print(cnt);
-		} else if("join".equals(action)) {
-			path = join(request, response);
+		} else if("mvregister".equals(action)) {
+			path = "/user/register.jsp";
+			redirect(request, response, path);
+		} else if("register".equals(action)) {
+			path = register(request, response);
 			redirect(request, response, path);
 		} else if("mvlogin".equals(action)) {
 			path = "/user/login.jsp";
@@ -82,7 +85,7 @@ public class UserController extends HttpServlet {
 		}
 	}
 	
-	private String join(HttpServletRequest request, HttpServletResponse response) {
+	private String register(HttpServletRequest request, HttpServletResponse response) {
 		// TODO : 이름, 아이디, 비밀번호, 이메일등 회원정보를 받아 MemberDto로 setting.
 		// TODO : 위의 데이터를 이용하여 service의 joinMember() 호출.
 		// TODO : 정상 등록 후 로그인 페이지로 이동.

@@ -62,7 +62,7 @@ https://templatemo.com/tm-583-festava-live
                     TripGoGo
                 </a>
 
-                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
+                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ https://templatemo.com/tm-583-festava-live
                         </li>
                     </ul>
 
-                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
+                    <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
                 </div>
             </div>
         </nav>
@@ -128,10 +128,10 @@ https://templatemo.com/tm-583-festava-live
 
 
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
+                                    <a href="${root}/user?action=login" class="btn custom-btn d-lg-block d-none">Login</a>
                                 </div>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="register.html" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
+                                    <a href="${root}/user?action=mvregister" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
                                 </div>
                             </div>
                         </form>
