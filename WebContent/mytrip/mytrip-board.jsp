@@ -51,7 +51,7 @@
                             <!-- minimize button link -->
                         </div>
                         <div class="zoom">
-                            <a class="zoombutton" href="#"><span><strong>+</strong></span></a>
+                            <a class="zoombutton" href="${root}/mytrip?action=mvwrite"><span><strong>+</strong></span></a>
                             <!-- zoom button link -->
                         </div>
                     </div>
