@@ -1,11 +1,16 @@
 package com.tripgogo.user.model.service;
 
 import com.tripgogo.user.dao.UserDao;
+import com.tripgogo.user.dao.UserDaoImpl;
 import com.tripgogo.user.model.UserDto;
 
 public class UserServiceImpl implements UserService {
 	public static UserService userService = new UserServiceImpl();
 	private UserDao userDao;
+	
+	private UserServiceImpl() {
+		userDao = UserDaoImpl.getUserDao();
+	}
 
 	
 	public static UserService getUserService() {
@@ -14,19 +19,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int idCheck(String userId) throws Exception {
-		return 0;
+		return userDao.idCheck(userId);
 	}
 
 	@Override
-	public int joinUser(UserDto memberDto) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int joinUser(UserDto userDto) throws Exception {
+		return userDao.joinUser(userDto);
 	}
 
 	@Override
 	public UserDto loginUser(String userId, String userPwd) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.loginUser(userId, userPwd);
 	}
 
 }
