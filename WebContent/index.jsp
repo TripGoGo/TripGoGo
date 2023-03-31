@@ -93,7 +93,7 @@ https://templatemo.com/tm-583-festava-live
 
                     </ul>
 
-                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
+                    <a href="${root}/userController?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
                 </div>
             </div>
         </nav>

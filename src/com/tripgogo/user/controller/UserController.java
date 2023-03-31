@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.tripgogo.user.model.UserDto;
 import com.tripgogo.user.model.service.UserService;
+import com.tripgogo.user.model.service.UserServiceImpl;
 
 /**
  * Servlet implementation class UserController
@@ -23,7 +24,7 @@ public class UserController extends HttpServlet {
 	private UserService userService;
 	
 	public void init() {
-//		userService = UserServiceImpl.getMemberService();
+		userService = UserServiceImpl.getUserService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
