@@ -11,8 +11,8 @@ public class MyTripDto {
 	private Date startDate;
 	private Date endDate;
 	private int period;
-	private String companion;
-	private String tripStyle;
+	private int companion;
+	private int tripStyle;
 	
 	public long getMyTripId() {
 		return myTripId;
@@ -50,16 +50,16 @@ public class MyTripDto {
 	public void setPeriod(int period) {
 		this.period = period;
 	}
-	public String getCompanion() {
+	public int getCompanion() {
 		return companion;
 	}
-	public void setCompanion(String companion) {
+	public void setCompanion(int companion) {
 		this.companion = companion;
 	}
-	public String getTripStyle() {
+	public int getTripStyle() {
 		return tripStyle;
 	}
-	public void setTripStyle(String tripStyle) {
+	public void setTripStyle(int tripStyle) {
 		this.tripStyle = tripStyle;
 	}
 	

@@ -41,8 +41,8 @@ public class MyTripDaoImpl implements MyTripDao {
 			pstmt.setDate(3, myTripDto.getStartDate());
 			pstmt.setDate(4, myTripDto.getEndDate());
 			pstmt.setInt(5, Period.between(myTripDto.getStartDate().toLocalDate(), myTripDto.getEndDate().toLocalDate()).getDays());
-			pstmt.setString(6, myTripDto.getCompanion());
-			pstmt.setString(7, myTripDto.getTripStyle());
+			pstmt.setInt(6, myTripDto.getCompanion());
+			pstmt.setInt(7, myTripDto.getTripStyle());
 			pstmt.executeUpdate();
 		} finally {
 			dbUtil.close(pstmt, conn);
@@ -70,8 +70,8 @@ public class MyTripDaoImpl implements MyTripDao {
 				myTripDto.setStartDate(rs.getDate("start_date"));
 				myTripDto.setEndDate(rs.getDate("end_date"));
 				myTripDto.setPeriod(rs.getInt("period"));
-				myTripDto.setCompanion(rs.getString("companion"));
-				myTripDto.setTripStyle(rs.getString("trip_style"));
+				myTripDto.setCompanion(rs.getInt("companion"));
+				myTripDto.setTripStyle(rs.getInt("trip_style"));
 				list.add(myTripDto);
 			}
 		} finally {
@@ -100,8 +100,8 @@ public class MyTripDaoImpl implements MyTripDao {
 				myTripDto.setStartDate(rs.getDate("start_date"));
 				myTripDto.setEndDate(rs.getDate("end_date"));
 				myTripDto.setPeriod(rs.getInt("period"));
-				myTripDto.setCompanion(rs.getString("companion"));
-				myTripDto.setTripStyle(rs.getString("trip_style"));
+				myTripDto.setCompanion(rs.getInt("companion"));
+				myTripDto.setTripStyle(rs.getInt("trip_style"));
 			}
 		} finally {
 			dbUtil.close(rs, pstmt, conn);

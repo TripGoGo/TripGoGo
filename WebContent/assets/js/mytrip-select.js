@@ -83,7 +83,6 @@ function makeMarker() {
   var marker = new kakao.maps.Marker({
     position: markerPosition,
   });
-
   // 마커가 지도 위에 표시되도록 설정합니다
   map.setCenter(moveLatLon);
   marker.setMap(map);

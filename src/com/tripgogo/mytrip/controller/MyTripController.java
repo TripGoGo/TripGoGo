@@ -71,8 +71,8 @@ public class MyTripController extends HttpServlet {
 		myTripDto.setCity(request.getParameter("city"));
 		myTripDto.setStartDate(Date.valueOf(request.getParameter("start_date")));
 		myTripDto.setEndDate(Date.valueOf(request.getParameter("end_date")));
-		myTripDto.setCompanion(request.getParameter("companion"));
-		myTripDto.setTripStyle(request.getParameter("trip_style"));
+		myTripDto.setCompanion(Integer.parseInt(request.getParameter("companion")));
+		myTripDto.setTripStyle(Integer.parseInt(request.getParameter("trip_style")));
 		try {
 			myTripService.writetMyTrip(myTripDto);
 			return "/mytrip?action=list";
