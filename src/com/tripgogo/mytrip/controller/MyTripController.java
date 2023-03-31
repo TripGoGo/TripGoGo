@@ -38,10 +38,10 @@ public class MyTripController extends HttpServlet {
 		} else if ("view".equals(action)) {
 			path = view(request, response);
 			forward(request, response, path);
-		} else if ("mvcreate".equals(action)) {
-			path = "/board/create.jsp";
+		} else if ("mvwrite".equals(action)) {
+			path = "/mytrip/mytrip-create.jsp";
 			redirect(request, response, path);
-		} else if ("create".equals(action)) {
+		} else if ("write".equals(action)) {
 			path = write(request, response);
 			redirect(request, response, path);
 		} else if ("delete".equals(action)) {

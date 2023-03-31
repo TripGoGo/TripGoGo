@@ -18,7 +18,7 @@ function searchSpot(event) {
     let serviceKey = "4d808b2eea3ad1fde7f7c7e442ca91fc";
     let searchUrl =
       "https://dapi.kakao.com/v2/local/search/keyword.json?page=1&size=5&sort=accuracy&query=";
-    let keyword = document.getElementById("select-spot").value;
+    let keyword = document.getElementById("place_name").value;
     if (!keyword) {
       alert("검색어 입력 필수!!");
       return;
@@ -65,7 +65,10 @@ function makeList(data) {
     item.addEventListener("click", function () {
       spotX = area.x;
       spotY = area.y;
-      document.getElementById("select-spot").value = area.place_name;
+      document.getElementById("place_name").value = area.place_name;
+      document.getElementById("category").value = area.category_group_name
+      document.getElementById("x").value = area.x;
+      document.getElementById("y").value = area.y;
       document.getElementById("trip-select-list").innerHTML = ``;
       makeMarker();
     });
