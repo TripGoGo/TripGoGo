@@ -70,9 +70,9 @@
                                          style="height:100%; width:100%; border-radius:10px">
                                 </div>
                                 <div class="col">
-                                    <div style="font-size: 20px;">
-                                        ${mytrip.city}
-                                    </div>
+                                    <a href="#" class="link-mytrip" data-no="${mytrip.myTripId}">
+                                        <strong class="title">${mytrip.city}</strong>
+                                    </a>
                                     <div >${mytrip.startDate} ~  ${mytrip.endDate}</div>
                                 </div>
                             </div>
@@ -230,7 +230,15 @@
         </div>
     </div>
 </footer>
-
+<script>
+    let titles = document.querySelectorAll(".link-mytrip");
+    titles.forEach(function (title) {
+        title.addEventListener("click", function () {
+            console.log(this.getAttribute("data-no"));
+            location.href = "${root}/mytrip?action=view&articleno=" + this.getAttribute("data-no");
+        });
+    });
+</script>
 </body>
 
 </html>

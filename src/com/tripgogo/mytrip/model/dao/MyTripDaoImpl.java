@@ -58,7 +58,7 @@ public class MyTripDaoImpl implements MyTripDao {
 		try {
 			conn = dbUtil.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("select city, start_date, end_date, period, companion, trip_style \n");
+			sql.append("select mytrip_id, city, start_date, end_date, period, companion, trip_style \n");
 			sql.append("from mytrip \n");
 			sql.append("where user_id = ? \n");
 			sql.append("order by mytrip_id desc");
@@ -67,6 +67,7 @@ public class MyTripDaoImpl implements MyTripDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				MyTripDto myTripDto = new MyTripDto();
+				myTripDto.setMyTripId(rs.getInt("mytrip_id"));
 				myTripDto.setCity(rs.getString("city"));
 				myTripDto.setStartDate(rs.getDate("start_date"));
 				myTripDto.setEndDate(rs.getDate("end_date"));
