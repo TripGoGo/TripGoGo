@@ -235,7 +235,7 @@
     titles.forEach(function (title) {
         title.addEventListener("click", function () {
             console.log(this.getAttribute("data-no"));
-            location.href = "${root}/mytrip?action=view&articleno=" + this.getAttribute("data-no");
+            location.href = "${root}/mytrip?action=view&mytrip_id=" + this.getAttribute("data-no");
         });
     });
 </script>
