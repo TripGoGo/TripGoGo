@@ -61,8 +61,8 @@
                 <!-- 여기서부터 내용 작성 부분-->
                 <div class="content" style="padding-top: 0px; padding-right: 0px;">
                     <c:if test="${not empty mytrips}">
-                    <c:forEach var="mytrip" items="${mytrips}">
                     <div class="row">
+                        <c:forEach var="mytrip" items="${mytrips}">
                         <div class="mytrip-item col-lg-6 col-md-6 col-sm-12">
                             <div class="row" style="height: 100%; width: 100%; padding:10px 0px">
                                 <div style="width: 150px; height:150px">
@@ -77,9 +77,9 @@
                                 </div>
                             </div>
                         </div>
+                        </c:forEach>
                     </div>
                 </div>
-                </c:forEach>
                 </c:if>
                 <c:if test="${empty mytrips}">
                     <div style="height:300px; font-weight:200; text-align:center; line-height:300px">게시글이 존재하지 않습니다.</div>

@@ -63,6 +63,7 @@ public class MyTripDaoImpl implements MyTripDao {
 			sql.append("where user_id = ? \n");
 			sql.append("order by mytrip_id desc");
 			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				MyTripDto myTripDto = new MyTripDto();
