@@ -14,19 +14,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tripgogo.mytrip.model.MyTripDto;
+import com.tripgogo.mytrip.model.PlaceDto;
 import com.tripgogo.mytrip.model.service.MyTripService;
 import com.tripgogo.mytrip.model.service.MyTripServiceImpl;
+import com.tripgogo.mytrip.model.service.PlaceService;
+import com.tripgogo.mytrip.model.service.PlaceServiceImpl;
 
 
 @WebServlet("/mytrip")
 public class MyTripController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MyTripService myTripService;
+	private PlaceService placeService;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		myTripService = MyTripServiceImpl.getInstance();
+		placeService = PlaceServiceImpl.getInstance();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -86,7 +91,9 @@ public class MyTripController extends HttpServlet {
 		int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
 		try {
 			MyTripDto myTripDto = myTripService.getMyTrip(myTripId);
+			List<PlaceDto> list = placeService.getPlaces(myTripId);
 			request.setAttribute("mytrip", myTripDto);
+			request.setAttribute("places", list);
 			return "/mytrip/mytrip-view.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();

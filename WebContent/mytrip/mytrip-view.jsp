@@ -83,38 +83,37 @@ https://templatemo.com/tm-583-festava-live
                         <strong class="title">Day 1</strong>
                       </a>
                       <div class="board-info">
-                        <span class="date">2023.02.13</span>
+                        <span class="date">${mytrip.startDate}</span>
                       </div>
                       <hr width="100%" />
                       <div class="view-content">
+                        <c:if test="${not empty places}">
                         <div id="map0" style="width: 100%; height: 350px; margin-bottom: 10px"></div>
                         <div id="trip-list">
+                          <c:forEach var="place" items="${places}" varStatus="status">
                           <div class="trip-line d-flex">
-                            <div class="index">1</div>
+                            <div class="index">${status.count}</div>
                             <div class="trip-item">
                               <div class="trip-content">
-                                <span class="title">멀티캠퍼스 역삼</span>
+                                <span class="title">${place.placeName}</span>
                                 <div class="trip-info">
-                                  <span class="writer">교육기관</span>
+                                  <span class="writer">${place.category}</span>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div class="trip-line d-flex">
-                            <div class="index">2</div>
-                            <div class="trip-item">
-                              <div class="trip-content">
-                                <span class="title">하이디라오 강남점</span>
-                                <div class="trip-info">
-                                  <span class="writer">음식점</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <button type="submit" id="btn-submit" class="form-control">
+                          </c:forEach>
+                          <button type="submit" data-date=${mytrip.startDate} class="btn-submit">
                             장소 추가
                           </button>
                         </div>
+                        </c:if>
+                        <c:if test="${empty places}">
+                          <div style="height:100%; font-weight:200; text-align:center; line-height:100%">게시글이 존재하지 않습니다.</div>
+                          <button type="submit" data-date=${mytrip.startDate} class="btn-submit">
+                            장소 추가
+                          </button>
+                        </c:if>
                       </div>
                     </div>
                   </div>
@@ -131,7 +130,7 @@ https://templatemo.com/tm-583-festava-live
                       <hr width="100%" />
                       <div class="view-content">
                         <div id="map1" style="width: 100%; height: 350px; margin-bottom: 10px"></div>
-                        <div id="trip-list">
+                        <div class="trip-list">
                           <div class="trip-line d-flex">
                             <div class="index">1</div>
                             <div class="trip-item">
@@ -154,7 +153,7 @@ https://templatemo.com/tm-583-festava-live
                               </div>
                             </div>
                           </div>
-                          <button type="submit" id="btn-submit" class="form-control">
+                          <button type="submit" class="btn-submit">
                             장소 추가
                           </button>
                         </div>
