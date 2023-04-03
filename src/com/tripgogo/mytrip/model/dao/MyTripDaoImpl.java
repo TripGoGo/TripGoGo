@@ -95,6 +95,7 @@ public class MyTripDaoImpl implements MyTripDao {
 			sql.append("from mytrip \n");
 			sql.append("where mytrip_id = ? \n");
 			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, myTripId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				myTripDto = new MyTripDto();
