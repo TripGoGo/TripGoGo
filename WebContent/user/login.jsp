@@ -301,7 +301,6 @@ T e m p l a t e M o
         <%--});--%>
 
         document.querySelector("#login-button").addEventListener("click", function () {
-            console.log("login 버튼1");
             if (!document.querySelector("#id").value) {
                 alert("아이디 입력!!");
                 return;

@@ -45,6 +45,7 @@ public class UserController extends HttpServlet {
 			path = "/user/register.jsp";
 			redirect(request, response, path);
 		} else if("register".equals(action)) {
+			System.out.println("회원가입 호출 됨-controller");
 			path = register(request, response);
 			redirect(request, response, path);
 		} else if("mvlogin".equals(action)) {
@@ -56,6 +57,7 @@ public class UserController extends HttpServlet {
 			System.out.println(path);
 			forward(request, response, path);
 		} else if("logout".equals(action)) {
+
 			path = logout(request, response);
 			redirect(request, response, path);
 		} else {
@@ -93,9 +95,9 @@ public class UserController extends HttpServlet {
 		// TODO : 위의 데이터를 이용하여 service의 joinMember() 호출.
 		// TODO : 정상 등록 후 로그인 페이지로 이동.
 		UserDto userDto = new UserDto();
-		userDto.setUserName(request.getParameter("username"));
-		userDto.setUserId(request.getParameter("userid"));
-		userDto.setUserPassword(request.getParameter("userpwd"));
+		userDto.setUserName(request.getParameter("name"));
+		userDto.setUserId(request.getParameter("id"));
+		userDto.setUserPassword(request.getParameter("pwd"));
 		userDto.setEmail(request.getParameter("email"));
 		try {
 			userService.joinUser(userDto);

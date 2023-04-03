@@ -115,43 +115,47 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 회원가입 form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="register-form" method="POST">
                             <h2 class="text-center mb-4">Register</h2>
 
                             <div class="ticket-form-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-6" style="margin: 0px;padding: 0px;">
-                                            <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                        class="form-control" placeholder="NAME" required>
+
+                                    <input type="hidden" name="action" value="register">
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-6" style="margin: 0px;padding: 0px;">
+                                                <input type="text" name="name" id="name"
+                                                       class="form-control" placeholder="NAME" required>
+                                            </div>
+
+                                            <div class="col-6" style="padding-right:0px">
+                                                <input type="text" name="email" id="email"
+                                                       class="form-control" placeholder="email" required>
+                                            </div>
+
                                         </div>
-                                        
-                                        <div class="col-6" style="padding-right:0px">
-                                            <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                        class="form-control" placeholder="email" required>
-                                        </div>
-    
+
+
+                                        <input type="text" name="id" id="id"
+                                               class="form-control" placeholder="Id" required>
+
+                                        <input type="text" name="pwd" id="pwd"
+                                               class="form-control" placeholder="PASSWORD" required>
+
+                                        <input type="text" name="pwd-confirm" id="pwd-confirm"
+                                               class="form-control" placeholder="PASSWORD confirm" required>
+                                
                                     </div>
-                                
-                                </div>
-                                
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                    class="form-control" placeholder="Id" required>
+                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin: 20px 0px;">
+                                        <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Login</a>
+                                    </div>
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                    class="form-control" placeholder="PASSWORD" required>
-                                
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                    class="form-control" placeholder="PASSWORD confirm" required>
+                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" >
+                                        <button type="button" id="register-button" class="btn custom-btn d-lg-block d-none">Register</button>
+                                    </div>
 
-
-                                <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
-                                </div>
-                                <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="register.html" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -312,6 +316,32 @@ T e m p l a t e M o
     <script src="${root}/assets/js/bootstrap.min.js"></script>
     <script src="${root}/assets/js/jquery.sticky.js"></script>
     <script src="${root}/assets/js/custom.js"></script>
+
+    <script>
+
+        document.querySelector("#register-button").addEventListener("click", function () {
+            if (!document.querySelector("#id").value) {
+                alert("아이디 입력!!");
+                return;
+            } else if (!document.querySelector("#email").value) {
+                alert("email 입력!!");
+                return;
+            } else if (!document.querySelector("#pwd").value) {
+                alert("비밀번호 입력!!");
+                return;
+            } else if (!document.querySelector("#name").value) {
+                alert("이름 입력!!");
+                return;
+            } else if (document.querySelector("#pwd-confirm").value != document.querySelector("#pwd").value) {
+                alert("비밀번호가 다릅니다!!");
+                return;
+            } else {
+                let form = document.querySelector("#register-form");
+                form.setAttribute("action", "${root}/user");
+                form.submit();
+            }
+        });
+    </script>
 
 </body>
 

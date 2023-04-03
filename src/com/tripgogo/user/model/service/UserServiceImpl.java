@@ -7,12 +7,12 @@ import com.tripgogo.user.model.UserDto;
 public class UserServiceImpl implements UserService {
 	public static UserService userService = new UserServiceImpl();
 	private UserDao userDao;
-	
+
 	private UserServiceImpl() {
 		userDao = UserDaoImpl.getUserDao();
 	}
 
-	
+
 	public static UserService getUserService() {
 		return userService;
 	}
@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int joinUser(UserDto userDto) throws Exception {
+		System.out.println("회원가입 호출 됨");
 		return userDao.joinUser(userDto);
 	}
 
