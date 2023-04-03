@@ -115,26 +115,27 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 login form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="${root}/user" method="post" role="form">
+
                             <h2 class="text-center mb-4">Login</h2>
 
                             <div class="ticket-form-body">
+                                <form id="login-form" method="POST">
+                                    <input type="hidden" name="action" value="login">
+                                    <input type="text" name="id" id="id"
+                                           class="form-control" placeholder="Id" required>
 
-                                <input type="text" name="id" id="ticket-form-number"
-                                    class="form-control" placeholder="Id" required>
+                                    <input type="text" name="pwd" id="pwd"
+                                           class="form-control" placeholder="PASSWORD" required>
+                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" >
+                                        <button type="button" id="login-button" class="btn custom-btn d-lg-block d-none">Login</button>
+                                    </div>
+                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
+                                        <a href="${root}/user?action=mvregister" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
+                                    </div>
+                                </form>
 
-                                <input type="text" name="pw" id="ticket-form-number"
-                                    class="form-control" placeholder="PASSWORD" required>
-
-
-                                <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <a href="${root}/user?action=login" class="btn custom-btn d-lg-block d-none">Login</a>
-                                </div>
-                                <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="${root}/user?action=mvregister" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
-                                </div>
                             </div>
-                        </form>
+
                     </div>
                 </div>
             </div>
@@ -293,6 +294,28 @@ T e m p l a t e M o
     <script src="${root}/assets/js/bootstrap.min.js"></script>
     <script src="${root}/assets/js/jquery.sticky.js"></script>
     <script src="${root}/assets/js/custom.js"></script>
+
+    <script>
+        <%--document.querySelector("#btn-mv-join").addEventListener("click", function () {--%>
+        <%--    location.href = "${root}/user?action=mvjoin";--%>
+        <%--});--%>
+
+        document.querySelector("#login-button").addEventListener("click", function () {
+            console.log("login 버튼1");
+            if (!document.querySelector("#id").value) {
+                alert("아이디 입력!!");
+                return;
+            } else if (!document.querySelector("#pwd").value) {
+                alert("비밀번호 입력!!");
+                return;
+            } else {
+                let form = document.querySelector("#login-form");
+                console.log("로그인 버튼 클릭 됨");
+                form.setAttribute("action", "${root}/user");
+                form.submit();
+            }
+        });
+    </script>
 
 </body>
 

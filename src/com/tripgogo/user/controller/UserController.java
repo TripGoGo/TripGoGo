@@ -22,16 +22,16 @@ import com.tripgogo.user.model.service.UserServiceImpl;
 @WebServlet("/user")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private UserService userService;
-	
+
 	public void init() {
 		userService = UserServiceImpl.getUserService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		
+
 		String path = "";
 		if("mvjoin".equals(action)) {
 			path = "/user/join.jsp";
@@ -52,6 +52,8 @@ public class UserController extends HttpServlet {
 			redirect(request, response, path);
 		} else if("login".equals(action)) {
 			path = login(request, response);
+			System.out.println("로그인 호출 됨");
+			System.out.println(path);
 			forward(request, response, path);
 		} else if("logout".equals(action)) {
 			path = logout(request, response);
@@ -65,15 +67,16 @@ public class UserController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
-	
+
 	private void redirect(HttpServletRequest request, HttpServletResponse response, String path) throws IOException {
 		response.sendRedirect(request.getContextPath() + path);
 	}
-	
+
 	private void forward(HttpServletRequest request, HttpServletResponse response, String path) throws IOException, ServletException {
 		RequestDispatcher disp = request.getRequestDispatcher(path);
 		disp.forward(request, response);
 	}
+
 	private int idcheck(HttpServletRequest request, HttpServletResponse response) {
 		// TODO : 입력한 아이디의 사용여부 체크 (0 : 사용 X, 1 : 사용 O)
 		String userId = request.getParameter("userid");
@@ -84,7 +87,7 @@ public class UserController extends HttpServlet {
 			return 500;
 		}
 	}
-	
+
 	private String register(HttpServletRequest request, HttpServletResponse response) {
 		// TODO : 이름, 아이디, 비밀번호, 이메일등 회원정보를 받아 MemberDto로 setting.
 		// TODO : 위의 데이터를 이용하여 service의 joinMember() 호출.
@@ -103,40 +106,41 @@ public class UserController extends HttpServlet {
 			return "/error/error.jsp";
 		}
 	}
-	
+
 	private String login(HttpServletRequest request, HttpServletResponse response) {
-		String userId = request.getParameter("userid");
-		String userPwd = request.getParameter("userpwd");
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
 		try {
-			UserDto memberDto = userService.loginUser(userId, userPwd);
-			if(memberDto != null) {
+			UserDto userDto = userService.loginUser(id, pwd);
+			if(userDto != null) {
 //				session 설정
 				HttpSession session = request.getSession();
-				session.setAttribute("userinfo", memberDto);
-				
+				session.setAttribute("userinfo", userDto);
+
 //				cookie 설정
-				String idsave = request.getParameter("saveid");
-				if("ok".equals(idsave)) { //아이디 저장을 체크 했다면.
-					Cookie cookie = new Cookie("ssafy_id", userId);
-					cookie.setPath(request.getContextPath());
-//					크롬의 경우 400일이 최대
-//					https://developer.chrome.com/blog/cookie-max-age-expires/
-					cookie.setMaxAge(60 * 60 * 24 * 365 * 40); //40년간 저장.
-					response.addCookie(cookie);
-				} else { //아이디 저장을 해제 했다면.
-					Cookie cookies[] = request.getCookies();
-					if(cookies != null) {
-						for(Cookie cookie : cookies) {
-							if("ssafy_id".equals(cookie.getName())) {
-								cookie.setMaxAge(0);
-								response.addCookie(cookie);
-								break;
-							}
-						}
-					}
-				}
+//				String idsave = request.getParameter("saveid");
+//				if("ok".equals(idsave)) { //아이디 저장을 체크 했다면.
+//					Cookie cookie = new Cookie("id", id);
+//					cookie.setPath(request.getContextPath());
+////					크롬의 경우 400일이 최대
+////					https://developer.chrome.com/blog/cookie-max-age-expires/
+//					cookie.setMaxAge(60 * 60 * 24 * 40); //40일 저장.
+//					response.addCookie(cookie);
+//				} else { //아이디 저장을 해제 했다면.
+//					Cookie cookies[] = request.getCookies();
+//					if(cookies != null) {
+//						for(Cookie cookie : cookies) {
+//							if("ssafy_id".equals(cookie.getName())) {
+//								cookie.setMaxAge(0);
+//								response.addCookie(cookie);
+//								break;
+//							}
+//						}
+//					}
+//				}
 				return "/index.jsp";
 			} else {
+				System.out.println("로그인 안됨");
 				request.setAttribute("msg", "아이디 또는 비밀번호 확인 후 다시 로그인하세요.");
 				return "/user/login.jsp";
 			}
@@ -146,7 +150,7 @@ public class UserController extends HttpServlet {
 			return "/error/error.jsp";
 		}
 	}
-	
+
 	private String logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 //		session.removeAttribute("userinfo");
