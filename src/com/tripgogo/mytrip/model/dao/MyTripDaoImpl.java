@@ -40,7 +40,7 @@ public class MyTripDaoImpl implements MyTripDao {
 			pstmt.setString(2, myTripDto.getCity());
 			pstmt.setDate(3, myTripDto.getStartDate());
 			pstmt.setDate(4, myTripDto.getEndDate());
-			pstmt.setInt(5, Period.between(myTripDto.getStartDate().toLocalDate(), myTripDto.getEndDate().toLocalDate()).getDays());
+			pstmt.setInt(5, Period.between(myTripDto.getStartDate().toLocalDate(), myTripDto.getEndDate().toLocalDate()).getDays() + 1);
 			pstmt.setInt(6, myTripDto.getCompanion());
 			pstmt.setInt(7, myTripDto.getTripStyle());
 			pstmt.executeUpdate();

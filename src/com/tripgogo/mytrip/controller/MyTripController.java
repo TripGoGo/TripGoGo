@@ -67,7 +67,6 @@ public class MyTripController extends HttpServlet {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		MyTripDto myTripDto = new MyTripDto();
 		myTripDto.setUserId("ssafy");
-//		myTripDto.setUserId(memberDto.getUserId());
 		myTripDto.setCity(request.getParameter("city"));
 		myTripDto.setStartDate(Date.valueOf(request.getParameter("start_date")));
 		myTripDto.setEndDate(Date.valueOf(request.getParameter("end_date")));
@@ -75,6 +74,7 @@ public class MyTripController extends HttpServlet {
 		myTripDto.setTripStyle(Integer.parseInt(request.getParameter("trip_style")));
 		try {
 			myTripService.writetMyTrip(myTripDto);
+			System.out.println("hei");
 			return "/mytrip?action=list";
 		} catch (Exception e) {
 			e.printStackTrace();

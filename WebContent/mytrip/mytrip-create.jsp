@@ -63,12 +63,13 @@
                 <!-- 여기서부터 내용 작성 부분-->
                 <div class="content">
                     <div class="container" style="margin-top:6vh">
-                        <form method="post">
+                        <form id="mytrip-form" method="post">
+                            <input type="hidden" name="action" value="write">
                             <div class="row justify-content-center">
                                 <!-- 관광지 검색 start -->
                                 <!-- 시/도 검색-->
                                 <div class="area col-6">
-                                    <select id="search-area1" class="form-select" aria-label="Default select example"
+                                    <select name="city" id="search-area1" class="form-select" aria-label="Default select example"
                                             style="background-color: rgba(255, 255, 255, 0);text-align: center;border: rgba(0, 0, 0, 0);font-size: 20px;">
                                         <option value="0" selected> 시/도</option>
                                     </select>
@@ -79,28 +80,28 @@
                                 <div class="col-3">
                                     <div style="text-align: center;">
                                         <div style="display: inline;">Start Day</div>
-                                        <div><input type="date"></div>
+                                        <div><input type="date" name="start_date"></div>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div style="text-align: center;">
                                         <div style="display: inline;">End Day</div>
-                                        <div><input type="date"></div>
+                                        <div><input type="date" name="end_date"></div>
                                     </div>
                                 </div>
                                 <!-- 여행 동행인 선택-->
                                 <div class="row justify-content-center" style="margin-top:3vh">
                                     <div class="col-3">Who?</div>
                                     <div class="col-5">
-                                        <label style="margin-right:10px"><input type="radio" name="people"
+                                        <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="0">혼자</label>
-                                        <label style="margin-right:10px"><input type="radio" name="people"
+                                        <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="1">친구와</label>
-                                        <label style="margin-right:10px"><input type="radio" name="people"
+                                        <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="2">가족과</label>
-                                        <label style="margin-right:10px"><input type="radio" name="people"
+                                        <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="3">연인과</label>
-                                        <label style="margin-right:10px"><input type="radio" name="people"
+                                        <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="4">기타</label>
                                     </div>
                                 </div>
@@ -108,15 +109,15 @@
                                 <div class="row justify-content-center" style="margin-top:3vh">
                                     <div class="col-3">Who?</div>
                                     <div class="col-5">
-                                        <label style="margin-right:10px"><input type="radio" name="travel-type"
+                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="0">휴양</label>
-                                        <label style="margin-right:10px"><input type="radio" name="travel-type"
+                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="1">관광</label>
-                                        <label style="margin-right:10px"><input type="radio" name="travel-type"
+                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="2">뚜벅이</label>
-                                        <label style="margin-right:10px"><input type="radio" name="travel-type"
+                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="3">쇼핑</label>
-                                        <label style="margin-right:10px"><input type="radio" name="travel-type"
+                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="4">패키지</label>
                                     </div>
                                 </div>
@@ -154,24 +155,16 @@
         let sel = document.getElementById("search-area1");
         areas.forEach((area) => {
             let opt = document.createElement("option");
-            opt.setAttribute("value", area.code);
+            opt.setAttribute("value", area.name);
             opt.appendChild(document.createTextNode(area.name));
             sel.appendChild(opt);
         });
     }
 
     document.querySelector("#btn-submit").addEventListener("click", function () {
-        if (!document.querySelector("#search-area1").value) {
-            alert("시도 입력!!");
-            return;
-        } else if (!document.querySelector("#content").value) {
-            alert("내용 입력!!");
-            return;
-        } else {
-            let form = document.querySelector("#form-write");
-            form.setAttribute("action", "${root}/board");
-            form.submit();
-        }
+        let form = document.querySelector("#mytrip-form");
+        form.setAttribute("action", "${root}/mytrip");
+        form.submit();
     });
 </script>
 </body>
