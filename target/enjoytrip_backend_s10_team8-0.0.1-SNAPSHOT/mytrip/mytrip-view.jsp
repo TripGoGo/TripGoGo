@@ -103,14 +103,14 @@ https://templatemo.com/tm-583-festava-live
                             </div>
                           </div>
                           </c:forEach>
-                          <button type="submit" class="btn-submit" data-no=${mytrip.myTripId} data-date=${mytrip.startDate} >
+                          <button type="submit" class="btn-submit" data-no=${param.mytrip_id} data-date=${mytrip.startDate} >
                             장소 추가
                           </button>
                         </div>
                         </c:if>
                         <c:if test="${empty places}">
                           <div style="height:100%; font-weight:200; text-align:center; line-height:100%">게시글이 존재하지 않습니다.</div>
-                          <button type="submit" class="btn-submit" data-no=${mytrip.myTripId} data-date=${mytrip.startDate} >
+                          <button type="submit" class="btn-submit" data-no=${param.mytrip_id} data-date=${mytrip.startDate} >
                             장소 추가
                           </button>
                         </c:if>
@@ -190,8 +190,7 @@ https://templatemo.com/tm-583-festava-live
     let btns = document.querySelectorAll(".btn-submit");
     btns.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        console.log(this.getAttribute("data-no"));
-        location.href = "${root}/mytrip?action=add&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
+        location.href = "${root}/mytrip?action=mvadd&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
       });
     });
   </script>
