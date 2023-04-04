@@ -9,8 +9,8 @@ import com.tripgogo.user.model.UserDto;
 import com.tripgogo.util.DBUtil;
 
 public class UserDaoImpl implements UserDao {
-	private static UserDao userDao = new UserDaoImpl();
-	private DBUtil dbUtil;
+	private static final UserDao userDao = new UserDaoImpl();
+	private final DBUtil dbUtil;
 	
 	private UserDaoImpl() {
 		dbUtil = DBUtil.getInstance();

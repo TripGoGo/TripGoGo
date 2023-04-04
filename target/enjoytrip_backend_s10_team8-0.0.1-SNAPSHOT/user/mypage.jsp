@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TripGoGo Register</title>
+    <title>TripGoGo MyPage</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,23 @@ https://templatemo.com/tm-583-festava-live
 <body>
 
     <main>
-        <%@ include file="/include/navUser.jsp" %>
+
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-person custom-icon me-2"></i>
+                            <strong class="text-dark">Welcome to TripGoGo</strong>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
@@ -56,15 +72,15 @@ https://templatemo.com/tm-583-festava-live
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="">Home</a>
+                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.jsp#section_2">About</a>
+                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.jsp#section_3">Info</a>
+                            <a class="nav-link click-scroll" href="index.html#section_3">Info</a>
                         </li>
 
                         <li class="nav-item">
@@ -98,48 +114,31 @@ https://templatemo.com/tm-583-festava-live
                 <div class="row">
 
                     <div class="col-lg-6 col-10 mx-auto">
-                        <!-- 여기서부터 회원가입 form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="register-form" method="POST">
-                            <h2 class="text-center mb-4">Register</h2>
+                        <!-- 여기서부터 mypage form 부분-->
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                            <h2 class="text-center mb-4">MYPAGE</h2>
 
-                            <div class="ticket-form-body">
+                            <div class="ticket-form-body" style="font-size: 20px; text-align: center;">
+                                <div class="container">
+                                    <div class="row align-content-center" style="margin-top:20px">
+                                        <div >Name : SSAFY</div>
+                                    </div>
 
-                                    <input type="hidden" name="action" value="register">
-                                    <div class="container">
+                                    <div class="row align-content-center" style="margin-top:20px">
+                                        <div >Email : SSAFY@ssafy.com</div>
+                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-6" style="margin: 0px;padding: 0px;">
-                                                <input type="text" name="name" id="name"
-                                                       class="form-control" placeholder="NAME" required>
-                                            </div>
-
-                                            <div class="col-6" style="padding-right:0px">
-                                                <input type="text" name="email" id="email"
-                                                       class="form-control" placeholder="email" required>
-                                            </div>
-
-                                        </div>
-
-
-                                        <input type="text" name="id" id="id"
-                                               class="form-control" placeholder="Id" required>
-
-                                        <input type="text" name="pwd" id="pwd"
-                                               class="form-control" placeholder="PASSWORD" required>
-
-                                        <input type="text" name="pwd-confirm" id="pwd-confirm"
-                                               class="form-control" placeholder="PASSWORD confirm" required>
+                                    <div class="row" style="margin:20px 0px">
+                                        <div > id : SSAFY </div>
+                                    </div>
+                                </div>
                                 
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin: 20px 0px;">
-                                        <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Login</a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                        <button type="button" id="register-button" class="btn custom-btn d-lg-block d-none">Register</button>
-                                    </div>
-
+                                <div class="col-lg-4 col-md-10 col-8 mx-auto" >
+                                    <a href="mypage-change.html" class="btn custom-btn d-lg-block d-none">Change</a>
+                                </div>
+                                <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
+                                    <a href="index.html" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Go to Main</a>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -300,32 +299,6 @@ T e m p l a t e M o
     <script src="${root}/assets/js/bootstrap.min.js"></script>
     <script src="${root}/assets/js/jquery.sticky.js"></script>
     <script src="${root}/assets/js/custom.js"></script>
-
-    <script>
-
-        document.querySelector("#register-button").addEventListener("click", function () {
-            if (!document.querySelector("#id").value) {
-                alert("아이디 입력!!");
-                return;
-            } else if (!document.querySelector("#email").value) {
-                alert("email 입력!!");
-                return;
-            } else if (!document.querySelector("#pwd").value) {
-                alert("비밀번호 입력!!");
-                return;
-            } else if (!document.querySelector("#name").value) {
-                alert("이름 입력!!");
-                return;
-            } else if (document.querySelector("#pwd-confirm").value != document.querySelector("#pwd").value) {
-                alert("비밀번호가 다릅니다!!");
-                return;
-            } else {
-                let form = document.querySelector("#register-form");
-                form.setAttribute("action", "${root}/user");
-                form.submit();
-            }
-        });
-    </script>
 
 </body>
 
