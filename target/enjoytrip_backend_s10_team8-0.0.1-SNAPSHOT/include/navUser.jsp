@@ -39,8 +39,13 @@
                     <a class="nav-link click-scroll" href="${root}/board?action=list">Trip</a>
                 </li>
             </ul>
+            <c:if test="${not empty userinfo}">
+                <a href="${root}/user?action=logout" class="btn custom-btn d-lg-block d-none">Logout</a>
+            </c:if>
 
-            <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
+            <c:if test="${empty userinfo}">
+                <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
+            </c:if>
         </div>
     </div>
 </nav>

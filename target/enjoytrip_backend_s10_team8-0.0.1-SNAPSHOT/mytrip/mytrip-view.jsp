@@ -191,7 +191,7 @@ https://templatemo.com/tm-583-festava-live
     btns.forEach(function (btn) {
       btn.addEventListener("click", function () {
         console.log(this.getAttribute("data-no"));
-        location.href = "${root}/mytrip?action=mvadd&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
+        location.href = "${root}/mytrip?action=add&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
       });
     });
   </script>
