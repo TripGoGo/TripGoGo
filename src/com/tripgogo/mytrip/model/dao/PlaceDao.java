@@ -9,5 +9,5 @@ import java.util.List;
 public interface PlaceDao {
     List<PlaceDto> getPlaces(int myTripId) throws SQLException;
     void deletePlace(int placeId) throws SQLException;
-    void addPlace(int myTripId, Date date, PlaceDto placeDto) throws SQLException;
+    void addPlace(PlaceDto placeDto) throws SQLException;
 }
