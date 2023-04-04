@@ -85,11 +85,31 @@
                                             <c:if test="${dayPlace != 0}">
                                                 <div id="map${status1.index}"
                                                      style="width: 100%; height: 350px; margin-bottom: 10px"></div>
+                                                <script>var markers = [];</script>
+                                                <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
                                                 <div id="trip-list">
-                                                    <c:set var="cnt" value="${0}" />
+                                                    <c:set var="cnt" value="${0}"/>
+                                                    <c:set var="center_x" value="${0}"/>
+                                                    <c:set var="center_y" value="${0}"/>
                                                     <c:forEach var="place" items="${places}" varStatus="status2">
                                                         <c:if test="${place.date == Date.valueOf(mytrip.startDate.toLocalDate().plusDays(status1.index))}">
-                                                            <c:set var="cnt" value="${cnt + 1}" />
+                                                            <c:set var="cnt" value="${cnt + 1}"/>
+                                                            <c:set var="center_x" value="${center_x + place.x}"/>
+                                                            <c:set var="center_y" value="${center_y + place.y}"/>
+                                                            <script>
+                                                                // 마커 하나를 지도위에 표시합니다
+                                                                // 마커를 생성하고 지도위에 표시하는 함수입니다
+                                                                function addMarker(position) {
+                                                                    // 마커를 생성합니다
+                                                                    var marker = new kakao.maps.Marker({
+                                                                        position: position
+                                                                    });
+                                                                    // 생성된 마커를 배열에 추가합니다
+                                                                    markers.push(marker);
+                                                                }
+                                                                addMarker(new kakao.maps.LatLng(${place.y}, ${place.x}));
+                                                                console.log(markers[0]);
+                                                            </script>
                                                             <div class="trip-line d-flex">
                                                                 <div class="index">${cnt}</div>
                                                                 <div class="trip-item">
@@ -108,6 +128,17 @@
                                                         장소 추가
                                                     </button>
                                                 </div>
+                                                <script>
+                                                    var mapContainer${status1.index} = document.getElementById('map${status1.index}'), // 지도를 표시할 div
+                                                        mapOption${status1.index} = {
+                                                            center: new kakao.maps.LatLng(${center_y/cnt}, ${center_x/cnt}), // 지도의 중심좌표
+                                                            level: 3 // 지도의 확대 레벨
+                                                        };
+                                                    var map${status1.index} = new kakao.maps.Map(mapContainer${status1.index}, mapOption${status1.index}); // 지도를 생성합니다
+                                                    for (var i = 0; i < markers.length; i++) {
+                                                        markers[i].setMap(map${status1.index});
+                                                    }
+                                                </script>
                                             </c:if>
                                             <c:if test="${dayPlace == 0}">
                                                 <div style="height:100%; font-weight:200; text-align:center; line-height:100%">
@@ -128,25 +159,15 @@
             </div>
         </div>
     </div>
-    <!-- <div class="gallery-cell"></div>
-    <div class="gallery-cell"></div>
-    <div class="gallery-cell"></div> -->
     </div>
-
     <!-- window content -->
     </div>
     </div>
     </div>
-    <!-- ©2015 Johannes JakobMade with <3 in Germany -->
     </div>
 </main>
 <%@ include file="/include/footer.jsp" %>
 </body>
-<script
-        type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"
-></script>
-<script type="text/javascript" src="${root}/assets/js/mytrip-view.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
     let btns = document.querySelectorAll(".btn-submit");
