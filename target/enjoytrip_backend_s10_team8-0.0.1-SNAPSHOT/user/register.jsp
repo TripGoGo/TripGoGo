@@ -39,23 +39,7 @@ https://templatemo.com/tm-583-festava-live
 <body>
 
     <main>
-
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-12 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-person custom-icon me-2"></i>
-                            <strong class="text-dark">Welcome to TripGoGo</strong>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-
+        <%@ include file="/include/navUser.jsp" %>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
@@ -72,15 +56,15 @@ https://templatemo.com/tm-583-festava-live
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
+                            <a class="nav-link click-scroll" href="index.jsp#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_3">Info</a>
+                            <a class="nav-link click-scroll" href="index.jsp#section_3">Info</a>
                         </li>
 
                         <li class="nav-item">

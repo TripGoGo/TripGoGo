@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<c:set var="msg" value="${msg}"/>
+
+<c:if test="${not empty msg}">
+    <script>
+        alert("${msg}");
+    </script>
+</c:if>
+
 <!doctype html>
 <html lang="en">
 
@@ -39,64 +47,7 @@ https://templatemo.com/tm-583-festava-live
 <body>
 
     <main>
-
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-12 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-person custom-icon me-2"></i>
-                            <strong class="text-dark">Welcome to TripGoGo</strong>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="${root}index.html">
-                    TripGoGo
-                </a>
-
-                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Login</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="${root}index.html#section_1">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="${root}index.html#section_2">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="${root}index.html#section_3">Info</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="${root}index.html#section_4">Route</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="${root}index.html#section_5">Trip</a>
-                        </li>
-                    </ul>
-
-                    <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none">Login</a>
-                </div>
-            </div>
-        </nav>
-
+        <%@ include file="/include/navUser.jsp" %>
 
         <section class="login-section section-padding " style="height:100vh; display:flex; align-items: center;">
             
@@ -115,11 +66,12 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 login form 부분-->
+                        <form  class="custom-form ticket-form mb-5 mb-lg-0" id="login-form" method="POST">
 
                             <h2 class="text-center mb-4">Login</h2>
 
                             <div class="ticket-form-body">
-                                <form id="login-form" method="POST">
+
                                     <input type="hidden" name="action" value="login">
                                     <input type="text" name="id" id="id"
                                            class="form-control" placeholder="Id" required>
@@ -132,9 +84,10 @@ https://templatemo.com/tm-583-festava-live
                                     <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
                                         <a href="${root}/user?action=mvregister" class="btn custom-btn d-lg-block d-none" style="background-color: black;">register</a>
                                     </div>
-                                </form>
+
 
                             </div>
+                        </form>
 
                     </div>
                 </div>
