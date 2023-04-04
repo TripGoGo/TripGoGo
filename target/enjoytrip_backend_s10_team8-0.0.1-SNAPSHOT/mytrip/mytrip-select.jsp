@@ -94,6 +94,7 @@
             </div>
             <!-- ©2015 Johannes JakobMade with <3 in Germany -->
         </div>
+    </div>
 </main>
 <%@ include file="/include/footer.jsp" %>
 </body>
@@ -105,11 +106,6 @@
         } else {
             let form = document.querySelector("#form-write");
             form.setAttribute("action", "${root}/mytrip");
-            // console.log(document.querySelector("#place_name").value);
-            // console.log(document.querySelector("#category").value);
-            // console.log(document.querySelector("#x").value);
-            // console.log(document.querySelector("#y").value);
-            console.log(document.querySelector("#mytrip_id").value);
             form.submit();
         }
     });

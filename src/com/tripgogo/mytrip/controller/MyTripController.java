@@ -3,6 +3,8 @@ package com.tripgogo.mytrip.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -114,8 +116,14 @@ public class MyTripController extends HttpServlet {
         try {
             MyTripDto myTripDto = myTripService.getMyTrip(myTripId);
             List<PlaceDto> list = placeService.getPlaces(myTripId);
+            int[] placebyDay = new int[myTripDto.getPeriod()];
+            for (int i = 0; i < list.size(); i++) {
+                int index = Period.between(myTripDto.getStartDate().toLocalDate(), list.get(i).getDate().toLocalDate()).getDays();
+                placebyDay[index]++;
+            }
             request.setAttribute("mytrip", myTripDto);
             request.setAttribute("places", list);
+            request.setAttribute("placebyDay", placebyDay);
             return "/mytrip/mytrip-view.jsp";
         } catch (Exception e) {
             e.printStackTrace();
