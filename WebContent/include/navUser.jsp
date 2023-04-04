@@ -41,6 +41,8 @@
             </ul>
             <c:if test="${not empty userinfo}">
                 <a href="${root}/user?action=logout" class="btn custom-btn d-lg-block d-none">Logout</a>
+                <a class="nav-link click-scroll" href="${root}/board?action=list">회원정보수정</a>
+
             </c:if>
 
             <c:if test="${empty userinfo}">

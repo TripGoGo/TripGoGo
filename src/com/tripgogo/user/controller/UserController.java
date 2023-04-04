@@ -59,6 +59,9 @@ public class UserController extends HttpServlet {
 		} else if("logout".equals(action)) {
 			path = logout(request, response);
 			redirect(request, response, path);
+		}else if("mvmodifyuser".equals(action)) {
+			path = "/user/modify-user.jsp";
+			redirect(request, response, path);
 		} else {
 			redirect(request, response, path);
 		}
