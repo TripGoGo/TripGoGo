@@ -5,6 +5,7 @@ import com.tripgogo.mytrip.model.PlaceDto;
 import com.tripgogo.util.DBUtil;
 
 import java.sql.*;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class PlaceDaoImpl implements PlaceDao {
     private DBUtil dbUtil;
 
     private static PlaceDao placeDao = new PlaceDaoImpl();
+
     private PlaceDaoImpl() {
         dbUtil = DBUtil.getInstance();
     }
@@ -58,7 +60,25 @@ public class PlaceDaoImpl implements PlaceDao {
     }
 
     @Override
-    public void addPlace(int myTripId, Date date, PlaceDto placeDto) throws SQLException {
-
+    public void addPlace(PlaceDto placeDto) throws SQLException {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = dbUtil.getConnection();
+            StringBuilder sql = new StringBuilder();
+            sql.append("insert into place (mytrip_id, user_id, place_name, category, date, x, y) \n");
+            sql.append("values (?, ?, ?, ?, ?, ?, ?)");
+            pstmt = conn.prepareStatement(sql.toString());
+            pstmt.setLong(1, placeDto.getMyTripId());
+            pstmt.setString(2, "ssafy");
+            pstmt.setString(3, placeDto.getPlaceName());
+            pstmt.setString(4, placeDto.getCategory());
+            pstmt.setDate(5, placeDto.getDate());
+            pstmt.setString(6, placeDto.getX());
+            pstmt.setString(7, placeDto.getY());
+            pstmt.executeUpdate();
+        } finally {
+            dbUtil.close(pstmt, conn);
+        }
     }
 }

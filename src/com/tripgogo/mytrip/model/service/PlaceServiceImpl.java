@@ -30,7 +30,7 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public void addPlace(int myTripId, Date date, PlaceDto placeDto) throws Exception {
-
+    public void addPlace(PlaceDto placeDto) throws Exception {
+        placeDao.addPlace(placeDto);
     }
 }
