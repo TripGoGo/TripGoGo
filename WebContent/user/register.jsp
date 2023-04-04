@@ -40,47 +40,6 @@ https://templatemo.com/tm-583-festava-live
 
     <main>
         <%@ include file="/include/navUser.jsp" %>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    TripGoGo
-                </a>
-
-                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.jsp#section_2">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.jsp#section_3">Info</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_4">Route</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_5">Trip</a>
-                        </li>
-                    </ul>
-
-                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
-                </div>
-            </div>
-        </nav>
-
 
         <section class="login-section section-padding " style="height:100vh; display:flex; align-items: center;">
             

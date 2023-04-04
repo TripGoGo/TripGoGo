@@ -57,7 +57,6 @@ public class UserController extends HttpServlet {
 			System.out.println(path);
 			forward(request, response, path);
 		} else if("logout".equals(action)) {
-
 			path = logout(request, response);
 			redirect(request, response, path);
 		} else {
