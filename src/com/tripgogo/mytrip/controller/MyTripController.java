@@ -54,7 +54,7 @@ public class MyTripController extends HttpServlet {
             redirect(request, response, path);
         } else if ("mvadd".equals(action)) {
             path = "/mytrip/mytrip-select.jsp?mytrip_id=" + request.getParameter("mytrip_id") + "&date=" + request.getParameter("date");
-            forward(request, response, path);
+            redirect(request, response, path);
         } else if ("add".equals(action)) {
             path = add(request, response);
             redirect(request, response,path);
