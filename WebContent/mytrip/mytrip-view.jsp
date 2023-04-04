@@ -85,7 +85,7 @@
                                             <c:if test="${dayPlace != 0}">
                                                 <div id="map${status1.index}"
                                                      style="width: 100%; height: 350px; margin-bottom: 10px"></div>
-                                                <script>var markers = [];</script>
+                                                <script>var markers = []; var linePath = [];</script>
                                                 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
                                                 <div id="trip-list">
                                                     <c:set var="cnt" value="${0}"/>
@@ -108,7 +108,7 @@
                                                                     markers.push(marker);
                                                                 }
                                                                 addMarker(new kakao.maps.LatLng(${place.y}, ${place.x}));
-                                                                console.log(markers[0]);
+                                                                linePath.push(new kakao.maps.LatLng(${place.y}, ${place.x}));
                                                             </script>
                                                             <div class="trip-line d-flex">
                                                                 <div class="index">${cnt}</div>
@@ -138,6 +138,14 @@
                                                     for (var i = 0; i < markers.length; i++) {
                                                         markers[i].setMap(map${status1.index});
                                                     }
+                                                    var polyline = new kakao.maps.Polyline({
+                                                        path: linePath, // 선을 구성하는 좌표배열 입니다
+                                                        strokeWeight: 5, // 선의 두께 입니다
+                                                        strokeColor: '#000000', // 선의 색깔입니다
+                                                        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                                        strokeStyle: 'dashed' // 선의 스타일입니다
+                                                    });
+                                                    polyline.setMap(map${status1.index});
                                                 </script>
                                             </c:if>
                                             <c:if test="${dayPlace == 0}">
