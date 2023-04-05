@@ -29,7 +29,6 @@
     />
 
     <link href="${root}/assets/css/bootstrap.min.css" rel="stylesheet"/>
-
     <link href="${root}/assets/css/bootstrap-icons.css" rel="stylesheet"/>
     <link href="${root}/assets/css/board.css" rel="stylesheet"/>
     <link href="${root}/assets/css/mac-style.css" rel="stylesheet"/>
@@ -85,7 +84,9 @@
                                             <c:if test="${dayPlace != 0}">
                                                 <div id="map${status1.index}"
                                                      style="width: 100%; height: 350px; margin-bottom: 10px"></div>
-                                                <script>var markers = []; var linePath = [];</script>
+                                                <script>var markers = [];
+                                                var linePath = [];
+                                                var bounds = new kakao.maps.LatLngBounds(); </script>
                                                 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
                                                 <div id="trip-list">
                                                     <c:set var="cnt" value="${0}"/>
@@ -107,8 +108,10 @@
                                                                     // 생성된 마커를 배열에 추가합니다
                                                                     markers.push(marker);
                                                                 }
+
                                                                 addMarker(new kakao.maps.LatLng(${place.y}, ${place.x}));
                                                                 linePath.push(new kakao.maps.LatLng(${place.y}, ${place.x}));
+                                                                bounds.extend(new kakao.maps.LatLng(${place.y}, ${place.x}));
                                                             </script>
                                                             <div class="trip-line d-flex">
                                                                 <div class="index">${cnt}</div>
@@ -126,6 +129,10 @@
                                                     <button type="submit" class="btn-submit"
                                                             data-no=${param.mytrip_id} data-date=${Date.valueOf(mytrip.startDate.toLocalDate().plusDays(status1.index))} >
                                                         장소 추가
+                                                    </button>
+                                                    <button type="submit" class="btn-remove"
+                                                            data-no=${param.mytrip_id} data-date=${Date.valueOf(mytrip.startDate.toLocalDate().plusDays(status1.index))} >
+                                                        장소 삭제
                                                     </button>
                                                 </div>
                                                 <script>
@@ -146,6 +153,7 @@
                                                         strokeStyle: 'dashed' // 선의 스타일입니다
                                                     });
                                                     polyline.setMap(map${status1.index});
+                                                    map${status1.index}.setBounds(bounds);
                                                 </script>
                                             </c:if>
                                             <c:if test="${dayPlace == 0}">
@@ -182,6 +190,12 @@
     btns.forEach(function (btn) {
         btn.addEventListener("click", function () {
             location.href = "${root}/mytrip?action=mvadd&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
+        });
+    });
+    let removes = document.querySelectorAll(".btn-remove");
+    removes.forEach(function (removebtn) {
+        removebtn.addEventListener("click", function () {
+            location.href = "${root}/mytrip?action=mvremove&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
         });
     });
 </script>

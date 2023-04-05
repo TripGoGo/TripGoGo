@@ -12,8 +12,6 @@
     <meta name="author" content=""/>
     <script src="https://kit.fontawesome.com/d4a4244bd2.js"
             crossorigin="anonymous"></script>
-    <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c320326b2ad2dd588de2423a35a93637"></script>
     <title>Festava Live - Ticket HTML Form</title>
 
     <!-- CSS FILES -->
@@ -35,13 +33,6 @@
 
     <link href="${root}/assets/css/templatemo-festava-live.css"
           rel="stylesheet"/>
-    <!--
-
-    TemplateMo 583 Festava Live
-
-    https://templatemo.com/tm-583-festava-live
-
-    -->
 </head>
 <body>
 <main>
@@ -113,5 +104,4 @@
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
 <script src="${root}/assets/js/mytrip-select.js"></script>
-
 </html>
