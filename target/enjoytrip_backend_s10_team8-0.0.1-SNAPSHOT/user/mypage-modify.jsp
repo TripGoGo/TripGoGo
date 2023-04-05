@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TripGoGo Register</title>
+    <title>TripGoGo Change MyPage</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,77 +26,14 @@
     <link href="${root}/assets/css/bootstrap-icons.css" rel="stylesheet">
 
     <link href="${root}/assets/css/templatemo-festava-live.css" rel="stylesheet">
-    <!--
 
-TemplateMo 583 Festava Live
-
-https://templatemo.com/tm-583-festava-live
-
--->
 
 </head>
 
 <body>
 
     <main>
-
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-12 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-person custom-icon me-2"></i>
-                            <strong class="text-dark">Welcome to TripGoGo</strong>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    TripGoGo
-                </a>
-
-                <a href="login.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_3">Info</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_4">Route</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_5">Trip</a>
-                        </li>
-                    </ul>
-
-                    <a href="login.html" class="btn custom-btn d-lg-block d-none">Login</a>
-                </div>
-            </div>
-        </nav>
-
+        <%@ include file="/include/nav-user.jsp" %>
 
         <section class="login-section section-padding " style="height:100vh; display:flex; align-items: center;">
             
@@ -118,17 +55,18 @@ https://templatemo.com/tm-583-festava-live
                         <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
                             <h2 class="text-center mb-4">Change MyPage</h2>
 
+                            <input type="hidden" name="action" value="mvmodifyuser">
                             <div class="ticket-form-body">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-6" style="margin: 0px;padding: 0px;">
-                                            <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                        class="form-control" placeholder="NAME : SSAFY" required>
+                                            <input type="text" name="name" id="name"
+                                        class="form-control" placeholder="NAME : ${}" required>
                                         </div>
                                         
                                         <div class="col-6" style="padding-right:0px">
-                                            <input type="text" name="ticket-form-number" id="ticket-form-number"
-                                        class="form-control" placeholder="email:SSAFY@ssafy.com" required>
+                                            <input type="text" name="email" id="email"
+                                        class="form-control" placeholder="email: ${}" required>
                                         </div>
     
                                     </div>
@@ -136,12 +74,12 @@ https://templatemo.com/tm-583-festava-live
                                 </div>
                                 
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
+                                <input type="text" name="id" id="id"
                                     class="form-control" placeholder="Id : SSAFY" required>
 
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
+                                <input type="text" name="pwd" id="pwd"
                                     class="form-control" placeholder="PASSWORD" required>
-                                <input type="text" name="ticket-form-number" id="ticket-form-number"
+                                <input type="text" name="pwd-confirm" id="pwd-confirm"
                                     class="form-control" placeholder="PASSWORD confirm" required>
 
 
@@ -159,147 +97,7 @@ https://templatemo.com/tm-583-festava-live
         </section>
     </main>
 
-
-    <footer class="site-footer">
-        <div class="site-footer-top">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-6 col-12">
-                        <h3 class="text-white mb-lg-0">Use TripGoGo for your Trip</h3>
-                    </div>
-
-                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end align-items-center">
-                        <ul class="social-icon d-flex justify-content-lg-end">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-twitter"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-apple"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-instagram"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-youtube"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-pinterest"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 col-12 mb-4 pb-2">
-                    <h5 class="site-footer-title mb-3">Links</h5>
-
-                    <ul class="site-footer-links">
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">About</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Info</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Route</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Trip</a>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                    <h5 class="site-footer-title mb-3">Have a question?</h5>
-
-                    <p class="text-white d-flex mb-1">
-                        <a href="tel: 090-080-0760" class="site-footer-link">
-                            010-0000-0000
-                        </a>
-                    </p>
-
-                    <p class="text-white d-flex">
-                        <a href="mailto:hello@company.com" class="site-footer-link">
-                            hello@ssafy.com
-                        </a>
-                    </p>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
-                    <h5 class="site-footer-title mb-3">Location</h5>
-
-                    <p class="text-white d-flex mt-3 mb-2">
-                        Silang Junction South, Tagaytay, Cavite, Philippines</p>
-
-                    <a class="link-fx-1 color-contrast-higher mt-3" href="#">
-                        <span>Our Maps</span>
-                        <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
-                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="16" cy="16" r="15.5"></circle>
-                                <line x1="10" y1="18" x2="16" y2="12"></line>
-                                <line x1="16" y1="12" x2="22" y2="18"></line>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="site-footer-bottom">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-3 col-12 mt-5">
-                        <p class="copyright-text">Copyright © 2036 Festava Live Company</p>
-                        <p class="copyright-text">Distributed by: <a href="https://themewagon.com">ThemeWagon</a></p>
-                    </div>
-
-                    <div class="col-lg-8 col-12 mt-lg-5">
-                        <ul class="site-footer-links">
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
-                            </li>
-
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Privacy Policy</a>
-                            </li>
-
-                            <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Your Feedback</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <%@ include file="/include/footer.jsp" %>
 
     <!--
 

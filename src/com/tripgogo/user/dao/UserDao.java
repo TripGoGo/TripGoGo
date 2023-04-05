@@ -9,4 +9,7 @@ public interface UserDao {
 	int joinUser(UserDto userDto) throws SQLException;
 	UserDto loginUser(String userId, String userPwd) throws SQLException;
 
+	UserDto findUser(String userId) throws SQLException;
+	int updateUser(UserDto userDto) throws Exception;
+
 }

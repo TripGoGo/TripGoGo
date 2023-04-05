@@ -56,7 +56,7 @@ https://templatemo.com/tm-583-festava-live
         </header>
 
 
-        <%@ include file="/include/navUser.jsp" %>
+        <%@ include file="/include/nav-user.jsp" %>
 
 
         <section class="hero-section" id="section_1">

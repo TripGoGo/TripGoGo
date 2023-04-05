@@ -64,15 +64,15 @@ https://templatemo.com/tm-583-festava-live
                             <div class="ticket-form-body" style="font-size: 20px; text-align: center;">
                                 <div class="container">
                                     <div class="row align-content-center" style="margin-top:20px">
-                                        <div >Name : SSAFY</div>
+                                        <div >Name : ${user.userName}</div>
                                     </div>
 
                                     <div class="row align-content-center" style="margin-top:20px">
-                                        <div >Email : SSAFY@ssafy.com</div>
+                                        <div >Email : ${user.email}</div>
                                     </div>
 
                                     <div class="row" style="margin:20px 0px">
-                                        <div > id : SSAFY </div>
+                                        <div > id : ${user.userId} </div>
                                     </div>
                                 </div>
                                 
@@ -80,7 +80,7 @@ https://templatemo.com/tm-583-festava-live
                                     <a href="mypage-change.html" class="btn custom-btn d-lg-block d-none">Change</a>
                                 </div>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="index.html" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Go to Main</a>
+                                    <a href="index.jsp" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Go to Main</a>
                                 </div>
                             </div>
                         </form>

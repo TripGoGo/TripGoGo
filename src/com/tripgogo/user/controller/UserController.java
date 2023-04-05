@@ -2,6 +2,7 @@ package com.tripgogo.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tripgogo.board.model.BoardDto;
 import com.tripgogo.user.model.UserDto;
 import com.tripgogo.user.model.service.UserService;
 import com.tripgogo.user.model.service.UserServiceImpl;
@@ -67,10 +69,6 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	private String mypage(HttpServletRequest request, HttpServletResponse response) {
-
-		return "/user/mypage.jsp";
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -126,27 +124,6 @@ public class UserController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("userinfo", userDto);
 
-//				cookie 설정
-//				String idsave = request.getParameter("saveid");
-//				if("ok".equals(idsave)) { //아이디 저장을 체크 했다면.
-//					Cookie cookie = new Cookie("id", id);
-//					cookie.setPath(request.getContextPath());
-////					크롬의 경우 400일이 최대
-////					https://developer.chrome.com/blog/cookie-max-age-expires/
-//					cookie.setMaxAge(60 * 60 * 24 * 40); //40일 저장.
-//					response.addCookie(cookie);
-//				} else { //아이디 저장을 해제 했다면.
-//					Cookie cookies[] = request.getCookies();
-//					if(cookies != null) {
-//						for(Cookie cookie : cookies) {
-//							if("ssafy_id".equals(cookie.getName())) {
-//								cookie.setMaxAge(0);
-//								response.addCookie(cookie);
-//								break;
-//							}
-//						}
-//					}
-//				}
 				return "/index.jsp";
 			} else {
 				System.out.println("로그인 안됨");
@@ -165,6 +142,20 @@ public class UserController extends HttpServlet {
 //		session.removeAttribute("userinfo");
 		session.invalidate();
 		return "";
+	}
+
+	private String mypage(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+			UserDto userDto = userService.findUser(request.getParameter("id"));
+			request.setAttribute("user", userDto);
+			return "/user/mypage.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+
 	}
 
 }

@@ -46,7 +46,7 @@
             </ul>
             <c:if test="${not empty userinfo}">
                 <a href="${root}/user?action=logout" class="btn custom-btn d-lg-block d-none">Logout</a>
-                <a class="btn custom-btn d-lg-block d-none" style="background: black; margin-left: 10px" href="${root}/user?action=mvmypage">MYPAGE</a>
+                <a class="btn custom-btn d-lg-block d-none" style="background: black; margin-left: 10px" href="${root}/user?action=mvmypage&id=${userinfo.userId}">MYPAGE</a>
 
             </c:if>
 
