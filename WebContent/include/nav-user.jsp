@@ -36,12 +36,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="${root}/board?action=list">Trip</a>
+                    <a class="nav-link click-scroll" href="${root}/mytrip?action=list">Trip</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="${root}/board?action=list">Board</a>
+                </li>
+
             </ul>
             <c:if test="${not empty userinfo}">
                 <a href="${root}/user?action=logout" class="btn custom-btn d-lg-block d-none">Logout</a>
-                <a class="nav-link click-scroll" href="${root}/board?action=list">회원정보수정</a>
+                <a class="btn custom-btn d-lg-block d-none" style="background: black; margin-left: 10px" href="${root}/user?action=mvmypage">MYPAGE</a>
 
             </c:if>
 
