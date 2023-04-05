@@ -45,7 +45,6 @@ public class UserController extends HttpServlet {
 			path = "/user/register.jsp";
 			redirect(request, response, path);
 		} else if("register".equals(action)) {
-			System.out.println("회원가입 호출 됨-controller");
 			path = register(request, response);
 			redirect(request, response, path);
 		} else if("mvlogin".equals(action)) {
@@ -53,8 +52,6 @@ public class UserController extends HttpServlet {
 			redirect(request, response, path);
 		} else if("login".equals(action)) {
 			path = login(request, response);
-			System.out.println("로그인 호출 됨");
-			System.out.println(path);
 			forward(request, response, path);
 		} else if("logout".equals(action)) {
 			path = logout(request, response);
@@ -62,9 +59,17 @@ public class UserController extends HttpServlet {
 		}else if("mvmodifyuser".equals(action)) {
 			path = "/user/mypage-modify.jsp";
 			redirect(request, response, path);
+		}else if("mvmypage".equals(action)) {
+			path = mypage(request, response);
+			forward(request, response, path);
 		} else {
 			redirect(request, response, path);
 		}
+	}
+
+	private String mypage(HttpServletRequest request, HttpServletResponse response) {
+
+		return "/user/mypage.jsp";
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
