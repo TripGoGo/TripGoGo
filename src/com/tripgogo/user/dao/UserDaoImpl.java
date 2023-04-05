@@ -93,4 +93,38 @@ public class UserDaoImpl implements UserDao {
 		return userDto;
 	}
 
+	@Override
+	public UserDto findUser(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserDto userDto = null;
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("select count(user_id, user_name, user_password, email) \n");
+			sql.append("from User \n");
+			sql.append("where user_id = ? ");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				userDto = new UserDto();
+				userDto.setUserId(rs.getString("user_id"));
+				userDto.setUserName(rs.getString("user_name"));
+				userDto.setUserPassword(rs.getString("user_password"));
+				userDto.setEmail(rs.getString("email"));
+			}
+
+		} finally {
+			dbUtil.close(rs, pstmt, conn);
+		}
+		return userDto;
+	}
+
+	@Override
+	public int updateUser(UserDto userDto) throws Exception {
+		return 0;
+	}
+
 }

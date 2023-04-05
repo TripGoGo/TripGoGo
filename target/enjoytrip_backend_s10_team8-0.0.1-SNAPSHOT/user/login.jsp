@@ -47,7 +47,7 @@ https://templatemo.com/tm-583-festava-live
 <body>
 
     <main>
-        <%@ include file="/include/navUser.jsp" %>
+        <%@ include file="/include/nav-user.jsp" %>
 
         <section class="login-section section-padding " style="height:100vh; display:flex; align-items: center;">
             

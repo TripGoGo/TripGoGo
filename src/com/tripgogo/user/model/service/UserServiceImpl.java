@@ -33,4 +33,15 @@ public class UserServiceImpl implements UserService {
 		return userDao.loginUser(userId, userPwd);
 	}
 
+	@Override
+	public UserDto findUser(String userId) throws Exception {
+
+		return userDao.findUser(userId);
+	}
+
+	@Override
+	public int updateUser(UserDto userDto) throws Exception {
+		return userDao.updateUser(userDto);
+	}
+
 }
