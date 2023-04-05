@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PlaceDao {
     List<PlaceDto> getPlaces(int myTripId) throws SQLException;
-    void deletePlace(int placeId) throws SQLException;
+    void deletePlaces(List<Integer> placeId) throws SQLException;
     void addPlace(PlaceDto placeDto) throws SQLException;
 }
