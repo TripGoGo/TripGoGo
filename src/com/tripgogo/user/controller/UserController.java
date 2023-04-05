@@ -69,18 +69,6 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	private String mypage(HttpServletRequest request, HttpServletResponse response) {
-		try {
-//			List<UserDto> list = userService.findUser();
-//			request.setAttribute("articles", list);
-			return "/user/mypage.jsp";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "";
-		}
-
-
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -154,6 +142,20 @@ public class UserController extends HttpServlet {
 //		session.removeAttribute("userinfo");
 		session.invalidate();
 		return "";
+	}
+
+	private String mypage(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+			UserDto userDto = userService.findUser(request.getParameter("id"));
+			request.setAttribute("user", userDto);
+			return "/user/mypage.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+
 	}
 
 }

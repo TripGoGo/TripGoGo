@@ -11,11 +11,11 @@ import com.tripgogo.util.DBUtil;
 public class UserDaoImpl implements UserDao {
 	private static final UserDao userDao = new UserDaoImpl();
 	private final DBUtil dbUtil;
-	
+
 	private UserDaoImpl() {
 		dbUtil = DBUtil.getInstance();
 	}
-	
+
 	public static UserDao getUserDao() {
 		return userDao;
 	}
@@ -102,7 +102,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			conn = dbUtil.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("select count(user_id, user_name, user_password, email) \n");
+			sql.append("select user_id, user_name, user_password, email \n");
 			sql.append("from User \n");
 			sql.append("where user_id = ? ");
 			pstmt = conn.prepareStatement(sql.toString());
