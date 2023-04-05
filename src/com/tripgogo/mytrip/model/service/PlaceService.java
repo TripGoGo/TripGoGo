@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PlaceService {
     List<PlaceDto> getPlaces(int myTripId) throws Exception;
-    void deletePlace(int placeId) throws Exception;
+    void deletePlaces(List<Integer> placeIds) throws Exception;
     void addPlace(PlaceDto placeDto) throws Exception;
 }

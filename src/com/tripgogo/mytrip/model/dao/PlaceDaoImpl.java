@@ -55,8 +55,26 @@ public class PlaceDaoImpl implements PlaceDao {
     }
 
     @Override
-    public void deletePlace(int placeId) throws SQLException {
-
+    public void deletePlaces(List<Integer> placeIds) throws SQLException {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = dbUtil.getConnection();
+            StringBuilder sql = new StringBuilder();
+            sql.append("delete from place \n");
+            sql.append("where place_id in (");
+            for (int i = 0; i < placeIds.size()-1; i++) {
+                sql.append("?,");
+            }
+            sql.append("?); \n");
+            pstmt = conn.prepareStatement(sql.toString());
+            for (int i = 1; i <= placeIds.size(); i++) {
+                pstmt.setLong(i, placeIds.get(i-1));
+            }
+            pstmt.executeUpdate();
+        } finally {
+            dbUtil.close(pstmt, conn);
+        }
     }
 
     @Override

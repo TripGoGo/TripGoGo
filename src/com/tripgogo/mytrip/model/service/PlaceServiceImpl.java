@@ -25,8 +25,8 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public void deletePlace(int placeId) throws Exception {
-
+    public void deletePlaces(List<Integer> placeIds) throws Exception {
+        placeDao.deletePlaces(placeIds);
     }
 
     @Override
