@@ -50,7 +50,7 @@ public class MyTripDaoImpl implements MyTripDao {
 	}
 
 	@Override
-	public List<MyTripDto> listMytrips(String userId) throws SQLException {
+	public List<MyTripDto> listMytrips(String userId, int start, int listsize) throws SQLException {
 		List<MyTripDto> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -61,9 +61,12 @@ public class MyTripDaoImpl implements MyTripDao {
 			sql.append("select mytrip_id, city, start_date, end_date, period, companion, trip_style \n");
 			sql.append("from mytrip \n");
 			sql.append("where user_id = ? \n");
-			sql.append("order by mytrip_id desc");
+			sql.append("order by mytrip_id desc \n");
+			sql.append("limit ?, ?");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, userId);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, listsize);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				MyTripDto myTripDto = new MyTripDto();
@@ -127,6 +130,30 @@ public class MyTripDaoImpl implements MyTripDao {
 		} finally {
 			dbUtil.close(pstmt, conn);
 		}
+	}
+
+	@Override
+	public int getTotalTripCount(String userId) throws  SQLException {
+		int cnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("select count(mytrip_id) \n");
+			sql.append("from mytrip \n");
+			sql.append("where user_id = ? \n");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		} finally {
+			dbUtil.close(rs, pstmt, conn);
+		}
+		return cnt;
 	}
 
 }

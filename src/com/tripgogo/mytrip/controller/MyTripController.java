@@ -23,11 +23,16 @@ import com.tripgogo.mytrip.model.service.MyTripServiceImpl;
 import com.tripgogo.mytrip.model.service.PlaceService;
 import com.tripgogo.mytrip.model.service.PlaceServiceImpl;
 import com.tripgogo.user.model.UserDto;
+import com.tripgogo.util.PageNavigation;
+import com.tripgogo.util.ParameterCheck;
 
 
 @WebServlet("/mytrip")
 public class MyTripController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    private int pgno;
+    private String queryString;
     private MyTripService myTripService;
     private PlaceService placeService;
 
@@ -40,6 +45,8 @@ public class MyTripController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        pgno = ParameterCheck.notNumberToOne(request.getParameter("pgno"));
+        queryString = "?pgno=" + pgno;
         String path = "";
         if ("list".equals(action)) {
             path = list(request, response);
@@ -147,7 +154,7 @@ public class MyTripController extends HttpServlet {
             int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
             try {
                 myTripService.deleteMyTrip(myTripId);
-                return "/mytrip?action=list";
+                return "/mytrip?action=list&pgno=1";
             } catch (Exception e) {
                 e.printStackTrace();
                 return "";
@@ -171,7 +178,7 @@ public class MyTripController extends HttpServlet {
             myTripDto.setTripStyle(Integer.parseInt(request.getParameter("trip_style")));
             try {
                 myTripService.writetMyTrip(myTripDto);
-                return "/mytrip?action=list";
+                return "/mytrip?action=list&pgno=1";
             } catch (Exception e) {
                 e.printStackTrace();
                 return "";
@@ -212,9 +219,11 @@ public class MyTripController extends HttpServlet {
         UserDto userDto = (UserDto) session.getAttribute("userinfo");
         if (userDto !=null) {
             try {
-                List<MyTripDto> list = myTripService.listMytrips(userDto.getUserId());
+                List<MyTripDto> list = myTripService.listMytrips(userDto.getUserId(), pgno);
                 request.setAttribute("mytrips", list);
-                return "/mytrip/mytrip-board.jsp";
+                PageNavigation pageNavigation = myTripService.makePageNavigation(pgno, userDto.getUserId());
+                request.setAttribute("navigation", pageNavigation);
+                return "/mytrip/mytrip-board.jsp" + queryString;
             } catch (Exception e) {
                 e.printStackTrace();
                 return "";

@@ -86,11 +86,18 @@
                     <div style="height:300px; font-weight:200; text-align:center; line-height:300px">게시글이 존재하지 않습니다.</div>
                 </c:if>
                 <!-- window content -->
+                <div class="row">
+                    ${navigation.navigator}
+                </div>
             </div>
         </div>
     </div>
     <!-- ©2015 Johannes JakobMade with <3 in Germany -->
     </div>
+    <form id="form-param" method="get" action="">
+        <input type="hidden" id="p-action" name="action" value="">
+        <input type="hidden" id="p-pgno" name="pgno" value="">
+    </form>
 </main>
 <%@ include file="/include/footer.jsp" %>
 <script>
@@ -99,6 +106,15 @@
         title.addEventListener("click", function () {
             console.log(this.getAttribute("data-no"));
             location.href = "${root}/mytrip?action=view&mytrip_id=" + this.getAttribute("data-no");
+        });
+    });
+    let pages = document.querySelectorAll(".page-link");
+    pages.forEach(function (page) {
+        page.addEventListener("click", function () {
+            console.log(this.parentNode.getAttribute("data-pg"));
+            document.querySelector("#p-action").value = "list";
+            document.querySelector("#p-pgno").value = this.parentNode.getAttribute("data-pg");
+            document.querySelector("#form-param").submit();
         });
     });
 </script>
