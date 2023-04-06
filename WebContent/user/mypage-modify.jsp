@@ -52,7 +52,7 @@
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 회원가입 form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="modify-form" method="post">
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="modifyForm" method="POST" action="${root}/user">
                             <h2 class="text-center mb-4">Change MyPage</h2>
 
                             <input type="hidden" name="action" value="modifyuser">
@@ -74,7 +74,7 @@
 
 
                                     <input type="text" name="id" id="id"
-                                           class="form-control" value="${user.userId}" required>
+                                           class="form-control" value="${user.userId}" disabled>
 
                                     <input type="password" name="pwd" id="pwd"
                                            class="form-control" value="${user.userPassword}" required>
@@ -86,7 +86,7 @@
 
 
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <button type="button" id="submit" class="btn custom-btn d-lg-block d-none">SUBMIT</button>
+                                    <button type="button" id="submitBtn" class="btn custom-btn d-lg-block d-none">SUBMIT</button>
                                 </div>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
                                     <a href="${root}/user?action=mvmypage&id=${userinfo.userId}" class="btn custom-btn d-lg-block d-none" style="background-color: black;">CANCEL</a>
@@ -111,6 +111,33 @@ T e m p l a t e M o
     <script src="${root}/assets/js/bootstrap.min.js"></script>
     <script src="${root}/assets/js/jquery.sticky.js"></script>
     <script src="${root}/assets/js/custom.js"></script>
+
+    <script>
+        let f = document.getElementById("modify-form");
+        // querySelector("#modify-form");
+        <%--f.setAttribute("action", "${root}/user");--%>
+        document.querySelector("#submitBtn").addEventListener("click", function () {
+            console.log("aaaaa");
+            // console.log(document.forms["modify-form"]);
+            // document.forms["modify-form"].submit();
+            let f = document.querySelector("#modifyForm");
+            console.log(f);
+            f.submit();
+            // t();
+            <%--let f = document.getElementById("modify-form");--%>
+            <%--// querySelector("#modify-form");--%>
+            <%--f.setAttribute("action", "${root}/user");--%>
+            <%--console.log(f);--%>
+            <%--f.submit();--%>
+            <%--// HTMLFormElement.prototype.submit.call(f);--%>
+        });
+        function t(){
+            console.log(f);
+            f.submit();
+            // HTMLFormElement.prototype.submit.call(f);
+        }
+    </script>
+
 
 </body>
 

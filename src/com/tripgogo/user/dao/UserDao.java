@@ -10,6 +10,6 @@ public interface UserDao {
 	UserDto loginUser(String userId, String userPwd) throws SQLException;
 
 	UserDto findUser(String userId) throws SQLException;
-	int updateUser(UserDto userDto) throws Exception;
+	void updateUser(UserDto userDto) throws SQLException;
 
 }

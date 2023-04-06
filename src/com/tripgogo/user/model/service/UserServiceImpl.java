@@ -35,13 +35,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDto findUser(String userId) throws Exception {
-
 		return userDao.findUser(userId);
 	}
 
 	@Override
-	public int updateUser(UserDto userDto) throws Exception {
-		return userDao.updateUser(userDto);
+	public void updateUser(UserDto userDto) throws Exception {
+		userDao.updateUser(userDto);
 	}
 
 }

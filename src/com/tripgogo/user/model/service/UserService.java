@@ -7,7 +7,7 @@ public interface UserService {
 	int joinUser(UserDto userDto) throws Exception;
 	UserDto loginUser(String userId, String userPwd) throws Exception;
 	UserDto findUser(String userId) throws Exception;
-	int updateUser(UserDto userDto) throws Exception;
+	void updateUser(UserDto userDto) throws Exception;
 
 
 }

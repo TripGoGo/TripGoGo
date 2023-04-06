@@ -2,18 +2,15 @@ package com.tripgogo.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tripgogo.board.model.BoardDto;
 import com.tripgogo.user.model.UserDto;
 import com.tripgogo.user.model.service.UserService;
 import com.tripgogo.user.model.service.UserServiceImpl;
@@ -59,12 +56,15 @@ public class UserController extends HttpServlet {
 			path = logout(request, response);
 			redirect(request, response, path);
 		}else if("mvmodifyuser".equals(action)) {
-			path = modifyUser(request, response);
+			path = mvmodifyUser(request, response);
 			forward(request, response, path);
 		}else if("mvmypage".equals(action)) {
 			path = mypage(request, response);
 			forward(request, response, path);
-		} else {
+		} else if("modifyuser".equals(action)){
+			path = modify(request, response);
+			forward(request, response, path);
+		}else {
 			redirect(request, response, path);
 		}
 	}
@@ -155,7 +155,7 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	private String modifyUser(HttpServletRequest request, HttpServletResponse response) {
+	private String mvmodifyUser(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			UserDto userDto = userService.findUser(request.getParameter("id"));
 			request.setAttribute("user", userDto);
@@ -165,5 +165,23 @@ public class UserController extends HttpServlet {
 			return "";
 		}
 	}
+
+	private String modify(HttpServletRequest request, HttpServletResponse response) {
+		UserDto userDto = new UserDto();
+		userDto.setUserName(request.getParameter("name"));
+		userDto.setUserPassword(request.getParameter("pwd"));
+		userDto.setEmail(request.getParameter("email"));
+		System.out.println(userDto);
+		try {
+			userService.updateUser(userDto);
+			return mypage(request, response);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "회원 정보 수정 중 문제 발생!!!");
+			return "/error/error.jsp";
+		}
+	}
+
 
 }
