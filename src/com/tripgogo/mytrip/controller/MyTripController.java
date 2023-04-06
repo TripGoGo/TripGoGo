@@ -63,8 +63,26 @@ public class MyTripController extends HttpServlet {
         } else if ("mvremove".equals(action)){
             path = mvremove(request, response);
             forward(request, response, path);
+        } else if ("remove".equals(action)) {
+            path = remove(request, response);
+            forward(request, response, path);
         } else {
             redirect(request, response, path);
+        }
+    }
+
+    private String remove(HttpServletRequest request, HttpServletResponse response) {
+        String[] parameterValues = request.getParameterValues("check-remove");
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < parameterValues.length; i++) {
+            list.add(Integer.parseInt(parameterValues[i]));
+        }
+        try {
+            placeService.deletePlaces(list);
+            return "mytrip?action=view&mytrip_id=" + request.getParameter("myTripId");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
     }
 

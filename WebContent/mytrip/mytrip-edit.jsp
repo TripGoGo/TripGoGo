@@ -76,6 +76,9 @@
                                         var linePath = [];
                                         var bounds = new kakao.maps.LatLngBounds();
                                     </script>
+                                    <form id="check" name="check" method="post">
+                                        <input type="hidden" name="action" value="remove">
+                                        <input type="hidden" name="myTripId" value="${param.mytrip_id}">
                                     <c:forEach var="place" items="${places}">
                                         <script>
                                             function addMarker(position) {
@@ -105,6 +108,7 @@
                                             </div>
                                         </div>
                                     </c:forEach>
+                                    </form>
                                     <script>
                                         var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                                             mapOption = {
@@ -126,7 +130,7 @@
                                         polyline.setMap(map);
                                         map.setBounds(bounds);
                                     </script>
-                                    <button type="submit" id="btn-submit" class="form-control">장소 삭제</button>
+                                    <button type="submit" id="btn-remove" class="form-control">장소 삭제</button>
                                 </div>
                             </div>
                         </div>
@@ -141,4 +145,11 @@
 <%@ include file="/include/footer.jsp" %>
 </body>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+    document.querySelector("#btn-remove").addEventListener("click", function () {
+        let form = document.querySelector("#check");
+        form.setAttribute("action", "${root}/mytrip");
+        form.submit();
+    });
+</script>
 </html>
