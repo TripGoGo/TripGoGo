@@ -58,7 +58,7 @@ https://templatemo.com/tm-583-festava-live
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 mypage form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="mypage-form" method="post">
                             <h2 class="text-center mb-4">MYPAGE</h2>
 
                             <div class="ticket-form-body" style="font-size: 20px; text-align: center;">
@@ -77,10 +77,10 @@ https://templatemo.com/tm-583-festava-live
                                 </div>
                                 
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <a href="mypage-change.html" class="btn custom-btn d-lg-block d-none">Change</a>
+                                    <a href="${root}/user?action=mvmodifyuser&id=${userinfo.userId}" class="btn custom-btn d-lg-block d-none">Change</a>
                                 </div>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="index.jsp" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Go to Main</a>
+                                    <a href="${root}" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Go to Main</a>
                                 </div>
                             </div>
                         </form>

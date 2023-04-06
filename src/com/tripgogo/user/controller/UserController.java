@@ -59,8 +59,8 @@ public class UserController extends HttpServlet {
 			path = logout(request, response);
 			redirect(request, response, path);
 		}else if("mvmodifyuser".equals(action)) {
-			path = "/user/mypage-modify.jsp";
-			redirect(request, response, path);
+			path = modifyUser(request, response);
+			forward(request, response, path);
 		}else if("mvmypage".equals(action)) {
 			path = mypage(request, response);
 			forward(request, response, path);
@@ -146,7 +146,6 @@ public class UserController extends HttpServlet {
 
 	private String mypage(HttpServletRequest request, HttpServletResponse response) {
 		try {
-
 			UserDto userDto = userService.findUser(request.getParameter("id"));
 			request.setAttribute("user", userDto);
 			return "/user/mypage.jsp";
@@ -154,8 +153,17 @@ public class UserController extends HttpServlet {
 			e.printStackTrace();
 			return "";
 		}
+	}
 
-
+	private String modifyUser(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			UserDto userDto = userService.findUser(request.getParameter("id"));
+			request.setAttribute("user", userDto);
+			return "/user/mypage-modify.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 
 }

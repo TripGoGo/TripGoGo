@@ -52,42 +52,44 @@
 
                     <div class="col-lg-6 col-10 mx-auto">
                         <!-- 여기서부터 회원가입 form 부분-->
-                        <form class="custom-form ticket-form mb-5 mb-lg-0" action="#" method="post" role="form">
+                        <form class="custom-form ticket-form mb-5 mb-lg-0" id="modify-form" method="post">
                             <h2 class="text-center mb-4">Change MyPage</h2>
 
-                            <input type="hidden" name="action" value="mvmodifyuser">
+                            <input type="hidden" name="action" value="modifyuser">
                             <div class="ticket-form-body">
                                 <div class="container">
+
                                     <div class="row">
                                         <div class="col-6" style="margin: 0px;padding: 0px;">
                                             <input type="text" name="name" id="name"
-                                        class="form-control" placeholder="NAME : ${}" required>
+                                                   class="form-control" value="${user.userName}" required>
                                         </div>
-                                        
+
                                         <div class="col-6" style="padding-right:0px">
                                             <input type="text" name="email" id="email"
-                                        class="form-control" placeholder="email: ${}" required>
+                                                   class="form-control" value="${user.email}" required>
                                         </div>
-    
+
                                     </div>
-                                
+
+
+                                    <input type="text" name="id" id="id"
+                                           class="form-control" value="${user.userId}" required>
+
+                                    <input type="password" name="pwd" id="pwd"
+                                           class="form-control" value="${user.userPassword}" required>
+
+                                    <input type="password" name="pwd-confirm" id="pwd-confirm"
+                                           class="form-control" value="${user.userPassword}" required>
+
                                 </div>
-                                
-
-                                <input type="text" name="id" id="id"
-                                    class="form-control" placeholder="Id : SSAFY" required>
-
-                                <input type="text" name="pwd" id="pwd"
-                                    class="form-control" placeholder="PASSWORD" required>
-                                <input type="text" name="pwd-confirm" id="pwd-confirm"
-                                    class="form-control" placeholder="PASSWORD confirm" required>
 
 
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                    <a href="index.html" class="btn custom-btn d-lg-block d-none">submit</a>
+                                    <button type="button" id="submit" class="btn custom-btn d-lg-block d-none">SUBMIT</button>
                                 </div>
                                 <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin-top: 20px;">
-                                    <a href="index.html" class="btn custom-btn d-lg-block d-none" style="background-color: black;">cancel</a>
+                                    <a href="${root}/user?action=mvmypage&id=${userinfo.userId}" class="btn custom-btn d-lg-block d-none" style="background-color: black;">CANCEL</a>
                                 </div>
                             </div>
                         </form>
