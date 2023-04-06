@@ -80,13 +80,13 @@
                                 <div class="col-3">
                                     <div style="text-align: center;">
                                         <div style="display: inline;">Start Day</div>
-                                        <div><input type="date" name="start_date"></div>
+                                        <div><input type="date" id="start_date" name="start_date"></div>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div style="text-align: center;">
                                         <div style="display: inline;">End Day</div>
-                                        <div><input type="date" name="end_date"></div>
+                                        <div><input type="date" id="end_date" name="end_date"></div>
                                     </div>
                                 </div>
                                 <!-- 여행 동행인 선택-->
@@ -94,7 +94,7 @@
                                     <div class="col-3">Who?</div>
                                     <div class="col-5">
                                         <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="0">혼자</label>
+                                                                                value="0" checked>혼자</label>
                                         <label style="margin-right:10px"><input type="radio" name="companion"
                                                                                 value="1">친구와</label>
                                         <label style="margin-right:10px"><input type="radio" name="companion"
@@ -110,7 +110,7 @@
                                     <div class="col-3">Who?</div>
                                     <div class="col-5">
                                         <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="0">휴양</label>
+                                                                                value="0" checked>휴양</label>
                                         <label style="margin-right:10px"><input type="radio" name="trip_style"
                                                                                 value="1">관광</label>
                                         <label style="margin-right:10px"><input type="radio" name="trip_style"
@@ -162,9 +162,25 @@
     }
 
     document.querySelector("#btn-submit").addEventListener("click", function () {
-        let form = document.querySelector("#mytrip-form");
-        form.setAttribute("action", "${root}/mytrip");
-        form.submit();
+        var startDate = document.getElementById("start_date").value;
+        var endDate = document.getElementById("end_date").value;
+        var startArray = startDate.split("-");
+        var endArray = endDate.split("-");
+        var start_date = new Date(startArray[0], startArray[1], startArray[2]);
+        var end_date = new Date(endArray[0], endArray[1], endArray[2]);
+        if (document.getElementById("search-area1").value == '0'){
+            alert("여행할 도시를 선택해주세요.")
+        } else if (document.getElementById("start_date").value == ""){
+            alert("시작일을 선택해주세요.")
+        } else if (document.getElementById("end_date").value == ""){
+            alert("종료일을 선택해주세요.")
+        } else if (start_date.getTime() > end_date.getTime()){
+            alert("여행 종료일이 시작일보다 앞설 수 없습니다.")
+        } else {
+            let form = document.querySelector("#mytrip-form");
+            form.setAttribute("action", "${root}/mytrip");
+            form.submit();
+        }
     });
 </script>
 </body>

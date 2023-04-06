@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="col">
                                     <a href="#" class="link-mytrip" data-no="${mytrip.myTripId}">
-                                        <strong class="title">${mytrip.city}</strong>
+                                        <strong class="title">${mytrip.city} 여행</strong>
                                     </a>
                                     <div >${mytrip.startDate} ~  ${mytrip.endDate}</div>
                                 </div>
