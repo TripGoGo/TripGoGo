@@ -40,7 +40,6 @@ public class UserController extends HttpServlet {
 			redirect(request, response, path);
 		} else if("idcheck".equals(action)) {
 			int cnt = idcheck(request, response);
-			System.out.println("cnt : " + cnt);
 			response.setContentType("text/plain");
 			PrintWriter out = response.getWriter();
 			out.print(cnt);
@@ -88,7 +87,6 @@ public class UserController extends HttpServlet {
 	private int idcheck(HttpServletRequest request, HttpServletResponse response) {
 		// TODO : 입력한 아이디의 사용여부 체크 (0 : 사용 X, 1 : 사용 O)
 		String userId = request.getParameter("userid");
-		System.out.println(userId);
 		try {
 			return userService.idCheck(userId);
 		} catch (Exception e) {
