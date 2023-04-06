@@ -1,20 +1,17 @@
 package com.tripgogo.mytrip.model.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.tripgogo.mytrip.model.MyTripDto;
 import com.tripgogo.mytrip.model.dao.MyTripDao;
 import com.tripgogo.mytrip.model.dao.MyTripDaoImpl;
 import com.tripgogo.util.PageNavigation;
-import com.tripgogo.util.SizeConstant;
 
 public class MyTripServiceImpl implements MyTripService {
 	
 	private static MyTripService myTripService = new MyTripServiceImpl();
-	private static int LIST_SIZE = 10;
-	private static int NAVIGATION_SIZE = 5;
+	private static final int LIST_SIZE = 8;
+	private static final int NAVIGATION_SIZE = 5;
 	private MyTripDao myTripDao;
 	
 	private MyTripServiceImpl() {
@@ -49,7 +46,6 @@ public class MyTripServiceImpl implements MyTripService {
 		int currentPage = pgno;
 		pageNavigation.setCurrentPage(currentPage);
 		pageNavigation.setNaviSize(naviSize);
-		Map<String, Object> param = new HashMap<String, Object>();
 		int totalCount = myTripDao.getTotalTripCount(userId);
 		pageNavigation.setTotalCount(totalCount);
 		int totalPageCount = (totalCount - 1) / sizePerPage + 1;
