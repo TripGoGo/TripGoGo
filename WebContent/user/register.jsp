@@ -82,6 +82,7 @@ https://templatemo.com/tm-583-festava-live
 
                                         <input type="text" name="id" id="id"
                                                class="form-control" placeholder="Id" required>
+                                        <div id="idcheck-result"></div>
 
                                         <input type="password" name="pwd" id="pwd"
                                                class="form-control" placeholder="PASSWORD" required>
@@ -261,6 +262,33 @@ T e m p l a t e M o
     <script src="${root}/assets/js/custom.js"></script>
 
     <script>
+
+        let isUseId = false;
+        document.querySelector("#id").addEventListener("keyup", function () {
+            let userid = this.value;
+            console.log(userid);
+            let resultDiv = document.querySelector("#idcheck-result");
+            if(userid.length < 6 || userid.length > 16) {
+                resultDiv.setAttribute("class", "mb-3 text-dark");
+                resultDiv.textContent = "아이디는 6자 이상 16자 이하 입니다.";
+                isUseId = false;
+            } else {
+                fetch("${root}/user?action=idcheck&userid=" + userid)
+                    .then((response) => response.text())
+                    .then((data) => {
+                        console.log(data);
+                        if(data == 0) {
+                            resultDiv.setAttribute("class", "mb-3 text-primary");
+                            resultDiv.textContent = userid + "는 사용할 수 있습니다.";
+                            isUseId = true;
+                        } else {
+                            resultDiv.setAttribute("class", "mb-3 text-danger");
+                            resultDiv.textContent = userid + "는 사용할 수 없습니다.";
+                            isUseId = false;
+                        }
+                    });
+            }
+        });
 
         document.querySelector("#register-button").addEventListener("click", function () {
             if (!document.querySelector("#id").value) {
