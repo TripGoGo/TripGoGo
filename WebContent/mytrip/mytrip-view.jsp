@@ -12,10 +12,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <script src="https://kit.fontawesome.com/d4a4244bd2.js" crossorigin="anonymous"></script>
-    <script
-            type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c320326b2ad2dd588de2423a35a93637"
-    ></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
     <title>Festava Live - Ticket HTML Form</title>
 
     <!-- CSS FILES -->
@@ -87,7 +84,6 @@
                                                 <script>var markers = [];
                                                 var linePath = [];
                                                 var bounds = new kakao.maps.LatLngBounds(); </script>
-                                                <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"></script>
                                                 <div id="trip-list">
                                                     <c:set var="cnt" value="${0}"/>
                                                     <c:set var="center_x" value="${0}"/>
@@ -98,17 +94,12 @@
                                                             <c:set var="center_x" value="${center_x + place.x}"/>
                                                             <c:set var="center_y" value="${center_y + place.y}"/>
                                                             <script>
-                                                                // 마커 하나를 지도위에 표시합니다
-                                                                // 마커를 생성하고 지도위에 표시하는 함수입니다
                                                                 function addMarker(position) {
-                                                                    // 마커를 생성합니다
                                                                     var marker = new kakao.maps.Marker({
                                                                         position: position
                                                                     });
-                                                                    // 생성된 마커를 배열에 추가합니다
                                                                     markers.push(marker);
                                                                 }
-
                                                                 addMarker(new kakao.maps.LatLng(${place.y}, ${place.x}));
                                                                 linePath.push(new kakao.maps.LatLng(${place.y}, ${place.x}));
                                                                 bounds.extend(new kakao.maps.LatLng(${place.y}, ${place.x}));
