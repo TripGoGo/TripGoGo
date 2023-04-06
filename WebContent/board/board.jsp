@@ -128,6 +128,9 @@ https://templatemo.com/tm-583-festava-live
               <div style="height:300px; font-weight:200; text-align:center; line-height:300px">게시글이 존재하지 않습니다.</div>
               </c:if>
               <!-- window content -->
+              <div class="row">
+                ${navigation.navigator}
+              </div>
             </div>
           </div>
         </div>
