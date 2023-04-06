@@ -76,19 +76,24 @@ https://templatemo.com/tm-583-festava-live
                                                 <input type="text" name="email" id="email"
                                                        class="form-control" placeholder="email" required>
                                             </div>
+                                            <div style="margin:0px; padding:0px" id="email-result"></div>
 
                                         </div>
 
 
                                         <input type="text" name="id" id="id"
                                                class="form-control" placeholder="Id" required>
-                                        <div id="idcheck-result"></div>
+
+                                        <div style="margin:0px; padding:0px" id="idcheck-result"></div>
 
                                         <input type="password" name="pwd" id="pwd"
                                                class="form-control" placeholder="PASSWORD" required>
 
+                                        <div style="margin:0px; padding:0px" id="pwd-result"></div>
+
                                         <input type="password" name="pwd-confirm" id="pwd-confirm"
                                                class="form-control" placeholder="PASSWORD confirm" required>
+                                        <div style="margin:0px; padding:0px" id="password-confirm-result"></div>
                                 
                                     </div>
 
@@ -261,17 +266,19 @@ T e m p l a t e M o
     <script src="${root}/assets/js/jquery.sticky.js"></script>
     <script src="${root}/assets/js/custom.js"></script>
 
-    <script>
 
-        let isUseId = false;
+    <script>
+        var validation = true;
+<%--       아이디 유효성 검사--%>
         document.querySelector("#id").addEventListener("keyup", function () {
             let userid = this.value;
             console.log(userid);
             let resultDiv = document.querySelector("#idcheck-result");
-            if(userid.length < 6 || userid.length > 16) {
+            if(userid.length < 5 || userid.length > 16) {
                 resultDiv.setAttribute("class", "mb-3 text-dark");
-                resultDiv.textContent = "아이디는 6자 이상 16자 이하 입니다.";
-                isUseId = false;
+                resultDiv.textContent = "아이디는 5자 이상 16자 이하 입니다.";
+                validation = false;
+
             } else {
                 fetch("${root}/user?action=idcheck&userid=" + userid)
                     .then((response) => response.text())
@@ -280,15 +287,51 @@ T e m p l a t e M o
                         if(data == 0) {
                             resultDiv.setAttribute("class", "mb-3 text-primary");
                             resultDiv.textContent = userid + "는 사용할 수 있습니다.";
-                            isUseId = true;
+                            validation = true;
+
                         } else {
                             resultDiv.setAttribute("class", "mb-3 text-danger");
                             resultDiv.textContent = userid + "는 사용할 수 없습니다.";
-                            isUseId = false;
+                            validation = false;
                         }
                     });
             }
         });
+
+<%-- 비밀번호 유효성 검사--%>
+        document.querySelector("#pwd").addEventListener("keyup", function () {
+            let pwd = this.value;
+            let regPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+
+            let resultDiv = document.querySelector("#pwd-result");
+            if(regPw.test(pwd) === false){
+                console.log("정규식 됨");
+                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.textContent = "숫자, 특수문자 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력하세요";
+            } else{
+                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.textContent = "정상적인 비밀번호입니다";
+                validation = true;
+            }
+        });
+
+
+        document.querySelector("#pwd-confirm").addEventListener("keyup", function () {
+            let pwdConfirm = this.value;
+            let pwd = document.getElementById("pwd").value;
+            console.log(pwd);
+            let resultDiv = document.querySelector("#password-confirm-result");
+            if(pwdConfirm != pwd) {
+                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.textContent = "입력된 비밀번호를 다시 확인하세요";
+                validation = false;
+            }else{
+                resultDiv.setAttribute("class", "mb-3 text-primary");
+                resultDiv.textContent = "비밀번호가 확인되었습니다";
+                validation = true;
+            }
+        });
+
 
         document.querySelector("#register-button").addEventListener("click", function () {
             if (!document.querySelector("#id").value) {
@@ -306,7 +349,8 @@ T e m p l a t e M o
             } else if (document.querySelector("#pwd-confirm").value != document.querySelector("#pwd").value) {
                 alert("비밀번호가 다릅니다!!");
                 return;
-            } else {
+            }
+            else {
                 let form = document.querySelector("#register-form");
                 form.setAttribute("action", "${root}/user");
                 form.submit();
