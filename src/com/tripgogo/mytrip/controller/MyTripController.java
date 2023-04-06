@@ -128,6 +128,7 @@ public class MyTripController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             return "";
+
         }
     }
 
