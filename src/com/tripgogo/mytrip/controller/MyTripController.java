@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tripgogo.mytrip.model.MyTripDto;
 import com.tripgogo.mytrip.model.PlaceDto;
@@ -21,6 +22,7 @@ import com.tripgogo.mytrip.model.service.MyTripService;
 import com.tripgogo.mytrip.model.service.MyTripServiceImpl;
 import com.tripgogo.mytrip.model.service.PlaceService;
 import com.tripgogo.mytrip.model.service.PlaceServiceImpl;
+import com.tripgogo.user.model.UserDto;
 
 
 @WebServlet("/mytrip")
@@ -72,111 +74,153 @@ public class MyTripController extends HttpServlet {
     }
 
     private String remove(HttpServletRequest request, HttpServletResponse response) {
-        String[] parameterValues = request.getParameterValues("check-remove");
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < parameterValues.length; i++) {
-            list.add(Integer.parseInt(parameterValues[i]));
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            String[] parameterValues = request.getParameterValues("check-remove");
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < parameterValues.length; i++) {
+                list.add(Integer.parseInt(parameterValues[i]));
+            }
+            try {
+                placeService.deletePlaces(list);
+                return "mytrip?action=view&mytrip_id=" + request.getParameter("myTripId");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
-        try {
-            placeService.deletePlaces(list);
-            return "mytrip?action=view&mytrip_id=" + request.getParameter("myTripId");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-        }
+
     }
 
     private String mvremove(HttpServletRequest request, HttpServletResponse response) {
-        long mytripId = Long.parseLong(request.getParameter("mytrip_id"));
-        Date date = Date.valueOf(request.getParameter("date"));
-        String index = request.getParameter("index");
-        try {
-            List<PlaceDto> placedDtos = placeService.getPlaceByDate(mytripId, date);
-            request.setAttribute("places", placedDtos);
-            request.setAttribute("index", index);
-            request.setAttribute("date", date);
-            return "/mytrip/mytrip-edit.jsp";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            long mytripId = Long.parseLong(request.getParameter("mytrip_id"));
+            Date date = Date.valueOf(request.getParameter("date"));
+            String index = request.getParameter("index");
+            try {
+                List<PlaceDto> placedDtos = placeService.getPlaceByDate(mytripId, date);
+                request.setAttribute("places", placedDtos);
+                request.setAttribute("index", index);
+                request.setAttribute("date", date);
+                return "/mytrip/mytrip-edit.jsp";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
     }
 
     private String add(HttpServletRequest request, HttpServletResponse response) {
-        PlaceDto placedto = new PlaceDto();
-        placedto.setMyTripId(Long.parseLong(request.getParameter("mytrip_id")));
-        placedto.setCategory(request.getParameter("category"));
-        placedto.setDate(Date.valueOf(request.getParameter("date")));
-        placedto.setX(request.getParameter("x"));
-        placedto.setY(request.getParameter("y"));
-        placedto.setPlaceName(request.getParameter("place_name"));
-        try {
-            placeService.addPlace(placedto);
-            return "/mytrip?action=view&mytrip_id=" + request.getParameter("mytrip_id");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            PlaceDto placedto = new PlaceDto();
+            placedto.setMyTripId(Long.parseLong(request.getParameter("mytrip_id")));
+            placedto.setCategory(request.getParameter("category"));
+            placedto.setDate(Date.valueOf(request.getParameter("date")));
+            placedto.setX(request.getParameter("x"));
+            placedto.setY(request.getParameter("y"));
+            placedto.setPlaceName(request.getParameter("place_name"));
+            try {
+                placeService.addPlace(placedto);
+                return "/mytrip?action=view&mytrip_id=" + request.getParameter("mytrip_id");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
     }
 
     private String delete(HttpServletRequest request, HttpServletResponse response) {
-        int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
-        try {
-            myTripService.deleteMyTrip(myTripId);
-            return "/mytrip?action=list";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
+            try {
+                myTripService.deleteMyTrip(myTripId);
+                return "/mytrip?action=list";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
     }
 
     private String write(HttpServletRequest request, HttpServletResponse response) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        MyTripDto myTripDto = new MyTripDto();
-        myTripDto.setUserId("ssafy");
-        myTripDto.setCity(request.getParameter("city"));
-        myTripDto.setStartDate(Date.valueOf(request.getParameter("start_date")));
-        myTripDto.setEndDate(Date.valueOf(request.getParameter("end_date")));
-        myTripDto.setCompanion(Integer.parseInt(request.getParameter("companion")));
-        myTripDto.setTripStyle(Integer.parseInt(request.getParameter("trip_style")));
-        try {
-            myTripService.writetMyTrip(myTripDto);
-            return "/mytrip?action=list";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            MyTripDto myTripDto = new MyTripDto();
+            myTripDto.setUserId(userDto.getUserId());
+            myTripDto.setCity(request.getParameter("city"));
+            myTripDto.setStartDate(Date.valueOf(request.getParameter("start_date")));
+            myTripDto.setEndDate(Date.valueOf(request.getParameter("end_date")));
+            myTripDto.setCompanion(Integer.parseInt(request.getParameter("companion")));
+            myTripDto.setTripStyle(Integer.parseInt(request.getParameter("trip_style")));
+            try {
+                myTripService.writetMyTrip(myTripDto);
+                return "/mytrip?action=list";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
     }
 
     private String view(HttpServletRequest request, HttpServletResponse response) {
-        int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
-        try {
-            MyTripDto myTripDto = myTripService.getMyTrip(myTripId);
-            List<PlaceDto> list = placeService.getPlaces(myTripId);
-            int[] placebyDay = new int[myTripDto.getPeriod()];
-            for (int i = 0; i < list.size(); i++) {
-                int index = Period.between(myTripDto.getStartDate().toLocalDate(), list.get(i).getDate().toLocalDate()).getDays();
-                placebyDay[index]++;
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            int myTripId = Integer.parseInt(request.getParameter("mytrip_id"));
+            try {
+                MyTripDto myTripDto = myTripService.getMyTrip(myTripId);
+                List<PlaceDto> list = placeService.getPlaces(myTripId);
+                int[] placebyDay = new int[myTripDto.getPeriod()];
+                for (int i = 0; i < list.size(); i++) {
+                    int index = Period.between(myTripDto.getStartDate().toLocalDate(), list.get(i).getDate().toLocalDate()).getDays();
+                    placebyDay[index]++;
+                }
+                request.setAttribute("mytrip", myTripDto);
+                request.setAttribute("places", list);
+                request.setAttribute("placebyDay", placebyDay);
+                return "/mytrip/mytrip-view.jsp";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
             }
-            request.setAttribute("mytrip", myTripDto);
-            request.setAttribute("places", list);
-            request.setAttribute("placebyDay", placebyDay);
-            return "/mytrip/mytrip-view.jsp";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-
+        } else {
+            return "/user/login.jsp";
         }
     }
 
     private String list(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            List<MyTripDto> list = myTripService.listMytrips("ssafy");
-            request.setAttribute("mytrips", list);
-            return "/mytrip/mytrip-board.jsp";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
+        HttpSession session = request.getSession();
+        UserDto userDto = (UserDto) session.getAttribute("userinfo");
+        if (userDto !=null) {
+            try {
+                List<MyTripDto> list = myTripService.listMytrips(userDto.getUserId());
+                request.setAttribute("mytrips", list);
+                return "/mytrip/mytrip-board.jsp";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        } else {
+            return "/user/login.jsp";
         }
     }
 
