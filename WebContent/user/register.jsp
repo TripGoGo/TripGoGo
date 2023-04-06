@@ -83,10 +83,10 @@ https://templatemo.com/tm-583-festava-live
                                         <input type="text" name="id" id="id"
                                                class="form-control" placeholder="Id" required>
 
-                                        <input type="text" name="pwd" id="pwd"
+                                        <input type="password" name="pwd" id="pwd"
                                                class="form-control" placeholder="PASSWORD" required>
 
-                                        <input type="text" name="pwd-confirm" id="pwd-confirm"
+                                        <input type="password" name="pwd-confirm" id="pwd-confirm"
                                                class="form-control" placeholder="PASSWORD confirm" required>
                                 
                                     </div>
