@@ -63,13 +63,13 @@ public class PlaceDaoImpl implements PlaceDao {
             StringBuilder sql = new StringBuilder();
             sql.append("delete from place \n");
             sql.append("where place_id in (");
-            for (int i = 0; i < placeIds.size()-1; i++) {
+            for (int i = 0; i < placeIds.size() - 1; i++) {
                 sql.append("?,");
             }
             sql.append("?); \n");
             pstmt = conn.prepareStatement(sql.toString());
             for (int i = 1; i <= placeIds.size(); i++) {
-                pstmt.setLong(i, placeIds.get(i-1));
+                pstmt.setLong(i, placeIds.get(i - 1));
             }
             pstmt.executeUpdate();
         } finally {
@@ -98,5 +98,38 @@ public class PlaceDaoImpl implements PlaceDao {
         } finally {
             dbUtil.close(pstmt, conn);
         }
+    }
+
+    @Override
+    public List<PlaceDto> getPlaceByDate(long myTripId, Date date) throws SQLException {
+        List<PlaceDto> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = dbUtil.getConnection();
+            StringBuilder sql = new StringBuilder();
+            sql.append("select place_id, mytrip_id, place_name, category, date, x, y \n");
+            sql.append("from place \n");
+            sql.append("where mytrip_id = ? and date = ? \n");
+            pstmt = conn.prepareStatement(sql.toString());
+            pstmt.setLong(1, myTripId);
+            pstmt.setDate(2, date);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                PlaceDto placeDto = new PlaceDto();
+                placeDto.setPlaceId(rs.getInt("place_id"));
+                placeDto.setMyTripId(rs.getInt("mytrip_id"));
+                placeDto.setPlaceName(rs.getString("place_name"));
+                placeDto.setCategory(rs.getString("category"));
+                placeDto.setDate(rs.getDate("date"));
+                placeDto.setX(rs.getString("x"));
+                placeDto.setY(rs.getString("y"));
+                list.add(placeDto);
+            }
+        } finally {
+            dbUtil.close(rs, pstmt, conn);
+        }
+        return list;
     }
 }

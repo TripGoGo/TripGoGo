@@ -60,8 +60,27 @@ public class MyTripController extends HttpServlet {
         } else if ("add".equals(action)) {
             path = add(request, response);
             redirect(request, response,path);
+        } else if ("mvremove".equals(action)){
+            path = mvremove(request, response);
+            forward(request, response, path);
         } else {
             redirect(request, response, path);
+        }
+    }
+
+    private String mvremove(HttpServletRequest request, HttpServletResponse response) {
+        long mytripId = Long.parseLong(request.getParameter("mytrip_id"));
+        Date date = Date.valueOf(request.getParameter("date"));
+        String index = request.getParameter("index");
+        try {
+            List<PlaceDto> placedDtos = placeService.getPlaceByDate(mytripId, date);
+            request.setAttribute("places", placedDtos);
+            request.setAttribute("index", index);
+            request.setAttribute("date", date);
+            return "/mytrip/mytrip-edit.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
     }
 
