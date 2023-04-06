@@ -130,7 +130,7 @@
                                                             data-no=${param.mytrip_id} data-date=${Date.valueOf(mytrip.startDate.toLocalDate().plusDays(status1.index))} >
                                                         장소 추가
                                                     </button>
-                                                    <button type="submit" class="btn-remove"
+                                                    <button type="submit" class="btn-remove" data-index=${status1.count}
                                                             data-no=${param.mytrip_id} data-date=${Date.valueOf(mytrip.startDate.toLocalDate().plusDays(status1.index))} >
                                                         장소 삭제
                                                     </button>
@@ -195,7 +195,7 @@
     let removes = document.querySelectorAll(".btn-remove");
     removes.forEach(function (removebtn) {
         removebtn.addEventListener("click", function () {
-            location.href = "${root}/mytrip?action=mvremove&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date");
+            location.href = "${root}/mytrip?action=mvremove&mytrip_id=" + this.getAttribute("data-no") + "&date=" + this.getAttribute("data-date") + "&index=" + this.getAttribute("data-index");
         });
     });
 </script>

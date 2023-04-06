@@ -33,4 +33,9 @@ public class PlaceServiceImpl implements PlaceService {
     public void addPlace(PlaceDto placeDto) throws Exception {
         placeDao.addPlace(placeDto);
     }
+
+    @Override
+    public List<PlaceDto> getPlaceByDate(long myTripId, Date date) throws Exception {
+        return placeDao.getPlaceByDate(myTripId, date);
+    }
 }

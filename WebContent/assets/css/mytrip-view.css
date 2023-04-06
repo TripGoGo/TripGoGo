@@ -215,3 +215,30 @@ body {
 .flickity-page-dots .dot.is-selected {
   background: white;
 }
+
+.checkbox-custom {
+  width: 30px;
+  box-sizing: border-box;
+  height: 30px;
+  border-radius: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+  transition: background 0.2s;
+  line-height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.checkbox-custom:checked {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  background: url("../images/circle-check-solid.svg") no-repeat;
+}

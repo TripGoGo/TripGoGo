@@ -10,4 +10,6 @@ public interface PlaceDao {
     List<PlaceDto> getPlaces(int myTripId) throws SQLException;
     void deletePlaces(List<Integer> placeId) throws SQLException;
     void addPlace(PlaceDto placeDto) throws SQLException;
+
+    List<PlaceDto> getPlaceByDate(long myTripId, Date date) throws SQLException;
 }
