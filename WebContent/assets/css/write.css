@@ -23,6 +23,7 @@
   display: flex;
 }
 
+
 .write-container {
   margin: auto 0px;
 }
@@ -135,5 +136,27 @@ hr {
 }
 
 .btn-submit:active {
+  background: linear-gradient(#006bff, #4faefc);
+}
+
+.btn-remove {
+  float: right;
+  width: 100px;
+  padding: 4px 12px;
+  min-width: 88px;
+  border: none;
+  font: inherit;
+  color: #373030;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  cursor: default;
+  font-weight: 400;
+  background: linear-gradient(#4faefc, #006bff);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  margin-right: 10px;
+}
+.btn-remove:active {
   background: linear-gradient(#006bff, #4faefc);
 }

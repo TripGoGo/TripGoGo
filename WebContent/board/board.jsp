@@ -73,6 +73,33 @@ https://templatemo.com/tm-583-festava-live
               <!-- window title -->
             </div>
             <div class="content">
+              <div style="width: 100%; height: 30px; margin-bottom: 10px">
+                <form class="d-flex" id="form-search" action="" style="width: 50%; float: right">
+                  <input type="hidden" name="action" value="list" />
+                  <input type="hidden" name="pgno" value="1" />
+                  <select
+                          name="key"
+                          id="key"
+                          class="form-select form-select-sm ms-5 me-1 w-50"
+                          aria-label="검색조건"
+                  >
+                    <option selected>검색조건</option>
+                    <option value="article_no">글번호</option>
+                    <option value="subject">제목</option>
+                    <option value="user_id">작성자</option>
+                  </select>
+                  <div class="input-group input-group-sm">
+                    <input
+                            type="text"
+                            name="word"
+                            id="word"
+                            class="form-control"
+                            placeholder="검색어..."
+                    />
+                    <button id="btn-search" class="btn btn-dark" type="button">검색</button>
+                  </div>
+                </form>
+              </div>
             <c:if test="${not empty articles}">
             <c:forEach var="article" items="${articles}">
               <div class="board-item">
@@ -101,11 +128,20 @@ https://templatemo.com/tm-583-festava-live
               <div style="height:300px; font-weight:200; text-align:center; line-height:300px">게시글이 존재하지 않습니다.</div>
               </c:if>
               <!-- window content -->
+              <div class="row">
+                ${navigation.navigator}
+              </div>
             </div>
           </div>
         </div>
         <!-- ©2015 Johannes JakobMade with <3 in Germany -->
       </div>
+      <form id="form-param" method="get" action="">
+        <input type="hidden" id="p-action" name="action" value="">
+        <input type="hidden" id="p-pgno" name="pgno" value="">
+        <input type="hidden" id="p-key" name="key" value="">
+        <input type="hidden" id="p-word" name="word" value="">
+      </form>
     </main>
      <%@ include file="/include/footer.jsp" %>
      <script>
@@ -114,6 +150,22 @@ https://templatemo.com/tm-583-festava-live
        title.addEventListener("click", function () {
          console.log(this.getAttribute("data-no"));
          location.href = "${root}/board?action=view&articleno=" + this.getAttribute("data-no");
+       });
+     });
+     document.querySelector("#btn-search").addEventListener("click", function () {
+       let form = document.querySelector("#form-search");
+       form.setAttribute("action", "${root}/board");
+       form.submit();
+     });
+     let pages = document.querySelectorAll(".page-link");
+     pages.forEach(function (page) {
+       page.addEventListener("click", function () {
+         console.log(this.parentNode.getAttribute("data-pg"));
+         document.querySelector("#p-action").value = "list";
+         document.querySelector("#p-pgno").value = this.parentNode.getAttribute("data-pg");
+         document.querySelector("#p-key").value = "${param.key}";
+         document.querySelector("#p-word").value = "${param.word}";
+         document.querySelector("#form-param").submit();
        });
      });
      </script>
