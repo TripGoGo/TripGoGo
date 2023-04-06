@@ -130,7 +130,7 @@
                                         polyline.setMap(map);
                                         map.setBounds(bounds);
                                     </script>
-                                    <button type="submit" id="btn-remove" class="form-control">장소 삭제</button>
+                                    <button type="submit" id="btn-remove" class="btn-remove">장소 삭제</button>
                                 </div>
                             </div>
                         </div>
