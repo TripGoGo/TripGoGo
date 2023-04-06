@@ -26,12 +26,53 @@
     <link href="${root}/assets/css/write.css" rel="stylesheet"/>
     <link href="${root}/assets/css/templatemo-festava-live.css" rel="stylesheet"/>
     <style>
-        .area {
-            display: flex;
-            justify-content: center;
-            /* border: 1px solid black; */
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+        /* radio */
+        .five { width: 18.72%; max-width: 18.72%;}
+        .radios input{
+            display: none;
+        }
+        .col {
+            display: block;
+            float:left;
+            margin: 1% 0 1% 1.6%;
+        }
+        .col:first-of-type { margin-left: 0; }
+        label{
+            position: relative;
+            color: black;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            display: block;
+            cursor: pointer;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .radios input:checked + label{
+            border: 1px solid lightgray;
+            background-color: lightblue;
+        }
+        input[type="date"]{
+            box-sizing: border-box;
+            padding: 15px;
+            height: 50px;
+            color: black;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            border:1px solid lightgray;
+            width:100%;
+        }
+        ::-webkit-calendar-picker-indicator{
+            background-color: #ffffff;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -68,67 +109,71 @@
                             <div class="row justify-content-center">
                                 <!-- 관광지 검색 start -->
                                 <!-- 시/도 검색-->
-                                <div class="area col-6">
+                                <div class="area" >
+                                    <div style="display: inline;">여행 도시</div>
                                     <select name="city" id="search-area1" class="form-select" aria-label="Default select example"
-                                            style="background-color: rgba(255, 255, 255, 0);text-align: center;border: rgba(0, 0, 0, 0);font-size: 20px;">
+                                            style="font-size: 18px;">
                                         <option value="0" selected> 시/도</option>
                                     </select>
                                 </div>
                             </div>
+
                             <!-- 여행 날짜 선택-->
                             <div class="row justify-content-center" style="margin-top:3vh">
-                                <div class="col-3">
-                                    <div style="text-align: center;">
-                                        <div style="display: inline;">Start Day</div>
+                                <div class="col-6">
+                                    <div>
+                                        <div style="display: inline;">여행 시작</div>
                                         <div><input type="date" id="start_date" name="start_date"></div>
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <div style="text-align: center;">
-                                        <div style="display: inline;">End Day</div>
+                                <div class="col-6">
+                                    <div>
+                                        <div style="display: inline;">여행 종료</div>
                                         <div><input type="date" id="end_date" name="end_date"></div>
                                     </div>
                                 </div>
-                                <!-- 여행 동행인 선택-->
-                                <div class="row justify-content-center" style="margin-top:3vh">
-                                    <div class="col-3">Who?</div>
-                                    <div class="col-5">
-                                        <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="0" checked>혼자</label>
-                                        <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="1">친구와</label>
-                                        <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="2">가족과</label>
-                                        <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="3">연인과</label>
-                                        <label style="margin-right:10px"><input type="radio" name="companion"
-                                                                                value="4">기타</label>
-                                    </div>
-                                </div>
-                                <!-- 여행 스타일 선택-->
-                                <div class="row justify-content-center" style="margin-top:3vh">
-                                    <div class="col-3">Who?</div>
-                                    <div class="col-5">
-                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="0" checked>휴양</label>
-                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="1">관광</label>
-                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="2">뚜벅이</label>
-                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="3">쇼핑</label>
-                                        <label style="margin-right:10px"><input type="radio" name="trip_style"
-                                                                                value="4">패키지</label>
+                            </div>
+                            <!-- 여행 동행인 선택-->
+                            <div class="row justify-content-center" style="margin-top:3vh">
+                                <div class="">
+                                    <div style="display: inline;">동반인</div>
+                                    <div class="radios w-100">
+                                        <input type="radio" name="companion" id="alone" value="0"/>
+                                        <label class="five col" for="alone">혼자</label>
+                                        <input type="radio" name="companion" id="friend" value="1" checked="checked"/>
+                                        <label class="five col" for="friend">친구와</label>
+                                        <input type="radio" name="companion" id="family" value="2"/>
+                                        <label class="five col" for="family">가족과</label>
+                                        <input type="radio" name="companion" id="couple" value="3"/>
+                                        <label  class="five col" for="couple">연인과</label>
+                                        <input type="radio" name="companion" id="etc" value="4"/>
+                                        <label class="five col" for="etc">기타</label>
                                     </div>
                                 </div>
                             </div>
+                            <!-- 여행 스타일 선택-->
+                            <div class="row justify-content-center" style="margin-top:3vh">
+                                <div>
+                                    <div style="display: inline;">여행 스타일</div>
+                                    <div class="radios w-100">
+                                        <input type="radio" name="trip_style" id="trip_style0" value="0" checked>
+                                        <label class="five col" for="trip_style0">휴양</label>
+                                        <input type="radio" name="trip_style" id="trip_style1" value="1">
+                                        <label class="five col" for="trip_style1">관광</label>
+                                        <input type="radio" name="trip_style" id="trip_style2" value="2">
+                                        <label class="five col" for="trip_style2">뚜벅이</label>
+                                        <input type="radio" name="trip_style" id="trip_style3" value="3">
+                                        <label class="five col" for="trip_style3">쇼핑</label>
+                                        <input type="radio" name="trip_style"  id="trip_style4"value="4">
+                                        <label class="five col" for="trip_style4">패키지</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 제출 버튼임-->
+                            <div>
+                                <button type="submit" id="btn-submit" class="form-control" style="margin: 2vh 0">완료</button>
+                            </div>
                         </form>
-
-                        <!-- 제출 버튼임-->
-                        <div>
-                            <button type="submit" id="btn-submit" class="form-control" style="margin: 3vh 3vw;">완료
-                            </button>
-                        </div>
                     </div>
                 </div>
                 <!-- 관광지 검색 end -->
