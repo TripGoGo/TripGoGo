@@ -112,7 +112,7 @@ public class MyTripController extends HttpServlet {
         placedto.setPlaceName(request.getParameter("place_name"));
         try {
             placeService.addPlace(placedto);
-            return "/mytrip?action=list";
+            return "/mytrip?action=view&mytrip_id=" + request.getParameter("mytrip_id");
         } catch (Exception e) {
             e.printStackTrace();
             return "";
