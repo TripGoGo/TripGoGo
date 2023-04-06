@@ -27,10 +27,11 @@
 <style>
     .mytrip-item{
         height: 200px;
-        border: 1px solid lightgray;
         box-sizing: border-box;
         padding: 10px;
         border-radius: 10px;
+        outline: 1px solid lightgrey;
+        outline-offset: -4px;
     }
 </style>
 <body>
@@ -59,9 +60,9 @@
                     <!-- window title -->
                 </div>
                 <!-- 여기서부터 내용 작성 부분-->
-                <div class="content" style="padding-top: 0px; padding-right: 0px;">
+                <div class="content" style="padding-left:0px; padding-top: 0px; padding-right: 0px;">
                     <c:if test="${not empty mytrips}">
-                    <div class="row">
+                    <div class="row w-100" style="margin:0px">
                         <c:forEach var="mytrip" items="${mytrips}">
                         <div class="mytrip-item col-lg-6 col-md-6 col-sm-12">
                             <div class="row" style="height: 100%; width: 100%; padding:10px 0px">
