@@ -11,4 +11,5 @@ public interface PlaceService {
     void deletePlaces(List<Integer> placeIds) throws Exception;
     void addPlace(PlaceDto placeDto) throws Exception;
     List<PlaceDto> getPlaceByDate(long myTripId, Date date) throws Exception;
+
 }

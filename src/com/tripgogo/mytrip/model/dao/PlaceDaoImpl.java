@@ -132,4 +132,5 @@ public class PlaceDaoImpl implements PlaceDao {
         }
         return list;
     }
+
 }
