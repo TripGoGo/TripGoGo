@@ -1,9 +1,3 @@
-drop database tripgogo;
-
-create database tripgogo;
-
-use tripgogo;
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -32,6 +26,8 @@ CREATE TABLE IF NOT EXISTS `tripgogo`.`user` (
     `user_password` VARCHAR(16) NOT NULL,
     `email` VARCHAR(20) NOT NULL,
     `join_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `question` INT NOT NULL DEFAULT 0,
+    `answer` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`user_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
@@ -76,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `tripgogo`.`mytrip` (
     FOREIGN KEY (`user_id`)
     REFERENCES `tripgogo`.`user` (`user_id`))
     ENGINE = InnoDB
+    AUTO_INCREMENT = 2
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -102,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `tripgogo`.`place` (
     FOREIGN KEY (`user_id`)
     REFERENCES `tripgogo`.`user` (`user_id`))
     ENGINE = InnoDB
+    AUTO_INCREMENT = 3
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -109,14 +107,3 @@ CREATE TABLE IF NOT EXISTS `tripgogo`.`place` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-
-insert into `tripgogo`.`user` (user_id, user_name, user_password, email, join_date)
-values     ('ssafy', '김싸피', '1234', 'ssafy@ssafy.com', now()),
-           ('admin', '관리자', '1234', 'admin@google.com', now());
-
-
-select * from place;
-select * from mytrip;
-use tripgogo;
