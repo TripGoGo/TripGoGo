@@ -7,7 +7,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <meta name="description" content="" />
     <meta name="author" content="" />
     <script src="https://kit.fontawesome.com/d4a4244bd2.js" crossorigin="anonymous"></script>

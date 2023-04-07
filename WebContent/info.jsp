@@ -351,7 +351,6 @@ https://templatemo.com/tm-583-festava-live
 </main>
 <script src="${root}/assets/js/jquery.min.js"></script>
 <script src="${root}/assets/js/bootstrap.min.js"></script>
-<script src="${root}/assets/js/jquery.sticky.js"></script>
 <script src="${root}/assets/js/custom.js"></script>
 <script
         type="text/javascript"
