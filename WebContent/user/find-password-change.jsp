@@ -67,6 +67,9 @@
 
               <input type="hidden" name="action" value="changepassword">
 
+              <input type="text" name="id" id="change-id"
+                     class="form-control" placeholder="ID" required>
+
 
 
               <input type="password" name="pwd" id="change-pwd"
@@ -146,7 +149,7 @@ T e m p l a t e M o
     }
   });
 
-  document.querySelector("#send-button").addEventListener("click", function () {
+  document.querySelector("#change-button").addEventListener("click", function () {
     if (!document.querySelector("#change-pwd").value) {
       alert("새로운 비밀번호 입력하세요 !!");
       return;

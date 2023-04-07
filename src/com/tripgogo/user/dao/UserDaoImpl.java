@@ -173,4 +173,24 @@ public class UserDaoImpl implements UserDao {
 		return cnt;
 	}
 
+	@Override
+	public void changePassword(UserDto userDto) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		System.out.println(userDto.getUserName());
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("update user \n");
+			sql.append("set user_password = ?\n");
+			sql.append("where user_id = ?");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, userDto.getUserPassword());
+			pstmt.setString(2, userDto.getUserId());
+			System.out.println(pstmt.executeUpdate());
+		} finally {
+			dbUtil.close(pstmt, conn);
+		}
+	}
+
 }

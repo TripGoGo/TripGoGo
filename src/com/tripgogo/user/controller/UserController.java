@@ -73,12 +73,30 @@ public class UserController extends HttpServlet {
 		} else if("findpassword".equals(action)){
 			path = findPwd(request, response);
 			redirect(request, response, path);
-		}else {
+		}else if("changepassword".equals(action)){
+			path = changePwd(request, response);
+			redirect(request, response, path);
+		} else {
 			redirect(request, response, path);
 		}
 	}
 
+	private String changePwd(HttpServletRequest request, HttpServletResponse response) {
+		UserDto userDto = new UserDto();
+		System.out.println("chagePwd" + request.getParameter("id"));
+		userDto.setUserId(request.getParameter("id"));
+		userDto.setUserPassword(request.getParameter("pwd"));
+		try {
+			userService.changePassword(userDto);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "회원 정보 수정 중 문제 발생!!!");
+			return "/error/error.jsp";
+		}
+		return "/user/login.jsp";
+
+	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -202,12 +220,15 @@ public class UserController extends HttpServlet {
 
 	private String findPwd(HttpServletRequest request, HttpServletResponse response) {
 		UserDto userDto = new UserDto();
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("question"));
+		System.out.println(request.getParameter("answer"));
 		userDto.setUserId(request.getParameter("id"));
-		userDto.setUserName(request.getParameter("name"));
-		userDto.setUserPassword(request.getParameter("question"));
-		userDto.setEmail(request.getParameter("answer"));
+		userDto.setQuestion(Integer.parseInt(request.getParameter("question")));
+		userDto.setAnswer(request.getParameter("answer"));
 		try {
 			int cnt = userService.findPassword(userDto);
+			System.out.println(cnt);
 			if(cnt == 1) {
 				return "/user/find-password-change.jsp";   // 실패 페이지로 이동
 			}else{
@@ -219,8 +240,6 @@ public class UserController extends HttpServlet {
 			e.printStackTrace();
 			return "";
 		}
-
-
 
 
 	}

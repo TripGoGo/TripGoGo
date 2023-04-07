@@ -11,5 +11,7 @@ public interface UserService {
 
 	int findPassword(UserDto userDto) throws Exception;
 
+	void changePassword(UserDto userDto) throws Exception;
+
 
 }

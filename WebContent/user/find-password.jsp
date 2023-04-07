@@ -69,6 +69,11 @@
 
 
 
+              <div class="col" style="padding-right:0px">
+                <input type="text" name="id" id="find-id"
+                       class="form-control" placeholder="ID" required>
+              </div>
+
                 <select name="question" id="find-question" class="form-select" aria-label="Default select example"
                         style="font-size: 18px;">
                   <option value="0" selected> 가장 존경하는 선생님</option>
@@ -77,8 +82,8 @@
                   <option value="3" > 가장 좋아하는 음식</option>
                 </select>
 
-                <div class="col-6" style="padding-right:0px">
-                  <input type="text" name="find-answer" id="answer"
+                <div class="col" style="padding-right:0px">
+                  <input type="text" name="answer" id="find-answer"
                          class="form-control" placeholder="answer" required>
                 </div>
 
