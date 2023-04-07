@@ -32,7 +32,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="${root}/index.jsp#section_4">Route</a>
+                    <a class="nav-link click-scroll" href="${root}/route.jsp">Route</a>
                 </li>
 
                 <li class="nav-item">
