@@ -126,18 +126,19 @@ public class UserDaoImpl implements UserDao {
 	public void updateUser(UserDto userDto) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		System.out.println(userDto.getUserName());
 		try {
 			conn = dbUtil.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("update User \n");
-			sql.append("set user_name=?, user_password=?, email=? \n");
+			sql.append("update user \n");
+			sql.append("set user_name = ?, user_password = ?, email = ? \n");
 			sql.append("where user_id = ?");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, userDto.getUserName());
 			pstmt.setString(2, userDto.getUserPassword());
 			pstmt.setString(3, userDto.getEmail());
 			pstmt.setString(4, userDto.getUserId());
-			pstmt.executeUpdate();
+			System.out.println(pstmt.executeUpdate());
 		} finally {
 			dbUtil.close(pstmt, conn);
 		}

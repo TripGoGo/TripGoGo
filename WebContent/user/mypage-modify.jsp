@@ -61,26 +61,28 @@
 
                                     <div class="row">
                                         <div class="col-6" style="margin: 0px;padding: 0px;">
-                                            <input type="text" name="name" id="name"
+                                            <input type="text" name="name" id="modify-name"
                                                    class="form-control" value="${user.userName}" required>
                                         </div>
 
                                         <div class="col-6" style="padding-right:0px">
-                                            <input type="text" name="email" id="email"
+                                            <input type="text" name="email" id="modify-email"
                                                    class="form-control" value="${user.email}" required>
                                         </div>
 
                                     </div>
 
 
-                                    <input type="text" name="id" id="id"
-                                           class="form-control" value="${user.userId}" disabled>
+                                    <input type="hidden" name="id" id="modify-id"
+                                           class="form-control" value="${user.userId}">
 
-                                    <input type="password" name="pwd" id="pwd"
-                                           class="form-control" value="${user.userPassword}" required>
+                                    <input type="password" name="pwd" id="modify-pwd"
+                                           class="form-control"  placeholder="PASSWORD" required>
+                                    <div style="margin:0px; padding:0px" id="modify-pwd-result"></div>
 
-                                    <input type="password" name="pwd-confirm" id="pwd-confirm"
-                                           class="form-control" value="${user.userPassword}" required>
+                                    <input type="password" name="pwd-confirm" id="modify-pwd-confirm"
+                                           class="form-control" placeholder="PASSWORD confirm" required>
+                                    <div style="margin:0px; padding:0px" id="modify-password-confirm-result"></div>
 
                                 </div>
 
@@ -113,29 +115,81 @@ T e m p l a t e M o
     <script src="${root}/assets/js/custom.js"></script>
 
     <script>
-        let f = document.getElementById("modify-form");
         // querySelector("#modify-form");
         <%--f.setAttribute("action", "${root}/user");--%>
-        document.querySelector("#submitBtn").addEventListener("click", function () {
-            console.log("aaaaa");
-            // console.log(document.forms["modify-form"]);
-            // document.forms["modify-form"].submit();
-            let f = document.querySelector("#modifyForm");
-            console.log(f);
-            f.submit();
-            // t();
-            <%--let f = document.getElementById("modify-form");--%>
-            <%--// querySelector("#modify-form");--%>
-            <%--f.setAttribute("action", "${root}/user");--%>
-            <%--console.log(f);--%>
-            <%--f.submit();--%>
-            <%--// HTMLFormElement.prototype.submit.call(f);--%>
+        <%--document.querySelector("#submitBtn").addEventListener("click", function () {--%>
+        <%--    console.log("aaaaa");--%>
+        <%--    // console.log(document.forms["modify-form"]);--%>
+        <%--    // document.forms["modify-form"].submit();--%>
+        <%--    let f = document.querySelector("#modifyForm");--%>
+        <%--    console.log(f);--%>
+        <%--    f.submit();--%>
+        <%--    // t();--%>
+        <%--    &lt;%&ndash;let f = document.getElementById("modify-form");&ndash;%&gt;--%>
+        <%--    &lt;%&ndash;// querySelector("#modify-form");&ndash;%&gt;--%>
+        <%--    &lt;%&ndash;f.setAttribute("action", "${root}/user");&ndash;%&gt;--%>
+        <%--    &lt;%&ndash;console.log(f);&ndash;%&gt;--%>
+        <%--    &lt;%&ndash;f.submit();&ndash;%&gt;--%>
+        <%--    &lt;%&ndash;// HTMLFormElement.prototype.submit.call(f);&ndash;%&gt;--%>
+        <%--});--%>
+
+
+        var validation = true;
+        <%-- 비밀번호 유효성 검사--%>
+        document.querySelector("#modify-pwd").addEventListener("keyup", function () {
+            let pwd = this.value;
+            let regPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+
+            let resultDiv = document.querySelector("#modify-pwd-result");
+            if(regPw.test(pwd) === false){
+                console.log("정규식 됨");
+                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.textContent = "숫자, 특수문자 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력하세요";
+                validation = false;
+            } else{
+                resultDiv.setAttribute("class", "mb-3 text-primary");
+                resultDiv.textContent = "정상적인 비밀번호입니다";
+                validation = true;
+            }
         });
-        function t(){
-            console.log(f);
-            f.submit();
-            // HTMLFormElement.prototype.submit.call(f);
-        }
+
+
+        document.querySelector("#modify-pwd-confirm").addEventListener("keyup", function () {
+            let pwdConfirm = this.value;
+            let pwd = document.getElementById("modify-pwd").value;
+            console.log(pwd);
+            let resultDiv = document.querySelector("#modify-password-confirm-result");
+            if(pwdConfirm != pwd) {
+                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.textContent = "입력된 비밀번호를 다시 확인하세요";
+                validation = false;
+            }else{
+                resultDiv.setAttribute("class", "mb-3 text-primary");
+                resultDiv.textContent = "비밀번호가 확인되었습니다";
+                validation = true;
+            }
+        });
+
+
+        document.querySelector("#submitBtn").addEventListener("click", function () {
+            if (!document.querySelector("#modify-name").value) {
+                alert("이름 입력!!");
+                return;
+            } else if (!document.querySelector("#modify-pwd").value) {
+                alert("비밀번호 입력!!");
+                return;
+            } else if (!document.querySelector("#modify-email").value) {
+                alert("email 입력!!");
+                return;
+            } else if(! validation){
+                alert("입력을 다시 확인하세요");
+            }
+            else {
+                let f = document.querySelector("#modifyForm");
+                console.log(f);
+                f.submit();
+            }
+        });
     </script>
 
 

@@ -168,7 +168,7 @@ T e m p l a t e M o
                 resultDiv.setAttribute("class", "mb-3 text-danger");
                 resultDiv.textContent = "숫자, 특수문자 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력하세요";
             } else{
-                resultDiv.setAttribute("class", "mb-3 text-danger");
+                resultDiv.setAttribute("class", "mb-3 text-primary");
                 resultDiv.textContent = "정상적인 비밀번호입니다";
                 validation = true;
             }
