@@ -28,7 +28,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="${root}/index.jsp#section_3">Info</a>
+                    <a class="nav-link click-scroll" href="${root}/info.jsp">Info</a>
                 </li>
 
                 <li class="nav-item">
