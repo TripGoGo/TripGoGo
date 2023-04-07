@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUser(userDto);
 	}
 
+	@Override
+	public int findPassword(UserDto userDto) throws Exception {
+		return userDao.findPassword(userDto);
+	}
+
 }

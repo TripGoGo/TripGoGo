@@ -9,4 +9,7 @@ public interface UserService {
 	UserDto findUser(String userId) throws Exception;
 	void updateUser(UserDto userDto) throws Exception;
 
+	int findPassword(UserDto userDto) throws Exception;
+
+
 }

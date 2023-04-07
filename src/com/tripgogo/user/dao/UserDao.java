@@ -12,4 +12,6 @@ public interface UserDao {
 	UserDto findUser(String userId) throws SQLException;
 	void updateUser(UserDto userDto) throws SQLException;
 
+	int findPassword(UserDto userDto) throws SQLException;
+
 }

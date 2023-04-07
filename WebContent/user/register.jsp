@@ -80,6 +80,25 @@ https://templatemo.com/tm-583-festava-live
 
                                         </div>
 
+                                    <%-- 비밀번호 찾기에 사용 --%>
+                                        <div class="row">
+                                            <select name="question" id="question" class="form-select" aria-label="Default select example"
+                                                    style="font-size: 18px;">
+                                                <option value="0" selected> 가장 존경하는 선생님</option>
+                                                <option value="1" > 가장 인상깊게 읽은 책</option>
+                                                <option value="2" > 졸업한 초등학교</option>
+                                                <option value="3" > 가장 좋아하는 음식</option>
+                                            </select>
+
+                                            <div class="col-6" style="padding-right:0px">
+                                                <input type="text" name="answer" id="answer"
+                                                       class="form-control" placeholder="answer" required>
+                                            </div>
+
+
+                                        </div>
+
+
 
                                         <input type="text" name="id" id="id"
                                                class="form-control" placeholder="Id" required>
@@ -97,13 +116,17 @@ https://templatemo.com/tm-583-festava-live
                                 
                                     </div>
 
-                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" style="margin: 20px 0px;">
-                                        <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none" style="background-color: black;">Login</a>
+                                <div class="row">
+                                    <div class="col-lg-4 mx-auto" style="margin: 20px 0px;">
+                                        <a href="${root}/user?action=mvlogin" class="btn custom-btn d-lg-block d-none w-100" style="background-color: black;">Login</a>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-10 col-8 mx-auto" >
-                                        <button type="button" id="register-button" class="btn custom-btn d-lg-block d-none">Register</button>
+                                    <div class="col-lg-4 mx-auto" style="margin: 20px 0px;">
+                                        <button type="button" id="register-button" class="btn custom-btn d-lg-block d-none w-100">Register</button>
                                     </div>
+                                </div>
+
+
 
                             </div>
                         </form>
@@ -205,7 +228,11 @@ T e m p l a t e M o
             } else if (!document.querySelector("#name").value) {
                 alert("이름 입력!!");
                 return;
-            } else if (document.querySelector("#pwd-confirm").value != document.querySelector("#pwd").value) {
+            } else if (!document.querySelector("#answer").value) {
+                alert("비밀번호 찾기를 위한 질문에 답변해주세요!!");
+                return;
+            }
+            else if (document.querySelector("#pwd-confirm").value != document.querySelector("#pwd").value) {
                 alert("비밀번호가 다릅니다!!");
                 return;
             }

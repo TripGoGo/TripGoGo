@@ -52,13 +52,15 @@ public class UserDaoImpl implements UserDao {
 		try {
 			conn = dbUtil.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("insert into User (user_id, user_name, user_password, email) \n");
-			sql.append("values (?, ?, ?, ?)");
+			sql.append("insert into User (user_id, user_name, user_password, email, question, answer) \n");
+			sql.append("values (?, ?, ?, ?, ?, ?)");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, userDto.getUserId());
 			pstmt.setString(2, userDto.getUserName());
 			pstmt.setString(3, userDto.getUserPassword());
 			pstmt.setString(4, userDto.getEmail());
+			pstmt.setInt(5, userDto.getQuestion());
+			pstmt.setString(6, userDto.getAnswer());
 			cnt = pstmt.executeUpdate();
 		} finally {
 			dbUtil.close(pstmt, conn);
@@ -131,7 +133,7 @@ public class UserDaoImpl implements UserDao {
 			conn = dbUtil.getConnection();
 			StringBuilder sql = new StringBuilder();
 			sql.append("update user \n");
-			sql.append("set user_name = ?, user_password = ?, email = ? \n");
+			sql.append("set user_name = ?, user_password = ?, email = ?\n");
 			sql.append("where user_id = ?");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, userDto.getUserName());
@@ -144,6 +146,31 @@ public class UserDaoImpl implements UserDao {
 		}
 
 
+	}
+
+	@Override
+	public int findPassword(UserDto userDto) throws SQLException {
+		int cnt = 1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = dbUtil.getConnection();
+			StringBuilder loginUser = new StringBuilder();
+			loginUser.append("select count(user_id) \n");
+			loginUser.append("from User \n");
+			loginUser.append("where user_id = ? and question =? and answer = ?");
+			pstmt = conn.prepareStatement(loginUser.toString());
+			pstmt.setString(1, userDto.getUserId());
+			pstmt.setInt(2, userDto.getQuestion());
+			pstmt.setString(3, userDto.getAnswer());
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt(1);
+		} finally {
+			dbUtil.close(rs, pstmt, conn);
+		}
+		return cnt;
 	}
 
 }

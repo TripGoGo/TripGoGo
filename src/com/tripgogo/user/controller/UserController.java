@@ -2,6 +2,8 @@ package com.tripgogo.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.tripgogo.user.model.UserDto;
 import com.tripgogo.user.model.service.UserService;
 import com.tripgogo.user.model.service.UserServiceImpl;
+
 
 /**
  * Servlet implementation class UserController
@@ -64,10 +67,18 @@ public class UserController extends HttpServlet {
 		} else if("modifyuser".equals(action)){
 			path = modify(request, response);
 			forward(request, response, path);
+		} else if("mvfindpassword".equals(action)){
+			path = "/user/find-password.jsp";
+			forward(request, response, path);
+		} else if("findpassword".equals(action)){
+			path = findPwd(request, response);
+			redirect(request, response, path);
 		}else {
 			redirect(request, response, path);
 		}
 	}
+
+
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -104,6 +115,8 @@ public class UserController extends HttpServlet {
 		userDto.setUserId(request.getParameter("id"));
 		userDto.setUserPassword(request.getParameter("pwd"));
 		userDto.setEmail(request.getParameter("email"));
+		userDto.setQuestion(Integer.parseInt(request.getParameter("question")));
+		userDto.setAnswer(request.getParameter("answer"));
 		try {
 			userService.joinUser(userDto);
 			return "/index.jsp";
@@ -184,6 +197,32 @@ public class UserController extends HttpServlet {
 			request.setAttribute("msg", "회원 정보 수정 중 문제 발생!!!");
 			return "/error/error.jsp";
 		}
+	}
+
+
+	private String findPwd(HttpServletRequest request, HttpServletResponse response) {
+		UserDto userDto = new UserDto();
+		userDto.setUserId(request.getParameter("id"));
+		userDto.setUserName(request.getParameter("name"));
+		userDto.setUserPassword(request.getParameter("question"));
+		userDto.setEmail(request.getParameter("answer"));
+		try {
+			int cnt = userService.findPassword(userDto);
+			if(cnt == 1) {
+				return "/user/find-password-change.jsp";   // 실패 페이지로 이동
+			}else{
+				return "";
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+
+
+
+
 	}
 
 
