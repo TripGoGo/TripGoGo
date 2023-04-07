@@ -82,7 +82,7 @@
                   <option value="3" > 가장 좋아하는 음식</option>
                 </select>
 
-                <div class="col" style="padding-right:0px">
+                <div class="col" style="padding-right:0px; margin-top:20px">
                   <input type="text" name="answer" id="find-answer"
                          class="form-control" placeholder="answer" required>
                 </div>
@@ -122,10 +122,15 @@ T e m p l a t e M o
   <%--});--%>
 
   document.querySelector("#send-button").addEventListener("click", function () {
-    if (!document.querySelector("#find-answer").value) {
+    if (!document.querySelector("#find-id").value) {
+      alert("아이디 입력!!!");
+      return;
+    }  else if(!document.querySelector("#find-answer").value) {
       alert("답변 입력!!!");
       return;
-    }  else {
+
+    }else
+     {
       let form = document.querySelector("#find-password-form");
       form.setAttribute("action", "${root}/user");
       form.submit();

@@ -150,7 +150,10 @@ T e m p l a t e M o
   });
 
   document.querySelector("#change-button").addEventListener("click", function () {
-    if (!document.querySelector("#change-pwd").value) {
+    if (!document.querySelector("#change-id").value) {
+      alert("아이디를 입력하세요 !!");
+      return;
+    }else if (!document.querySelector("#change-pwd").value) {
       alert("새로운 비밀번호 입력하세요 !!");
       return;
     } else if (!document.querySelector("#change-pwd-confirm").value) {
