@@ -147,6 +147,7 @@ public class UserController extends HttpServlet {
 	private String mypage(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			UserDto userDto = userService.findUser(request.getParameter("id"));
+			System.out.println(userDto.getUserName());
 			request.setAttribute("user", userDto);
 			return "/user/mypage.jsp";
 		} catch (Exception e) {
@@ -168,13 +169,15 @@ public class UserController extends HttpServlet {
 
 	private String modify(HttpServletRequest request, HttpServletResponse response) {
 		UserDto userDto = new UserDto();
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("name"));
+		userDto.setUserId(request.getParameter("id"));
 		userDto.setUserName(request.getParameter("name"));
 		userDto.setUserPassword(request.getParameter("pwd"));
 		userDto.setEmail(request.getParameter("email"));
-		System.out.println(userDto);
 		try {
 			userService.updateUser(userDto);
-			return mypage(request, response);
+			return "";
 
 		} catch (Exception e) {
 			e.printStackTrace();

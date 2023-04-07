@@ -9,5 +9,4 @@ public interface UserService {
 	UserDto findUser(String userId) throws Exception;
 	void updateUser(UserDto userDto) throws Exception;
 
-
 }

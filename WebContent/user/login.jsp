@@ -69,7 +69,7 @@
                                     <input type="text" name="id" id="id"
                                            class="form-control" placeholder="Id" required>
 
-                                    <input type="text" name="pwd" id="pwd"
+                                    <input type="password" name="pwd" id="pwd"
                                            class="form-control" placeholder="PASSWORD" required>
                                     <div class="col-lg-4 col-md-10 col-8 mx-auto" >
                                         <button type="button" id="login-button" class="btn custom-btn d-lg-block d-none">Login</button>
