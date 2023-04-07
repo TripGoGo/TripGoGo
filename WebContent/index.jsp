@@ -61,7 +61,6 @@
             width: 100%;
             height: 100%;
             transition: 0.6s;
-            z-index: 99;
         }
 
         .profile-card .img img {

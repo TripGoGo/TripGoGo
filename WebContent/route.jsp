@@ -54,13 +54,13 @@
                             <!-- zoom button link -->
                         </div>
                     </div>
-                    게시판
+                    길찾기
                     <!-- window title -->
                 </div>
                 <div class="content" style="min-height: 600px;">
                     <div style="width: 100%; height: 30px; margin-bottom: 10px">
                     </div>
-                    <div class="row d-flex justify-content-center">
+                    <div class="row d-flex justify-content-center" style="line-height: 38px">
                         <!-- 관광지 검색 start -->
                         <div style="width:350px; height:30px">
                             <input class="route-search" id="search-departures" type="text" placeholder="departure..." style="width:300px"/>
@@ -78,7 +78,7 @@
                             <ul class="search-results" id="arrivals-list" style="padding: 0px; padding-right: 26px;">
                             </ul>
                         </div>
-                        <button class="btn" id="btn-search-route" style="height:30px; width: 40px; text-align: center;">Find</button>
+                        <button class="btn" id="btn-search-route" style="width: 50px; text-align: center;">find</button>
                     </div>
                     <div
                             id="route-result"
