@@ -33,7 +33,7 @@
   box-sizing: border-box;
   min-height: calc(100vh - 82.97px);
   /* background-image: url("../images/pexels-pixabay-531767.jpg"); */
-  background-image: url("../images/bigsur.jpg");
+  background-image: url("../images/blurry-gradient-haikei.svg");
   background-size: 100vw;
 }
 
@@ -115,7 +115,7 @@
 
 .board-summary {
   display: -webkit-box;
-  color: var(--text-color);
+  color: black;
   font-size: 13px;
   line-height: 1.5;
   overflow: hidden;

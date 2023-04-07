@@ -22,71 +22,88 @@
     <link href="${root}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${root}/assets/css/bootstrap-icons.css" rel="stylesheet" />
     <link href="${root}/assets/css/templatemo-festava-live.css" rel="stylesheet" />
+    <link href="${root}/assets/css/board.css" rel="stylesheet" />
+    <link href="${root}/assets/css/mac-style.css" rel="stylesheet" />
+    <link href="${root}/assets/css/write.css" rel="stylesheet" />
+    <link href="${root}/assets/css/route.css" rel="stylesheet" />
 </head>
 <body>
+<%@ include file="/include/nav.jsp" %>
 <main>
-    <header class="site-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 d-flex flex-wrap">
-                    <p class="d-flex me-4 mb-0">
-                        <i class="bi-person custom-icon me-2"></i>
-                        <strong class="text-dark">TripGoGo</strong>
-                    </p>
+    <div class="board_background">
+        <div class="board">
+            <div class="window">
+                <div class="titlebar">
+                    <div class="buttons">
+                        <div class="close">
+                            <a class="closebutton" href="#"
+                            ><span><strong>x</strong></span></a
+                            >
+                            <!-- close button link -->
+                        </div>
+                        <div class="minimize">
+                            <a class="minimizebutton" href="#"
+                            ><span><strong>&ndash;</strong></span></a
+                            >
+                            <!-- minimize button link -->
+                        </div>
+                        <div class="zoom">
+                            <a class="zoombutton" href="#"
+                            ><span><strong>+</strong></span></a
+                            >
+                            <!-- zoom button link -->
+                        </div>
+                    </div>
+                    길찾기
+                    <!-- window title -->
                 </div>
+                <div class="content" style="min-height: 600px;">
+                    <div style="width: 100%; height: 30px; margin-bottom: 10px">
+                    </div>
+                    <div class="row d-flex justify-content-center" style="line-height: 38px">
+                        <!-- 관광지 검색 start -->
+                        <div style="width:350px; height:30px">
+                            <input class="route-search" id="search-departures" type="text" placeholder="departure..." style="width:300px"/>
+                            <button id="btn-search-departures" class="btn-search" type="button" style="background-color: transparent; border: 0px; width:20px">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <ul class="search-results" id="departures-list" style="padding: 0px; padding-right: 26px;"></ul>
+                            </ul>
+                        </div>
+                        <div style="width:350px; height:30px">
+                            <input class="route-search" id="search-arrivals" type="text" placeholder="arrival..." style="width:300px"/>
+                            <button id="btn-search-arrivals" class="btn-search" type="button" style="background-color: transparent; border: 0px; width:20px">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <ul class="search-results" id="arrivals-list" style="padding: 0px; padding-right: 26px;">
+                            </ul>
+                        </div>
+                        <button class="btn" id="btn-search-route" style="width: 50px; text-align: center;">find</button>
+                    </div>
+                    <div
+                            id="route-result"
+                            class="tab-content"
+                    >
+                        <div id="map" class="mb-3" style="width: 100%; height: 500px"></div>
+                    </div>
+                </div>
+                <!-- window content -->
             </div>
         </div>
-    </header>
-    <%@ include file="/include/nav.jsp" %>
-    <section class="ticket-section section-padding" style="height: calc(100vh - 51px)">
-        <div class="section-overlay"></div>
-        <div class="container">
-            <div class="row">
-                <!-- 관광지 검색 start -->
-                <div class="mt-3 d-flex justify-content-center">
-                    <div class="search-bar me-3">
-                        <input id="search-departures" type="text" placeholder="departure..." />
-                        <button id="btn-search-departures" class="btn-search" type="button">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-                    <div class="search-bar">
-                        <input id="search-arrivals" type="text" placeholder="arrival..." />
-                        <button id="btn-search-arrivals" class="btn-search" type="button">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </div>
-                    <button class="ms-2 btn" id="btn-search-route">Find</button>
-                    <!-- 관광지 검색 end -->
-                </div>
-                <!-- style="background-color: yellow" -->
-                <div class="mt-1 d-flex justify-content-center">
-                    <div class="col-2"></div>
-                    <div class="btn-group-vertical col-6 position-absolute" id="departures-list"></div>
-                    <div class="btn-group-vertical col-6" id="arrivals-list"></div>
-                </div>
-                <div
-                        id="route-result"
-                        class="tab-content shadow-lg mt-5 w-100"
-                        style="background-color: rgba(255, 255, 255, 0.4)"
-                >
-                    <div id="map" class="mb-3" style="width: 100%; height: 500px"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+    <!-- ©2015 Johannes JakobMade with <3 in Germany -->
+    </div>
 </main>
 <%@ include file="/include/footer.jsp" %>
 <!-- JAVASCRIPT FILES -->
-<script src="${root}/assets/js/jquery.min.js"></script>
 <script src="${root}/assets/js/bootstrap.min.js"></script>
-<script src="${root}/assets/js/jquery.sticky.js"></script>
 <script src="${root}/assets/js/custom.js"></script>
-<script src="${root}/assets/js/route.js"></script>
 <script
         type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24073e84e8ac256ed85efd18c525e7a9"
 ></script>
+<script src="${root}/assets/js/route.js"></script>
+
 </body>
 </html>
 

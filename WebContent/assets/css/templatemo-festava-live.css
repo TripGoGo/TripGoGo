@@ -702,11 +702,9 @@ strong {
 #btn-search-route {
   display: inline-block;
   border-radius: 60px;
-  text-transform: capitalize;
   color: white;
-  padding: 0 30px;
   background-color: rgba(0, 0, 0, 0.3);
-  /* box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15); */
+  font-size:16px;
 }
 
 /*---------------------------------------
