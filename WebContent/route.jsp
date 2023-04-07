@@ -24,19 +24,8 @@
     <link href="${root}/assets/css/templatemo-festava-live.css" rel="stylesheet" />
 </head>
 <body>
+<%@ include file="/include/nav.jsp" %>
 <main>
-    <header class="site-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 d-flex flex-wrap">
-                    <p class="d-flex me-4 mb-0">
-                        <strong class="text-dark">TripGoGo</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </header>
-    <%@ include file="/include/nav.jsp" %>
     <section class="ticket-section section-padding" style="height: calc(100vh - 51px)">
         <div class="section-overlay"></div>
         <div class="container">
@@ -77,9 +66,7 @@
 </main>
 <%@ include file="/include/footer.jsp" %>
 <!-- JAVASCRIPT FILES -->
-<script src="${root}/assets/js/jquery.min.js"></script>
 <script src="${root}/assets/js/bootstrap.min.js"></script>
-<script src="${root}/assets/js/jquery.sticky.js"></script>
 <script src="${root}/assets/js/custom.js"></script>
 <script src="${root}/assets/js/route.js"></script>
 <script
