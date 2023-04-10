@@ -68,19 +68,20 @@
 <img src = "./images/route1.png" width="600" height="370">
 <br>
 <img src = "./images/route2.png" width="600" height="370">
+
 <br>
 
 ### 게시판
-- 여행 후기 게시판
-<img src = "./WebContent/assets/images/READMEImg/Board-게시판.PNG" width="600" height="370"> 
+- 여행 후기 게시판  
+<img src = "./WebContent/assets/images/READMEImg/Board-board.PNG" width="600" height="370"> 
 #### 게시글 리스트
-<img src = "./WebContent/assets/images/READMEImg/Board-글조회.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/Board-list.PNG" width="600" height="370"> 
 
 #### 게시글 작성
-<img src = "./WebContent/assets/images/READMEImg/Board-글작성.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/Board-modify.PNG" width="600" height="370"> 
 
 #### 게시글 화면
-<img src = "./WebContent/assets/images/READMEImg/Board-글수정.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/Board-write.PNG" width="600" height="370"> 
 
 ### Mytrip
 - 날짜별로 여행 계획을 짤 수 있다.
