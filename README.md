@@ -28,7 +28,83 @@
 3. 길 찾기  
 
 
+<br>
 
+# :memo: 웹 페이지
+### Main Page
+- Main Page
+<img src = "./WebContent/assets/images/READMEImg/mainPage.PNG" width="600" height="370">
+<br><br>
+
+### Info - 카페고리 별 관광지 조회
+- 관광지, 카페, 음식점 정보 확인 가능
+<img src = "./READMEImg/InfoPage.PNG" width="600" height="370">
+<br><br>
+
+### 회원 관리 페이지
+- 회원 정보를 확인 할 수 있는 페이지
+<img src = "./READMEImg/Mypage.PNG" width="600" height="370">
+<br><br>
+
+### 로그인 페이지
+- 로그인 페이지
+<img src = "./READMEImg/LoginPage.PNG" width="600" height="370">
+<br><br>
+
+### 회원가입 페이지
+- 회원 가입을 할 수 있는 페이지
+<img src = "./READMEImg/RegisterPage.PNG" width="600" height="370">
+<br><br>
+
+### 회원 관리 페이지
+- 회원 정보를 수정할 수 있는 페이지
+<img src = "./READMEImg/MyPageChange.PNG" width="600" height="370">
+<br><br>
+
+### Route
+- 출발지부터 목적지까지 경로 확인 가능
+<img src = "./images/routeInit.png" width="600" height="370">
+<br>
+<img src = "./images/route1.png" width="600" height="370">
+<br>
+<img src = "./images/route2.png" width="600" height="370">
+<br>
+
+### 게시판
+- 여행 후기 게시판
+<img src = "./WebContent/assets/images/READMEImg/Board-게시판.PNG" width="600" height="370"> 
+#### 게시글 리스트
+<img src = "./WebContent/assets/images/READMEImg/Board-글조회.PNG" width="600" height="370"> 
+
+#### 게시글 작성
+<img src = "./WebContent/assets/images/READMEImg/Board-글작성.PNG" width="600" height="370"> 
+
+#### 게시글 화면
+<img src = "./WebContent/assets/images/READMEImg/Board-글수정.PNG" width="600" height="370"> 
+
+### Mytrip
+- 날짜별로 여행 계획을 짤 수 있다.
+
+#### 여행 계획 리스트
+- 여행 계획 리스트를 볼 수 있다.
+<img src = "./READMEImg/mytrip-board.PNG" width="600" height="370"> 
+
+
+#### 여행 계획 생성
+- 여행 계획을 생성 할 수 있다.
+<img src = "./READMEImg/mytrip-create.PNG" width="600" height="370"> 
+
+
+#### 선택 화면
+- 방문할 장소 검색 후 선택
+<img src = "./READMEImg/mytrip-select.PNG" width="600" height="370"> 
+<img src = "./READMEImg/mytrip-select2.PNG" width="600" height="370"> 
+<img src = "./READMEImg/mytrip-select3.PNG" width="600" height="370"> 
+
+#### 여행 계획 뷰
+- 날짜별 여행 계획을 볼 수 있다.
+<img src = "./READMEImg/mytrip-view1.PNG" width="600" height="370"> 
+<img src = "./READMEImg/mytrip-view2.PNG" width="600" height="370"> 
 
 
 
