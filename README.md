@@ -1,11 +1,11 @@
 # :airplane: TripGoGo
-전국의 음식점, 카페, 관광정보를 한눈에 볼 수 있는 여행 사이트
+전국의 관광정보를 확인하고, 여행 계획을 작성하는 웹사이트
 
 <br>
 
 # :bust_in_silhouette: Made by
-- 서울 10반 김지은
-- 서울 10반 정지원
+- 김지은
+- 정지원
 <br>
 
 # :clipboard: 주요 기능
@@ -27,6 +27,7 @@
 
 3. 대중교통 길 찾기  
 
+### :warning: 현재 TMAP API appkey 사용 불가
 
 <br>
 
