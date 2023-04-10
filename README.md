@@ -49,7 +49,7 @@
 
 ### 회원가입 페이지
 - 회원 가입을 할 수 있는 페이지
-<img src = "./READMEImg/RegisterPage.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/Register.PNG" width="600" height="370">
 <br><br>
 
 ### 회원 관리 페이지
@@ -72,53 +72,99 @@
 
 ### Route
 - 출발지부터 목적지까지 경로 확인 가능
-<img src = "./images/routeInit.png" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/Route.PNG" width="600" height="370"> 
 <br>
-<img src = "./images/route1.png" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/Route2.PNG" width="600" height="370"> 
 <br>
-<img src = "./images/route2.png" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/Route3.PNG" width="600" height="370"> 
 
 <br>
 
 ### 게시판
 - 여행 후기 게시판  
 <img src = "./WebContent/assets/images/READMEImg/Board-board.PNG" width="600" height="370"> 
+
+<br>
+
 #### 게시글 리스트
 <img src = "./WebContent/assets/images/READMEImg/Board-list.PNG" width="600" height="370"> 
+
+<br>
 
 #### 게시글 작성
 <img src = "./WebContent/assets/images/READMEImg/Board-modify.PNG" width="600" height="370"> 
 
+<br>
+
+
 #### 게시글 화면
 <img src = "./WebContent/assets/images/READMEImg/Board-write.PNG" width="600" height="370"> 
 
+<br>
+
 ### Mytrip
+
 - 날짜별로 여행 계획을 짤 수 있다.
 
 #### 여행 계획 리스트
+
 - 여행 계획 리스트를 볼 수 있다.
-<img src = "./READMEImg/mytrip-board.PNG" width="600" height="370"> 
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-board.PNG" width="600" height="370"> 
 
 
 #### 여행 계획 생성
-- 여행 계획을 생성 할 수 있다.
-<img src = "./READMEImg/mytrip-create.PNG" width="600" height="370"> 
 
+- 여행 계획을 생성 할 수 있다.
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-create.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-create1.png" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-create2.png" width="600" height="370"> 
+
+<br>
+
+- 여행 생성 후 화면
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-after-create.PNG" width="600" height="370"> 
+<br>
 
 #### 선택 화면
+
 - 방문할 장소 검색 후 선택
-<img src = "./READMEImg/mytrip-select.PNG" width="600" height="370"> 
-<img src = "./READMEImg/mytrip-select2.PNG" width="600" height="370"> 
-<img src = "./READMEImg/mytrip-select3.PNG" width="600" height="370"> 
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-findplace1.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-findplace2.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-findplace3.PNG" width="600" height="370"> 
+
+<br>
+
+- 방문할 장소 선택 후 화면
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-findplace-after.PNG" width="600" height="370"> 
+<br>
+
+- 방문할 장소 삭제도 가능
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-place-delete1.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-place-delete2.PNG" width="600" height="370"> 
+<br>
 
 #### 여행 계획 뷰
-- 날짜별 여행 계획을 볼 수 있다.
-<img src = "./READMEImg/mytrip-view1.PNG" width="600" height="370"> 
-<img src = "./READMEImg/mytrip-view2.PNG" width="600" height="370"> 
 
+- 날짜별 여행 계획을 볼 수 있다.
+
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-plan.PNG" width="600" height="370">
 
 
 <br>
+
+# DB 
+<img src = "./WebContent/assets/images/READMEImg/db.png.PNG" width="600" height="370">
+
+<br><br>
+
+# Class Diagram
+<img src = "./WebContent/assets/images/READMEImg/class_diagram.png.PNG" width="600" height="370">
 
 # :mag_right: 사용 데이터
 - TMAP API [https://tmapapi.sktelecom.com]
@@ -127,3 +173,4 @@
 
 # :computer: 개발언어/프로그램
 - HTML / CSS / JavaScript / VS Code
+- Servelt JSP / Java
