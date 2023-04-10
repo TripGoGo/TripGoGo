@@ -36,19 +36,15 @@
 <img src = "./WebContent/assets/images/READMEImg/mainPage.PNG" width="600" height="370">
 <br><br>
 
-### Info - 카페고리 별 관광지 조회
-- 관광지, 카페, 음식점 정보 확인 가능
-<img src = "./READMEImg/InfoPage.PNG" width="600" height="370">
-<br><br>
 
 ### 회원 관리 페이지
 - 회원 정보를 확인 할 수 있는 페이지
-<img src = "./READMEImg/Mypage.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/mypage.PNG" width="600" height="370">
 <br><br>
 
 ### 로그인 페이지
 - 로그인 페이지
-<img src = "./READMEImg/LoginPage.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/Login.PNG" width="600" height="370">
 <br><br>
 
 ### 회원가입 페이지
@@ -58,7 +54,20 @@
 
 ### 회원 관리 페이지
 - 회원 정보를 수정할 수 있는 페이지
-<img src = "./READMEImg/MyPageChange.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/mypage-modify.PNG" width="600" height="370">
+<br><br>
+
+- 수정 후 변경된 회원 정보 
+<img src = "./WebContent/assets/images/READMEImg/mypage-modify-after.PNG" width="600" height="370">
+<br><br>
+
+### 비밀번호 찾기
+- 비밀번호를 찾을 수 있는 기능으로 회원가입 시 입력한 질문과 그에 해당하는 답변을 가지고 비밀번호를 찾을 수 있습니다.
+<img src = "./WebContent/assets/images/READMEImg/find-password.PNG" width="600" height="370">
+<br><br>
+
+- 비밀번호 변경 후
+<img src = "./WebContent/assets/images/READMEImg/find-password-after.PNG" width="600" height="370">
 <br><br>
 
 ### Route
