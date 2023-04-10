@@ -54,16 +54,16 @@
 
 ### 회원가입 예외처리
 - 중복회원 가입 불가
-<img src = "./WebContent/assets/images/READMEImg/register_filter4.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/register_filter4.PNG">
 
 - 아이디 길이 제한
-<img src = "./WebContent/assets/images/READMEImg/register_filter1.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/register_filter1.PNG">
 
 - 비밀번호 제한
-<img src = "./WebContent/assets/images/READMEImg/register_filter2.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/register_filter2.PNG">
 
 - 비밀번호와 비밀번호 확인 필드 일치 검사
-<img src = "./WebContent/assets/images/READMEImg/register_filter3.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/register_filter3.PNG">
 
 ### 회원 관리 페이지
 - 회원 정보를 수정할 수 있는 페이지
@@ -137,19 +137,19 @@
 #### 여행 계획 생성 예외처리
 
 - 도시 미선택시 경고 알림
-<img src = "./WebContent/assets/images/READMEImg/mytrip_filter1.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/mytrip_filter1.PNG"> 
 
 - 여행 시작일 미선택시 경고 알림
-<img src = "./WebContent/assets/images/READMEImg/mytrip_filter2.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/mytrip_filter2.PNG"> 
 
 - 여행 종료일 미선택시 경고 알림
-<img src = "./WebContent/assets/images/READMEImg/mytrip_filter3.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/mytrip_filter3.PNG"> 
 
 - 여행 종료일이 시작일보다 먼저인 경우 경고 알림
-<img src = "./WebContent/assets/images/READMEImg/mytrip_filter1.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/mytrip_filter1.PNG"> 
 
 - 여행 생성 후 화면
-<img src = "./WebContent/assets/images/READMEImg/MyTrip-after-create.PNG" width="600" height="370"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-after-create.PNG"> 
 <br>
 
 #### 선택 화면
