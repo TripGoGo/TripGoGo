@@ -149,7 +149,7 @@
 <img src = "./WebContent/assets/images/READMEImg/mytrip_filter1.PNG"> 
 
 - 여행 생성 후 화면
-<img src = "./WebContent/assets/images/READMEImg/MyTrip-after-create.PNG"> 
+<img src = "./WebContent/assets/images/READMEImg/MyTrip-after-create.PNG" width="600" height="370"> 
 <br>
 
 #### 선택 화면
