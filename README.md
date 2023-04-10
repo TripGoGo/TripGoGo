@@ -159,12 +159,12 @@
 <br>
 
 # DB 
-<img src = "./WebContent/assets/images/READMEImg/db.png.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/db.png" width="750" height="800">
 
 <br><br>
 
 # Class Diagram
-<img src = "./WebContent/assets/images/READMEImg/class_diagram.png.PNG" width="600" height="370">
+<img src = "./WebContent/assets/images/READMEImg/class_diagram.png" width="950" height="1000">
 
 # :mag_right: 사용 데이터
 - TMAP API [https://tmapapi.sktelecom.com]
